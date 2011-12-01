@@ -416,7 +416,7 @@ DF['unitframe'] = {
 				['width'] = 130,
 				['height'] = 35,
 				['health'] = {
-					['text'] = false,
+					['text'] = true,
 					['text_format'] = 'percent',
 					['position'] = 'RIGHT',
 				},
@@ -432,7 +432,7 @@ DF['unitframe'] = {
 				},
 				['name'] = {
 					['enable'] = true,
-					['position'] = 'CENTER',
+					['position'] = 'LEFT',
 				},
 				['buffs'] = {
 					['enable'] = false,
@@ -465,11 +465,11 @@ DF['unitframe'] = {
 			},
 			['focus'] = {
 				['enable'] = true,
-				['width'] = 190,
+				['width'] = 130,
 				['height'] = 35,
 				['health'] = {
-					['text'] = false,
-					['text_format'] = 'current-percent',
+					['text'] = true,
+					['text_format'] = 'percent',
 					['position'] = 'RIGHT',
 				},
 				['power'] = {
@@ -484,7 +484,7 @@ DF['unitframe'] = {
 				},
 				['name'] = {
 					['enable'] = true,
-					['position'] = 'CENTER',
+					['position'] = 'LEFT',
 				},
 				['buffs'] = {
 					['enable'] = false,
@@ -516,7 +516,7 @@ DF['unitframe'] = {
 				},	
 				['castbar'] = {
 					['enable'] = true,
-					['width'] = 190,
+					['width'] = 130,
 					['height'] = 18,
 					['icon'] = true,
 					['color'] = DF.core.bordercolor,
@@ -526,8 +526,8 @@ DF['unitframe'] = {
 				},					
 			},	
 			['focustarget'] = {
-				['enable'] = false,
-				['width'] = 190,
+				['enable'] = true,
+				['width'] = 130,
 				['height'] = 25,
 				['health'] = {
 					['text'] = false,
