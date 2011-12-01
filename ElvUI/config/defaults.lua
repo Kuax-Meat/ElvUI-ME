@@ -27,7 +27,7 @@ DF["core"] = {
 	["valuecolor"] = {r = 23/255,g = 132/255,b = 209/255},
 	
 	--panels
-	['panelWidth'] = 350,
+	['panelWidth'] = 347,
 	['panelHeight'] = 180,
 	
 	--bags
@@ -898,13 +898,13 @@ DF['unitframe'] = {
 				['groupBy'] = 'GROUP',
 				["showParty"] = true,
 				["showRaid"] = true,
-				["showSolo"] = false,
+				["showSolo"] = true,
 				["showPlayer"] = true,
 				['columnAnchorPoint'] = "TOP",
-				['width'] = 80,
+				['width'] = 77,
 				['height'] = 44,
 				['health'] = {
-					['text'] = true,
+					['text'] = false,
 					['text_format'] = 'deficit',
 					['position'] = 'BOTTOM',
 					['orientation'] = 'HORIZONTAL',

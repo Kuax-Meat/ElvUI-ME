@@ -28,7 +28,7 @@ local function LoadSkin()
 	-- Override bar textures
 	Recount.UpdateBarTextures = function(self)
 		for k, v in pairs(Recount.MainWindow.Rows) do
-			v.StatusBar:SetStatusBarTexture("ElvUI Norm")
+			v.StatusBar:SetStatusBarTexture(E["media"].normTex)
 			v.StatusBar:GetStatusBarTexture():SetHorizTile(false)
 			v.StatusBar:GetStatusBarTexture():SetVertTile(false)
 		end
@@ -40,7 +40,7 @@ local function LoadSkin()
 	Recount.SetupBar_ = Recount.SetupBar
 	Recount.SetupBar = function(self, bar)
 		self:SetupBar_(bar)
-		bar.StatusBar:SetStatusBarTexture("ElvUI Norm")
+		bar.StatusBar:SetStatusBarTexture(E["media"].normTex)
 	end
 
 	-- Skin frames when they're created
