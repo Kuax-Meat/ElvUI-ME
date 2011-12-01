@@ -401,7 +401,7 @@ function UF:Construct_NameText(frame)
 	else
 		frame:Tag(name, '[Elv:getnamecolor][Elv:namemedium]')
 	end
-	name:SetPoint('CENTER', frame.Health)
+	name:SetPoint('LEFT', frame.Health, 4, 0)
 	
 	return name
 end

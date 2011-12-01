@@ -37,9 +37,9 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 		if type == 'health' then
 			if db[type].text_format == 'current-percent' then
 				if min ~= max then
-					value = format("|cff%02x%02x%02x%d%%|r |cffD7BEA5-|r |cffAF5050%s|r", r * 255, g * 255, b * 255, floor(min / max * 100), E:ShortValue(min))
+					value = format("|cff%02x%02x%02x%s|r\n|cffAF5050%.1f%%|r", r * 255, g * 255, b * 255, min, (min / max * 100))
 				else
-					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(max))	
+					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, max)	
 				end
 			elseif db[type].text_format == 'current-max' then
 				if min == max then
@@ -50,7 +50,11 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 			elseif db[type].text_format == 'current' then
 				value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(min))	
 			elseif db[type].text_format == 'percent' then
-				value = format("|cff%02x%02x%02x%d%%|r", r * 255, g * 255, b * 255, floor(min / max * 100))
+				if min == max then
+					value = ""
+				else
+					value = format("|cff%02x%02x%02x%.1f%%|r", r * 255, g * 255, b * 255, (min / max * 100))
+				end
 			elseif db[type].text_format == 'deficit' then
 				if min == max then
 					value = ""
@@ -61,9 +65,9 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 		else
 			if db[type].text_format == 'current-percent' then
 				if min ~= max then
-					value = format("%d%% |cffD7BEA5-|r %s", floor(min / max * 100), E:ShortValue(min))
+					value = format("%s\n%.1f%%", min, (min / max * 100))
 				else
-					value = format("%s", E:ShortValue(max))	
+					value = format("%s", max)	
 				end
 			elseif db[type].text_format == 'current-max' then
 				if min == max then
@@ -74,7 +78,11 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 			elseif db[type].text_format == 'current' then
 				value = format("%s", E:ShortValue(min))	
 			elseif db[type].text_format == 'percent' then
-				value = format("%d%%", floor(min / max * 100))
+				if min == max then
+					value = ""
+				else
+					value = format("%.1f%%", (min / max * 100))
+				end
 			elseif db[type].text_format == 'deficit' then
 				if min == max then
 					value = ""
@@ -87,9 +95,9 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 		if type == 'health' then
 			if db[type].text_format == 'current-percent' then
 				if min ~= max then
-					value = format("|cffAF5050%s|r |cffD7BEA5-|r |cff%02x%02x%02x%d%%|r", E:ShortValue(min), r * 255, g * 255, b * 255, floor(min / max * 100))
+					value = format("|cff%02x%02x%02x%s|r\n|cffAF5050%.1f%%|r", r * 255, g * 255, b * 255, min, (min / max * 100))
 				else
-					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(max))
+					value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, max)
 				end
 			elseif db[type].text_format == 'current-max' then
 				if min == max then
@@ -100,7 +108,11 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 			elseif db[type].text_format == 'current' then
 				value = format("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, E:ShortValue(min))	
 			elseif db[type].text_format == 'percent' then
-				value = format("|cff%02x%02x%02x%d%%|r", r * 255, g * 255, b * 255, floor(min / max * 100))
+				if min == max then
+					value = ""
+				else
+					value = format("|cff%02x%02x%02x%.1f%%|r", r * 255, g * 255, b * 255, (min / max * 100))
+				end
 			elseif db[type].text_format == 'deficit' then
 				if min == max then
 					value = ""
@@ -111,9 +123,9 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 		else
 			if db[type].text_format == 'current-percent' then
 				if min ~= max then
-					value = format("%s |cffD7BEA5-|r %d%%", E:ShortValue(min), floor(min / max * 100))
+					value = format("%s\n%.1f%%", min, (min / max * 100))
 				else
-					value = format("%s", E:ShortValue(max))
+					value = format("%s", max)
 				end
 			elseif db[type].text_format == 'current-max' then
 				if min == max then
@@ -124,7 +136,11 @@ local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 			elseif db[type].text_format == 'current' then
 				value = format("%s", E:ShortValue(min))	
 			elseif db[type].text_format == 'percent' then
-				value = format("%d%%", floor(min / max * 100))
+				if min == max then
+					value = ""
+				else
+					value = format("%.1f%%", (min / max * 100))
+				end
 			elseif db[type].text_format == 'deficit' then
 				if min == max then
 					value = ""
@@ -189,7 +205,7 @@ function UF:PostUpdateHealth(unit, min, max)
 		if unit == "target" then
 			reverse = true
 		end
-				
+		self.value:SetJustifyH("RIGHT")		
 		self.value:SetText(GetInfoText(self:GetParent(), unit, r, g, b, min, max, reverse, 'health'))
 	end
 end
@@ -223,7 +239,9 @@ function UF:PostUpdatePower(unit, min, max)
 	end
 	
 	if not self.value or self.value and not self.value:IsShown() then return end		
-
+	
+	self.value:SetJustifyH("LEFT")	
+	
 	if color then
 		self.value:SetTextColor(color[1], color[2], color[3])
 	else
