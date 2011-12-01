@@ -516,8 +516,8 @@ DF['unitframe'] = {
 				},	
 				['castbar'] = {
 					['enable'] = true,
-					['width'] = 130,
-					['height'] = 18,
+					['width'] = 450,
+					['height'] = 30,
 					['icon'] = true,
 					['color'] = DF.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
