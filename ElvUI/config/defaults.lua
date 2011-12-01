@@ -1037,11 +1037,7 @@ DF['unitframe'] = {
 					['size'] = 6,
 					['fontsize'] = 8,
 					['colorIcons'] = true,
-				},
-				['roleIcon'] = {
-					['enable'] = false,
-					['position'] = 'TOPRIGHT',
-				},					
+				},			
 			},			
 		},
 	},
