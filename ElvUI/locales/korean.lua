@@ -4,30 +4,30 @@ if not L then return end
 
 --Static Popup
 do
-	L["One or more of the changes you have made require a ReloadUI."] = true;
+	L["One or more of the changes you have made require a ReloadUI."] = "하나 이상의 변경사항을 적용하려면 UI를 재시작해야 됩니다.";
 end
 
 --General
 do
-	L["Version"] = true;
-	L["Enable"] = true;
+	L["Version"] = "버전";
+	L["Enable"] = "활성화";
 
-	L["General"] = true;
-	L["ELVUI_DESC"] = "ElvUI is a complete User Interface replacement addon for World of Warcraft.";
-	L["Auto Scale"] = true;
-		L["Automatically scale the User Interface based on your screen resolution"] = true;
-	L["Scale"] = true;
-		L["Controls the scaling of the entire User Interface"] = true;
-	L["None"] = true;
-	L["You don't have permission to mark targets."] = true;
-	L['LOGIN_MSG'] = 'Welcome to %sElvUI|r version %s%s|r, type /ec to access the in-game configuration menu. If you are in need of technical support you can visit us at http://www.tukui.org/forums/forum.php?id=84';
-	L['Login Message'] = true;
+	L["General"] = "일반";
+	L["ELVUI_DESC"] = "ElvUI는 월드 오브 워크래프트의 기본 인터페이스를 대체하는 유저 인터페이스입니다.";
+	L["Auto Scale"] = "자동 크기";
+		L["Automatically scale the User Interface based on your screen resolution"] = "사용자의 화면 해상도에 따라 자동으로 UI 크기를 맞춥니다.";
+	L["Scale"] = "크기";
+		L["Controls the scaling of the entire User Interface"] = "UI 전체의 크기를 조절합니다.";
+	L["None"] = "없음";
+	L["You don't have permission to mark targets."] = "대상에 표시할 권한이 없습니다.";
+	L['LOGIN_MSG'] = '%sElvUI|r version %s%s|r 에 오신걸 환영합니다. /ec를 입력하시면 게임 내 설정메뉴로 진입가능합니다. 만약 기술지원이 필요하면 다음을 방문해주세요. http://www.tukui.org/forums/forum.php?id=84';
+	L['Login Message'] = '로그인 메시지';
 	
-	L["Reset Anchors"] = true;
-	L["Reset all frames to their original positions."] = true;
+	L["Reset Anchors"] = "앵커 초기화";
+	L["Reset all frames to their original positions."] = "모든 프레임을 초기 위치로 되돌립니다.";
 	
-	L['Install'] = true;
-	L['Run the installation process.'] = true;
+	L['Install'] = "설치";
+	L['Run the installation process.'] = "설치 마법사를 실행합니다.";
 	
 	L["Credits"] = true;
 	L['ELVUI_CREDITS'] = "I would like to give out a special shout out to the following people for helping me maintain this addon with testing and coding and people who also have helped me through donations. Please note for donations I'm only posting the names of people who PM'd me on the forums, if your name is missing and you wish to have your name added please PM me."
@@ -36,15 +36,15 @@ do
 	L['Donations:'] = true;
 	
 	--Installation
-	L["Welcome to ElvUI version %s!"] = true;
-	L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."] = true;
-	L["The in-game configuration menu can be accesses by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = true;
-	L["Please press the continue button to go onto the next step."] = true;
-	L["Skip Process"] = true;
-	L["ElvUI Installation"] = true;
+	L["Welcome to ElvUI version %s!"] = "ElvUI %s : Meat Edition 에 오신 것을 환영합니다!";
+	L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."] = "이 설치과정은 UI의 사용에 대한 준비를 제공함과 동시에 몇가지의 구성요소에 대해 배울 수 있습니다.";
+	L["The in-game configuration menu can be accesses by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = "게임 내 설정메뉴는 /ec를 입력하시거나 미니맵 옆의 'C' 버튼을 클릭하시면 됩니다. 이 과정을 건너뛰시려면 아래 버튼을 누르십시오.";
+	L["Please press the continue button to go onto the next step."] = "다음 단계로 가시려면 계속 버튼을 누르세요.";
+	L["Skip Process"] = "건너뛰기";
+	L["ElvUI Installation"] = "ElvUI 설치";
 	
-	L["CVars"] = true;
-	L["This part of the installation process sets up your World of Warcraft default options it is recommended you should do this step for everything to behave properly."] = true;
+	L["CVars"] = "CVars (콘솔 버라이어블)";
+	L["This part of the installation process sets up your World of Warcraft default options it is recommended you should do this step for everything to behave properly."] = "이 설치 부분은 당신의 WoW 기본 설정을 바꿔줍니다. 이 과정은 다른 단계에 있어서도 중요하니 설치를 강력히 추천합니다.";
 	L["Please click the button below to setup your CVars."] = true;
 	L["Setup CVars"] = true;
 	
