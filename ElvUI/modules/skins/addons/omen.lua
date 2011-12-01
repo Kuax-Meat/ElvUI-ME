@@ -63,7 +63,7 @@ local function LoadSkin()
 	Omen.db.profile.Bar.Spacing = 1
 	Omen.db.profile.Bar.Texture = "ElvUI Norm"
 	Omen.db.profile.Bar.Font = "ElvUI Font"
-	Omen.db.profile.Bar.Height = 18
+	--Omen.db.profile.Bar.Height = 18
 	Omen.db.profile.TitleBar.Font = "ElvUI Font"
 	Omen.db.profile.Background.Texture = "ElvUI Blank"
 

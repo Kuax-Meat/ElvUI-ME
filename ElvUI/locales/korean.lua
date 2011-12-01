@@ -20,7 +20,7 @@ do
 		L["Controls the scaling of the entire User Interface"] = "UI 전체의 크기를 조절합니다.";
 	L["None"] = "없음";
 	L["You don't have permission to mark targets."] = "대상에 표시할 권한이 없습니다.";
-	L['LOGIN_MSG'] = '%sElvUI|r version %s%s|r 에 오신걸 환영합니다. /ec를 입력하시면 게임 내 설정메뉴로 진입가능합니다. 만약 기술지원이 필요하면 다음을 방문해주세요. http://www.tukui.org/forums/forum.php?id=84';
+	L['LOGIN_MSG'] = '%sElvUI|r : Meat Edition %s%s|r 에 오신걸 환영합니다. /ec를 입력하시면 게임 내 설정메뉴로 진입가능합니다. 만약 기술지원이 필요하면 다음을 방문해주세요. http://www.tukui.org/forums/forum.php?id=84';
 	L['Login Message'] = '로그인 메시지';
 	
 	L["Reset Anchors"] = "앵커 초기화";
