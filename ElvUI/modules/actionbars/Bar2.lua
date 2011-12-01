@@ -144,7 +144,7 @@ end
 function AB:CreateBar2()
 	bar:CreateBackdrop('Default');
 	bar.backdrop:SetAllPoints();
-	bar:Point('BOTTOM', ElvUI_Bar1, 'TOP', 0, 1);
+	bar:Point('TOP', ElvUI_Bar1, 'TOP', 0, 0);
 
 	local button;
 	for i=1, NUM_ACTIONBAR_BUTTONS do

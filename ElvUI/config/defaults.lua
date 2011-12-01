@@ -5,8 +5,8 @@ E.DF["global"] = {};
 
 --Core
 DF["core"] = {
-	["uiscale"] = 0.71,
-	["autoscale"] = true,
+	["uiscale"] = 0.75,
+	["autoscale"] = false,
 	["stickyFrames"] = true,
 	['loginmessage'] = true,
 	["interruptAnnounce"] = "NONE",
@@ -14,7 +14,7 @@ DF["core"] = {
 	-- fonts
 	["fontsize"] = 12,
 	["font"] = "ElvUI Font",
-	["dmgfont"] = "ElvUI Combat",
+	["dmgfont"] = "ElvUI Alt-Combat-2",
 		
 	-- textures
 	["normTex"] = "ElvUI Norm",
@@ -27,7 +27,7 @@ DF["core"] = {
 	["valuecolor"] = {r = 23/255,g = 132/255,b = 209/255},
 	
 	--panels
-	['panelWidth'] = 420,
+	['panelWidth'] = 350,
 	['panelHeight'] = 180,
 	
 	--bags
@@ -207,7 +207,7 @@ DF['datatexts'] = {
 --Tooltip
 DF['tooltip'] = {
 	['enable'] = true,
-	['anchor'] = 'SMART',
+	['anchor'] = 'CURSOR',
 	['ufhide'] = false,
 	['whostarget'] = true,
 	['combathide'] = false,
@@ -219,7 +219,7 @@ DF['unitframe'] = {
 	['smoothbars'] = true,
 	['statusbar'] = 'ElvUI Norm',
 	['font'] = 'ElvUI Font',
-	['fontsize'] = 12,
+	['fontsize'] = 11,
 	['fontoutline'] = 'OUTLINE',
 	['aurafilters'] = {},
 	['buffwatch'] = {},
@@ -231,9 +231,9 @@ DF['unitframe'] = {
 	["smartRaidFilter"] = true,
 	
 	['colors'] = {
-		['healthclass'] = false,
+		['healthclass'] = true,
 		['powerclass'] = false,
-		['colorhealthbyvalue'] = true,
+		['colorhealthbyvalue'] = false,
 		['customhealthbackdrop'] = false,
 		['classbackdrop'] = false,
 	
@@ -259,14 +259,14 @@ DF['unitframe'] = {
 		['Primary'] = {
 			['player'] = {
 				['enable'] = true,
-				['width'] = 260,
-				['height'] = 53,
+				['width'] = 250,
+				['height'] = 52,
 				['lowmana'] = 30,
 				['combatfade'] = false,
 				['health'] = {
 					['text'] = true,
 					['text_format'] = 'current-percent',
-					['position'] = 'LEFT',
+					['position'] = 'RIGHT',
 				},
 				['power'] = {
 					['enable'] = true,
@@ -275,12 +275,12 @@ DF['unitframe'] = {
 					['width'] = 'fill',
 					['height'] = 10,
 					['offset'] = 0,
-					['position'] = 'RIGHT',
+					['position'] = 'LEFT',
 					['hideonnpc'] = false,
 				},
 				['altpower'] = {
 					['enable'] = true,
-					['width'] = 260,
+					['width'] = 250,
 					['height'] = 18,
 				},
 				['name'] = {
@@ -288,14 +288,14 @@ DF['unitframe'] = {
 					['position'] = 'CENTER',
 				},
 				['portrait'] = {
-					['enable'] = false,
-					['width'] = 45,
+					['enable'] = true,
+					['width'] = 42,
 					['overlay'] = false,
 					['camDistanceScale'] = 1,
 				},
 				['buffs'] = {
 					['enable'] = false,
-					['perrow'] = 7,
+					['perrow'] = 10,
 					['numrows'] = 1,
 					['growth-x'] = 'RIGHT',
 					['growth-y'] = 'UP',
@@ -309,7 +309,7 @@ DF['unitframe'] = {
 				},
 				['debuffs'] = {
 					['enable'] = true,
-					['perrow'] = 7,
+					['perrow'] = 10,
 					['numrows'] = 1,
 					['growth-x'] = 'LEFT',
 					['growth-y'] = 'UP',
@@ -323,8 +323,8 @@ DF['unitframe'] = {
 				},
 				['castbar'] = {
 					['enable'] = true,
-					['width'] = 260,
-					['height'] = 18,
+					['width'] = 250,
+					['height'] = 21,
 					['icon'] = true,
 					['latency'] = true,
 					['color'] = DF.core.bordercolor,
@@ -334,14 +334,14 @@ DF['unitframe'] = {
 				},
 				['classbar'] = {
 					['enable'] = true,
-					['fill'] = 'spaced',
+					['fill'] = 'filled',
 					['height'] = 9,
 				},
 			},	
 			['target'] = {
 				['enable'] = true,
-				['width'] = 260,
-				['height'] = 53,
+				['width'] = 250,
+				['height'] = 52,
 				['health'] = {
 					['text'] = true,
 					['text_format'] = 'current-percent',
@@ -362,20 +362,20 @@ DF['unitframe'] = {
 					['position'] = 'CENTER',
 				},
 				['portrait'] = {
-					['enable'] = false,
-					['width'] = 45,
+					['enable'] = true,
+					['width'] = 42,
 					['overlay'] = false,
 					['camDistanceScale'] = 1,
 				},
 				['buffs'] = {
 					['enable'] = true,
-					['perrow'] = 7,
+					['perrow'] = 10,
 					['numrows'] = 1,
-					['growth-x'] = 'LEFT',
+					['growth-x'] = 'RIGHT',
 					['growth-y'] = 'UP',
-					['initialAnchor'] = 'BOTTOMRIGHT',
+					['initialAnchor'] = 'BOTTOMLEFT',
 					['attachTo'] = 'FRAME',
-					['anchorPoint'] = 'TOPRIGHT',						
+					['anchorPoint'] = 'TOPLEFT',						
 					['fontsize'] = 10,
 					['showPlayerOnly'] = false,
 					['useFilter'] = '',		
@@ -383,7 +383,7 @@ DF['unitframe'] = {
 				},
 				['debuffs'] = {
 					['enable'] = true,
-					['perrow'] = 7,
+					['perrow'] = 10,
 					['numrows'] = 1,
 					['growth-x'] = 'LEFT',
 					['growth-y'] = 'UP',
@@ -397,7 +397,7 @@ DF['unitframe'] = {
 				},
 				['castbar'] = {
 					['enable'] = true,
-					['width'] = 260,
+					['width'] = 250,
 					['height'] = 18,
 					['icon'] = true,
 					['color'] = DF.core.bordercolor,
@@ -407,7 +407,7 @@ DF['unitframe'] = {
 				},	
 				['combobar'] = {
 					['enable'] = true,
-					['fill'] = 'spaced',
+					['fill'] = 'filled',
 					['height'] = 9,
 				},				
 			},
@@ -417,7 +417,7 @@ DF['unitframe'] = {
 				['height'] = 35,
 				['health'] = {
 					['text'] = false,
-					['text_format'] = 'current-percent',
+					['text_format'] = 'percent',
 					['position'] = 'RIGHT',
 				},
 				['power'] = {
@@ -1052,7 +1052,7 @@ DF["actionbar"] = {
 	["enable"] = true,
 	["macrotext"] = false,
 	["hotkeytext"] = true,
-	["buttonsize"] = 30,
+	["buttonsize"] = 26,
 	["altbuttonsize"] = 28,
 	["buttonspacing"] = 4,
 	['fontsize'] = 11,
@@ -1070,7 +1070,7 @@ DF["actionbar"] = {
 		['buttonsPerRow'] = 12,
 		['point'] = 'BOTTOMLEFT',
 		['backdrop'] = true,
-		['heightMult'] = 1,
+		['heightMult'] = 2,
 		['widthMult'] = 1,
 		['paging'] = {
 			["DRUID"] = "[bonusbar:1,nostealth] 7; [bonusbar:1,stealth] 8; [bonusbar:2] 8; [bonusbar:3] 9; [bonusbar:4] 10;",
@@ -1081,7 +1081,7 @@ DF["actionbar"] = {
 		['visibility'] = "",
 	},
 	['bar2'] = {
-		['enabled'] = false,
+		['enabled'] = true,
 		['mouseover'] = false,
 		['buttons'] = 12,
 		['buttonsPerRow'] = 12,
@@ -1095,7 +1095,7 @@ DF["actionbar"] = {
 	['bar3'] = {
 		['enabled'] = true,
 		['mouseover'] = false,
-		['buttons'] = 6,
+		['buttons'] = 12,
 		['buttonsPerRow'] = 6,
 		['point'] = 'BOTTOMLEFT',
 		['backdrop'] = true,
@@ -1119,7 +1119,7 @@ DF["actionbar"] = {
 	['bar5'] = {
 		['enabled'] = true,
 		['mouseover'] = false,
-		['buttons'] = 6,
+		['buttons'] = 12,
 		['buttonsPerRow'] = 6,
 		['point'] = 'BOTTOMLEFT',
 		['backdrop'] = true,

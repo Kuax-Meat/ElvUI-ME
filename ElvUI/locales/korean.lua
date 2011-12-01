@@ -1,5 +1,5 @@
 ﻿local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
-local L = AceLocale:NewLocale("ElvuiConfig", "koKR")
+local L = AceLocale:NewLocale("ElvUI", "koKR")
 if not L then return end
 
 --Static Popup
@@ -44,79 +44,79 @@ do
 	L["ElvUI Installation"] = "ElvUI 설치";
 	
 	L["CVars"] = "CVars (콘솔 버라이어블)";
-	L["This part of the installation process sets up your World of Warcraft default options it is recommended you should do this step for everything to behave properly."] = "이 설치 부분은 당신의 WoW 기본 설정을 바꿔줍니다. 이 과정은 다른 단계에 있어서도 중요하니 설치를 강력히 추천합니다.";
-	L["Please click the button below to setup your CVars."] = true;
-	L["Setup CVars"] = true;
+	L["This part of the installation process sets up your World of Warcraft default options it is recommended you should do this step for everything to behave properly."] = "이 설치 단계는 당신의 WoW 기본 설정을 바꿔줍니다. 이 과정은 다른 단계에 있어서도 중요하니 설치를 강력히 추천합니다.";
+	L["Please click the button below to setup your CVars."] = "CVars를 설치하려면 아래 설치 버튼을 누르세요.";
+	L["Setup CVars"] = "CVars 설치";
 	
-	L["Importance: |cff07D400High|r"] = true;
-	L["Importance: |cffD3CF00Medium|r"] = true;
+	L["Importance: |cff07D400High|r"] = "중요도: |cff07D400높음|r";
+	L["Importance: |cffD3CF00Medium|r"] = "중요도: |cffD3CF00중간|r";
 
-	L["Chat"] = true;
-	L["This part of the installation process sets up your chat windows names, positions and colors."] = true;
-	L["The chat windows function the same as Blizzard standard chat windows, you can right click the tabs and drag them around, rename, etc. Please click the button below to setup your chat windows."] = true;
-	L["Setup Chat"] = true;
-	L['AutoHide Panels'] = true;
-	L['When a chat frame does not exist, hide the panel.'] = true;
+	L["Chat"] = "대화 (Chat)";
+	L["This part of the installation process sets up your chat windows names, positions and colors."] = "이 설치 단계는 당신의 대화창의 이름과 위치와 색상을 설정합니다.";
+	L["The chat windows function the same as Blizzard standard chat windows, you can right click the tabs and drag them around, rename, etc. Please click the button below to setup your chat windows."] = "이 대화창의 기능은 블리자드의 기본과 같아서, 탭 우클릭으로 모든 기능을 설정 가능합니다. 아래 버튼을 누르셔서 대화창을 설치하세요.";
+	L["Setup Chat"] = "Chat 설치";
+	L['AutoHide Panels'] = "패널 자동숨김";
+	L['When a chat frame does not exist, hide the panel.'] = "대화 프레임이 존재하지 않을경우, 패널을 숨깁니다.";
 	
-	L["Installation Complete"] = true;
-	L["You are now finished with the installation process. If you are in need technical support please visit us at www.tukui.org."] = true;
-	L["Please click the button below so you can setup variables and ReloadUI."] = true;
-	L["Finished"] = true;
-	L["CVars Set"] = true;
-	L["Chat Set"] = true;
-	L['Trade'] = true;
+	L["Installation Complete"] = "설치 완료";
+	L["You are now finished with the installation process. If you are in need technical support please visit us at www.tukui.org."] = "이제 설치가 완료되었습니다. 만약 기술적인 지원이 필요하면 다음을 방문하세요. www.tukui.org";
+	L["Please click the button below so you can setup variables and ReloadUI."] = "아래 버튼을 누르시면 설치를 마무리하고 UI를 재시작합니다.";
+	L["Finished"] = "마침";
+	L["CVars Set"] = "CVars 설정";
+	L["Chat Set"] = "대화 (Chat) 설정";
+	L['Trade'] = "거래";
 	
-	L['Panels'] = true;
-	L['Announce Interrupts'] = true;
-	L['Announce when you interrupt a spell to the specified chat channel.'] = true;
-	L["Movers unlocked. Move them now and click Lock when you are done."] = true;
-	L['Lock'] = true;
+	L['Panels'] = "패널";
+	L['Announce Interrupts'] = "방해/차단 알림";
+	L['Announce when you interrupt a spell to the specified chat channel.'] = "주문 차단/방해를 하면 특정 대화채널로 알립니다.";
+	L["Movers unlocked. Move them now and click Lock when you are done."] = "Movers 잠금 풀림. 움직이시고 완료가 되시면 다시 잠금을 클릭하세요.";
+	L['Lock'] = "잠금";
 end
 
 --Media	
 do
-	L["Media"] = true;
-	L["Fonts"] = true;
-	L["Font Size"] = true;
-		L["Set the font size for everything in UI. Note: This doesn't effect somethings that have their own seperate options (UnitFrame Font, Datatext Font, ect..)"] = true;
-	L["Default Font"] = true;
-		L["The font that the core of the UI will use."] = true;
-	L["UnitFrame Font"] = true;
-		L["The font that unitframes will use"] = true;
-	L["CombatText Font"] = true;
-		L["The font that combat text will use. |cffFF0000WARNING: This requires a game restart or re-log for this change to take effect.|r"] = true;
-	L["Textures"] = true;
-	L["StatusBar Texture"] = true;
-		L["Main statusbar texture."] = true;
-	L["Gloss Texture"] = true;
-		L["This gets used by some objects."] = true;
-	L["Colors"] = true;	
-	L["Border Color"] = true;
-		L["Main border color of the UI."] = true;
-	L["Backdrop Color"] = true;
-		L["Main backdrop color of the UI."] = true;
-	L["Backdrop Faded Color"] = true;
-		L["Backdrop color of transparent frames"] = true;
-	L["Restore Defaults"] = true;
+	L["Media"] = "미디어 (Media)";
+	L["Fonts"] = "글꼴";
+	L["Font Size"] = "글꼴 크기";
+		L["Set the font size for everything in UI. Note: This doesn't effect somethings that have their own seperate options (UnitFrame Font, Datatext Font, ect..)"] = "UI 내의 모든 글꼴 크기를 설정합니다. Note: 개별 옵션으로 지정할 수 있는 부분은 제외됩니다. (유닛프레임 폰트, 정보글자 폰트 등)";
+	L["Default Font"] = "기본 글꼴";
+		L["The font that the core of the UI will use."] = "UI에서 기본으로 사용할 글꼴을 지정합니다.";
+	L["UnitFrame Font"] = "유닛프레임 글꼴";
+		L["The font that unitframes will use"] = "유닛프레임에서 사용할 글꼴";
+	L["CombatText Font"] = "전투문자 글꼴";
+		L["The font that combat text will use. |cffFF0000WARNING: This requires a game restart or re-log for this change to take effect.|r"] = "전투문자에 사용할 글꼴입니다. |cffFF0000경고: 설정을 변경하면 완전히 게임을 껐다 키셔야 합니다.|r";
+	L["Textures"] = "텍스쳐 (무늬)";
+	L["StatusBar Texture"] = "상태바 텍스쳐";
+		L["Main statusbar texture."] = "주요 상태바 텍스쳐";
+	L["Gloss Texture"] = "화려한 텍스쳐";
+		L["This gets used by some objects."] = "이것은 몇몇 개체에 사용됩니다.";
+	L["Colors"] = "색상";	
+	L["Border Color"] = "테두리 색상";
+		L["Main border color of the UI."] = "UI 주요 테두리의 색상";
+	L["Backdrop Color"] = "배경 색상";
+		L["Main backdrop color of the UI."] = "UI 주요 배경 색상";
+	L["Backdrop Faded Color"] = "반투명 배경 색상";
+		L["Backdrop color of transparent frames"] = "반투명한 배경 색상";
+	L["Restore Defaults"] = "기본값으로 복원";
 		
-	L["Toggle Anchors"] = true;
-	L["Unlock various elements of the UI to be repositioned."] = true;
+	L["Toggle Anchors"] = "앵커 토글";
+	L["Unlock various elements of the UI to be repositioned."] = "위치를 설정하기 위해 다양한 UI 구성요소의 잠금을 품";
 	
-	L["Value Color"] = true;
-	L["Color some texts use."] = true;
+	L["Value Color"] = "색상 값";
+	L["Color some texts use."] = "몇몇 문자에서 사용할 색상";
 end
 
 --NamePlate Config
 do
-	L["NamePlates"] = true;
-	L["NAMEPLATE_DESC"] = "Modify the nameplate settings."
-	L["Width"] = true;
-		L["Controls the width of the nameplate"] = true;
-	L["Height"] = true;
-		L["Controls the height of the nameplate"] = true;
-	L["Good Color"] = true;
-		L["This is displayed when you have threat as a tank, if you don't have threat it is displayed as a DPS/Healer"] = true;
-	L["Bad Color"] = true;
+	L["NamePlates"] = "이름표 (NamePlates)";
+	L["NAMEPLATE_DESC"] = "이름표 설정 수정";
+	L["Width"] = "길이";
+		L["Controls the width of the nameplate"] = "이름표의 길이를 조절합니다.";
+	L["Height"] = "높이";
+		L["Controls the height of the nameplate"] = "이름표의 높이를 조절합니다.";
+	L["Good Color"] = "안전 색상";
+		L["This is displayed when you have threat as a tank, if you don't have threat it is displayed as a DPS/Healer"] = "TANK일때 ";
+	L["Bad Color"] = "위험 색상";
 		L["This is displayed when you don't have threat as a tank, if you do have threat it is displayed as a DPS/Healer"] = true;
 	L["Good Transition Color"] = true;
 		L["This color is displayed when gaining/losing threat, for a tank it would be displayed when gaining threat, for a dps/healer it would be displayed when losing threat"] = true;
@@ -493,9 +493,9 @@ do
 	L['Total Memory:'] = true;
 	L['Home Latency:'] = true;
 	
-	L.goldabbrev = "|cffffd700g|r"
-	L.silverabbrev = "|cffc7c7cfs|r"
-	L.copperabbrev = "|cffeda55fc|r"	
+	L.goldabbrev = "|cffffd700●|r"
+	L.silverabbrev = "|cffc7c7cf●|r"
+	L.copperabbrev = "|cffeda55f●|r"	
 	
 	L['Session:'] = true;
 	L["Character: "] = true;
