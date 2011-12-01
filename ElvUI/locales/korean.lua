@@ -12,7 +12,7 @@ do
 	L["Version"] = "버전";
 	L["Enable"] = "활성화";
 
-	L["General"] = "일반";
+	L["General"] = "일반 (General)";
 	L["ELVUI_DESC"] = "ElvUI는 월드 오브 워크래프트의 기본 인터페이스를 대체하는 유저 인터페이스입니다.";
 	L["Auto Scale"] = "자동 크기";
 		L["Automatically scale the User Interface based on your screen resolution"] = "사용자의 화면 해상도에 따라 자동으로 UI 크기를 맞춥니다.";
@@ -29,11 +29,11 @@ do
 	L['Install'] = "설치";
 	L['Run the installation process.'] = "설치 마법사를 실행합니다.";
 	
-	L["Credits"] = true;
+	L["Credits"] = "크레딧 (Credits)";
 	L['ELVUI_CREDITS'] = "I would like to give out a special shout out to the following people for helping me maintain this addon with testing and coding and people who also have helped me through donations. Please note for donations I'm only posting the names of people who PM'd me on the forums, if your name is missing and you wish to have your name added please PM me."
-	L['Coding:'] = true;
-	L['Testing:'] = true;
-	L['Donations:'] = true;
+	L['Coding:'] = "코딩:";
+	L['Testing:'] = "테스팅:";
+	L['Donations:'] = "기부:";
 	
 	--Installation
 	L["Welcome to ElvUI version %s!"] = "ElvUI %s : Meat Edition 에 오신 것을 환영합니다!";
@@ -126,8 +126,8 @@ do
 		L["Controls the height of the nameplate's castbar"] = "이름표의 시전바 높이를 조절합니다.";
 	L["Health Text"] = "체력 문자";
 		L["Toggles health text display"] = "체력 문자 표시를 토글합니다.";
-	L["Personal Debuffs"] = true;
-		L["Display your personal debuffs over the nameplate."] = true;
+	L["Personal Debuffs"] = "개인 디버프";
+		L["Display your personal debuffs over the nameplate."] = "당신의 개인적인 디버프를 이름표 위쪽에 표시합니다.";
 	L["Display level text on nameplate for nameplates that belong to units that aren't your level."] = true;
 	L["Enhance Threat"] = true;
 		L["Color the nameplate's healthbar by your current threat, Example: good threat color is used if your a tank when you have threat, opposite for DPS."] = true;
