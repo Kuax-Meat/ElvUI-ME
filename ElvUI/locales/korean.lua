@@ -76,6 +76,7 @@ do
 	L['Announce when you interrupt a spell to the specified chat channel.'] = "주문 차단/방해를 하면 특정 대화채널로 알립니다.";
 	L["Movers unlocked. Move them now and click Lock when you are done."] = "Movers 잠금 풀림. 움직이시고 완료가 되시면 다시 잠금을 클릭하세요.";
 	L['Lock'] = "잠금";
+	L["This can't be right, you must of broke something! Please turn on lua errors and report the issue to Elv http://www.tukui.org/forums/forum.php?id=146"] = "정상 작동하지 않습니다. 다음 주소를 통해 Elv에게 Lua 오류를 제보해 주세요. http://www.tukui.org/forums/forum.php?id=146";
 end
 
 --Media	
@@ -181,7 +182,7 @@ do
 	L['Unit Type'] = "유닛 타입";
 	L["Buff Color"] = "버프 색상";
 	L["Debuff Color"] = "디버프 색상";
-	L['Attempting to position a frame to a frame that is dependant, try another anchor point.'] = "다른 앵커 포인트로 시도해보세요."; -- 보충할 필요 있음
+	L['You have attempted to anchor a classtimer frame to a frame that is dependant on this classtimer frame, try changing your anchors again.'] = "다른 클래스바 프레임이 이곳을 기준으로 하고 있기 때문에 다른 기준점으로 시도하세요.";
 	L['Remove Color'] = "색상 삭제";
 	L['Reset color back to the bar default.'] = "색상을 바의 기본값으로 리셋합니다.";
 	L['Add SpellID'] = "주문ID 추가";

@@ -245,10 +245,22 @@ function E:CreateMoverPopup()
 	
 	S:HandleCheckBox(snapping)
 	S:HandleButton(lock)
+	
+	f:RegisterEvent('PLAYER_REGEN_DISABLED')
+	f:SetScript('OnEvent', function(self)
+		if self:IsShown() then
+			self:Hide()
+		end
+	end)
 end
 
 function E:Initialize()
 	self:UpdateMedia();
+	if self.db.core.loginmessage then
+		print(format(L['LOGIN_MSG'], self["media"].hexvaluecolor, self["media"].hexvaluecolor, self.version))
+	end
+	self:RegisterEvent('PLAYER_LOGIN', 'UIScale')
+
 	self:CheckRole()
 	self:UIScale();
 	
@@ -258,27 +270,23 @@ function E:Initialize()
 	self:LoadMovers(); --Load Movers
 	
 	self.initialized = true
-	
-	if self.db.core.loginmessage then
-		print(format(L['LOGIN_MSG'], self["media"].hexvaluecolor, self["media"].hexvaluecolor, self.version))
-	end
-	
+
 	if not self.db.install_complete then
 		self:Install()
 	end
 	
 	self:CreateMoverPopup()
-	self:RegisterEvent("PLAYER_ENTERING_WORLD", "CheckRole");
 	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED", "CheckRole");
 	self:RegisterEvent("PLAYER_TALENT_UPDATE", "CheckRole");
 	self:RegisterEvent("CHARACTER_POINTS_CHANGED", "CheckRole");
 	self:RegisterEvent("UNIT_INVENTORY_CHANGED", "CheckRole");
 	self:RegisterEvent("UPDATE_BONUS_ACTIONBAR", "CheckRole");	
-	self:RegisterEvent('PLAYER_LOGIN', 'UIScale')
 end
 
 local toggle
 function E:MoveUI(override, type)
+	if InCombatLockdown() then E:Print(ERR_NOT_IN_COMBAT) return end
+	
 	if toggle ~= nil then
 		toggle = nil
 	else
@@ -315,6 +323,7 @@ function E:MoveUI(override, type)
 end
 
 function E:ResetUI(...)
+	if InCombatLockdown() then E:Print(ERR_NOT_IN_COMBAT) return end
 	self:ResetMovers(...)
 	
 	if self.UnitFrames then

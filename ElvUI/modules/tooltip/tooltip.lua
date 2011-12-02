@@ -399,7 +399,7 @@ function TT:GameTooltip_OnTooltipSetUnit(tt)
 
 	if not unit then tt:Hide() return end
 
-	if (owner ~= E.UIParent and E.db.tooltip.ufhide) then tt:Hide() return end
+	if (owner ~= UIParent) and E.db.tooltip.ufhide then tt:Hide() return end
 	
 	if (UnitIsUnit(unit,"mouseover")) then
 		unit = "mouseover"
@@ -506,7 +506,7 @@ function TT:GameTooltipStatusBar_OnValueChanged(tt, value)
 		if unit then
 			min, max = UnitHealth(unit), UnitHealthMax(unit)
 			tt.text:Show()
-			local hp = min.." / "..max
+			local hp = (min).." / "..(max)
 			if UnitIsDeadOrGhost(unit) then
 				tt.text:SetText(DEAD)
 			else
