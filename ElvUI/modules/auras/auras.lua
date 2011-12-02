@@ -66,13 +66,13 @@ function A:UpdateDebuffAnchors(buttonName, index)
 	debuff:ClearAllPoints()
 	if aurapos == "RIGHT" then
 		if index == 1 then
-			debuff:SetPoint("BOTTOMRIGHT", AurasHolder, "BOTTOMRIGHT", 0, 0)
+			debuff:SetPoint("BOTTOMRIGHT", DBFAurasHolder, "BOTTOMRIGHT", 0, 0)
 		else
 			debuff:SetPoint("RIGHT", _G[buttonName..(index-1)], "LEFT", btnspace, 0)
 		end
 	else
 		if index == 1 then
-			debuff:SetPoint("BOTTOMLEFT", AurasHolder, "BOTTOMLEFT", 0, 0)
+			debuff:SetPoint("BOTTOMLEFT", DBFAurasHolder, "BOTTOMLEFT", 0, 0)
 		else
 			debuff:SetPoint("LEFT", _G[buttonName..(index-1)], "RIGHT", -(btnspace), 0)
 		end	
@@ -204,6 +204,11 @@ function A:Initialize()
 	holder:Width(456)
 	holder:Height(E.MinimapHeight)
 	
+	local DBFholder = CreateFrame("Frame", "DBFAurasHolder", E.UIParent)
+	DBFholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -((E.MinimapSize + 4) + E.RBRWidth + 7), -(4 + E.MinimapHeight))
+	DBFholder:Width(456)
+	DBFholder:Height(30)
+	
 	TemporaryEnchantFrame:ClearAllPoints()
 	TemporaryEnchantFrame:SetPoint("TOPRIGHT", AurasHolder, "TOPRIGHT", 0, 0)
 
@@ -231,6 +236,7 @@ function A:Initialize()
 	self:SecureHook("BuffFrame_UpdateAllBuffAnchors", "UpdateBuffAnchors")
 	self:SecureHook("DebuffButton_UpdateAnchors", "UpdateDebuffAnchors")	
 	E:CreateMover(AurasHolder, "AurasMover", "Auras Frame", false, A.AurasPostDrag)
+	E:CreateMover(DBFAurasHolder, "DAurasMover", "Debuff Auras Frame", false, A.DAurasPostDrag)
 end
 
 E:RegisterModule(A:GetName())
