@@ -293,9 +293,9 @@ do
 	L['RaidDebuff Indicator'] = true;
 	L['Debuff Highlighting'] = true;
 		L['Color the unit healthbar if there is a debuff that can be dispelled by you.'] = true;
-	L['Disable Blizzard'] = true;
+	L['Disable Blizzard'] = "기본 블리자드 비활성화";
 		L['Disables the blizzard party/raid frames.'] = true;
-	L['OOR Alpha'] = true;
+	L['OOR Alpha'] = "사거리 투명도";
 		L['The alpha to set units that are out of range to.'] = true;
 	L['You cannot set the Group Point and Column Point so they are opposite of each other.'] = true;
 	L['Orientation'] = true;
@@ -486,7 +486,7 @@ do
 	L['Select a unit to copy settings from.'] = true;
 	L['You cannot copy settings from the same unit.'] = true;
 	L['Restore Defaults'] = true;
-	L['Role Icon'] = true;
+	L['Role Icon'] = "역할 아이콘";
 	L['Smart Raid Filter'] = true;
 	L['Override any custom visibility setting in certain situations, EX: Only show groups 1 and 2 inside a 10 man instance.'] = true;
 end
@@ -656,15 +656,15 @@ do
 	L['Click to search..'] = "검색하려면 클릭하세요";
 	L['Sort Bags'] = "가방 정리";
 	L['Stack Items'] = "아이템 덩어리 정리";
-	L['Vender Grays'] = true;
-	L['Toggle Bags'] = true;
-	L['You must be at a vender.'] = true;
-	L['Vendered gray items for:'] = true;
-	L['No gray items to sell.'] = true;
-	L['Hold Shift:'] = true;
-	L['Stack Special'] = true;
-	L['Sort Special'] = true;
-	L['Purchase'] = true;
-	L["Can't buy anymore slots!"] = true;
-	L['You must purchase a bank slot first!'] = true;
+	L['Vender Grays'] = "회색 아이템 팔기";
+	L['Toggle Bags'] = "가방 토글";
+	L['You must be at a vender.'] = "상인을 만나야 합니다.";
+	L['Vendered gray items for:'] = "회색 아이템을 팔았습니다.";
+	L['No gray items to sell.'] = "처분할 회색 아이템이 없습니다.";
+	L['Hold Shift:'] = "쉬프트를 누른 상태:";
+	L['Stack Special'] = "특수 덩어리 정리";
+	L['Sort Special'] = "특수물품 정리";
+	L['Purchase'] = "구입";
+	L["Can't buy anymore slots!"] = "더이상 추가 슬롯을 구매할 수 없습니다!";
+	L['You must purchase a bank slot first!'] = "우선 은행 슬롯을 구매해야 합니다!";
 end
