@@ -276,7 +276,12 @@ function UF:Update_FocusFrame(frame, db)
 		end
 		
 		castbar:ClearAllPoints()
-		castbar:Point("TOPRIGHT", frame, "BOTTOMRIGHT", -(BORDER + db.castbar.xOffset), (-(BORDER*2+BORDER) + db.castbar.yOffset))
+		-- FIX FOCUS CASTBAR POSITION
+		if db.castbar.xOffset == 0 and db.castbar.yOffset == 0 then
+			castbar:Point("CENTER", E.UIParent, "CENTER", 0, 170)
+		else
+			castbar:Point("TOPRIGHT", frame, "BOTTOMRIGHT", -(BORDER + db.castbar.xOffset), (-(BORDER*2+BORDER) + db.castbar.yOffset))
+		end
 		
 		if db.castbar.enable and not frame:IsElementEnabled('Castbar') then
 			frame:EnableElement('Castbar')
