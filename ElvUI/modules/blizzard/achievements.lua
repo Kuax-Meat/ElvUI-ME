@@ -4,7 +4,7 @@ local B = E:GetModule('Blizzard');
 local AchievementHolder = CreateFrame("Frame", "AchievementHolder", E.UIParent)
 AchievementHolder:SetWidth(180)
 AchievementHolder:SetHeight(20)
-AchievementHolder:SetPoint("TOP", E.UIParent, "TOP", 0, -170)
+AchievementHolder:SetPoint("CENTER", E.UIParent, "CENTER", 0, -170)
 
 local POSITION = "TOP"
 

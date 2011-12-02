@@ -398,7 +398,7 @@ DF['unitframe'] = {
 				['castbar'] = {
 					['enable'] = true,
 					['width'] = 250,
-					['height'] = 18,
+					['height'] = 21,
 					['icon'] = true,
 					['color'] = DF.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
@@ -521,8 +521,8 @@ DF['unitframe'] = {
 					['icon'] = true,
 					['color'] = DF.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
-					['xOffset'] = 0,
-					['yOffset'] = 0,
+					['xOffset'] = -650,
+					['yOffset'] = 220,
 				},					
 			},	
 			['focustarget'] = {
