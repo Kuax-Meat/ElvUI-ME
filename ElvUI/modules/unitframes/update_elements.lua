@@ -410,13 +410,15 @@ function UF:PostUpdateAura(unit, button, index, offset, filter, isDebuff, durati
 	button:SetScript('OnUpdate', UF.UpdateAuraTimer)
 end
 
+-- FIX CASTBAR TEXT by MEAT (Elune-KR)
 function UF:CustomCastDelayText(duration)
-	self.Time:SetText(("%.1f |cffaf5050%s %.1f|r"):format(self.channeling and duration or self.max - duration, self.channeling and "- " or "+", self.delay))
+	self.Time:SetText(("%.1f |cffaf5050%s %.1f|r / %.1f"):format(self.channeling and duration or self.max - duration, self.channeling and "- " or "+", self.delay, self.max))
 end
 
-function UF:CustomCastTimeText(duration) -- FIX CASTBAR BY MEAT
+function UF:CustomCastTimeText(duration)
 	self.Time:SetText(("%.1f / %.1f"):format(self.channeling and duration or self.max - duration, self.max))--(self.channeling and duration or self.max - duration, self.channeling and "- " or "+", self.delay))
 end
+-- FIX CASTBAR TEXT by MEAT (Elune-KR)
 
 function UF:PostCastStart(unit, name, rank, castid)
 	if unit == "vehicle" then unit = "player" end
