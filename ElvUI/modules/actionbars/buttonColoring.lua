@@ -164,13 +164,19 @@ function AB:UpdateActive()
 end
 
 function AB:UpdateButtonStatus()
-	local action = ActionButton_GetPagedID(self)
+	local action = self.action
 	if self:IsVisible() and action and HasAction(action) and ActionHasRange(action) then
 		ButtonsToUpdate[self] = true
 	else
 		ButtonsToUpdate[self] = nil
 	end
+	
+	self:HookScript('OnShow', AB.UpdateButtonStatus)
+	self:HookScript('OnHide', AB.UpdateButtonStatus)
+	
 	AB:UpdateActive()
+	
+	self.rangeTimer = nil
 end
 
 function AB:OnUpdateUsable()
@@ -178,18 +184,9 @@ function AB:OnUpdateUsable()
 	AB:UpdateUsable(self);
 end
 
-local function RegisterButton(button, elapsed)
-	_G[button:GetName().."HotKey"].SetVertexColor = E.noop
-	
-	button:SetScript('OnShow', AB.UpdateselfStatus)
-	button:SetScript('OnHide', AB.UpdateselfStatus)
-	button:SetScript('OnUpdate', nil)	
-	
-	AB.UpdateButtonStatus(button)
-end
+
 
 function AB:LoadButtonColoring()	
-	hooksecurefunc('ActionButton_OnUpdate', RegisterButton)
 	hooksecurefunc('ActionButton_UpdateUsable', AB.OnUpdateUsable)
 	hooksecurefunc('ActionButton_Update', AB.UpdateButtonStatus)
 end

@@ -109,6 +109,7 @@ function UF:Update_PlayerFrame(frame, db)
 	end
 	
 	--Threat
+	
 	do
 		local threat = frame.Threat
 		
@@ -747,7 +748,7 @@ function UF:Update_PlayerFrame(frame, db)
 	
 	if not frame.mover then
 		frame:ClearAllPoints()
-		frame:Point('BOTTOMLEFT', UIParent, 'BOTTOM', -417, 130) --Set to default position
+		frame:Point('BOTTOMLEFT', UIParent, 'BOTTOM', -367, 130) --Set to default position
 	end
 
 	frame:UpdateAllElements()
