@@ -32,7 +32,7 @@ function A:StyleBuffs(buttonName, index, debuff)
 		icon:Point("BOTTOMRIGHT", buff, -2, 2)
 		
 		buff:Size(30)
-		
+				
 		duration:ClearAllPoints()
 		duration:Point("BOTTOM", 0, -13)
 		duration:FontTemplate(nil, nil, 'OUTLINE')

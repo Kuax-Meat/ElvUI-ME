@@ -109,7 +109,6 @@ function UF:Update_PlayerFrame(frame, db)
 	end
 	
 	--Threat
-	
 	do
 		local threat = frame.Threat
 		

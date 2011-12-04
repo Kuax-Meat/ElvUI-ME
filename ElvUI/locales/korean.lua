@@ -214,11 +214,6 @@ do
 	L['KEY_DELETE'] = 'Del';
 	L['KEY_MOUSEWHEELUP'] = 'MwU';
 	L['KEY_MOUSEWHEELDOWN'] = 'MwD';
-
-	--BLIZZARD MODIFERS TO SEARCH FOR
-	L['KEY_LOCALE_SHIFT'] = '(s%-)';
-	L['KEY_LOCALE_ALT'] = '(a%-)';
-	L['KEY_LOCALE_CTRL'] = '(c%-)';
 	
 	--KEYBINDING
 	L["Hover your mouse over any actionbutton or spellbook button to bind it. Press the escape key or right click to clear the current actionbutton's keybinding."] = "액션바 버튼이나 마법책의 버튼에 마우스를 올려 키를 각인할 수 있습니다. ESC키나 마우스 우클릭으로 현재 버튼에 각인된 키를 지울수도 있습니다.";
@@ -289,6 +284,10 @@ end
 
 --UNITFRAMES
 do	
+	L['Current / Max'] = "현재 / 최대";
+	L['Current'] = "현재";
+	L['Remaining'] = "남음";
+	L['Format'] = "형식";
 	L['X Offset'] = "X 축 기준 좌표";
 	L['Y Offset'] = "Y 축 기준 좌표";
 	L['RaidDebuff Indicator'] = "레이드디버프 지시기";

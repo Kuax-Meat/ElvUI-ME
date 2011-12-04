@@ -210,11 +210,6 @@ do
 	L['KEY_DELETE'] = 'Del';
 	L['KEY_MOUSEWHEELUP'] = 'MwU';
 	L['KEY_MOUSEWHEELDOWN'] = 'MwD';
-
-	--BLIZZARD MODIFERS TO SEARCH FOR
-	L['KEY_LOCALE_SHIFT'] = '(s%-)';
-	L['KEY_LOCALE_ALT'] = '(a%-)';
-	L['KEY_LOCALE_CTRL'] = '(c%-)';
 	
 	--KEYBINDING
 	L["Hover your mouse over any actionbutton or spellbook button to bind it. Press the escape key or right click to clear the current actionbutton's keybinding."] = true;
@@ -285,6 +280,10 @@ end
 
 --UNITFRAMES
 do	
+	L['Current / Max'] = true;
+	L['Current'] = true;
+	L['Remaining'] = true;
+	L['Format'] = true;
 	L['X Offset'] = true;
 	L['Y Offset'] = true;
 	L['RaidDebuff Indicator'] = true;
