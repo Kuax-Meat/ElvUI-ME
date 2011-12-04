@@ -1,6 +1,7 @@
 local E, L, DF = unpack(select(2, ...)); --Engine
 local S = E:GetModule('Skins')
 
+
 local rwiconsize = 18			-- RaidWarning icon size, because 12 is small for me.
 local buttonsize = 22
 
@@ -28,6 +29,8 @@ local function SkinBars(self)
 					backdroptex:Point("TOPLEFT", icon1.overlay, "TOPLEFT", 2, -2)
 					backdroptex:Point("BOTTOMRIGHT", icon1.overlay, "BOTTOMRIGHT", -2, 2)
 					backdroptex:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+					
+					icon1.overlay:SetFrameLevel(1)
 				end
 
 				if not (icon2.overlay) then
@@ -40,7 +43,9 @@ local function SkinBars(self)
 					backdroptex:SetTexture([=[Interface\Icons\Spell_Nature_WispSplode]=])
 					backdroptex:Point("TOPLEFT", icon2.overlay, "TOPLEFT", 2, -2)
 					backdroptex:Point("BOTTOMRIGHT", icon2.overlay, "BOTTOMRIGHT", -2, 2)
-					backdroptex:SetTexCoord(0.08, 0.92, 0.08, 0.92)					
+					backdroptex:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+					
+					icon2.overlay:SetFrameLevel(1)
 				end
 
 				if bar.color then
