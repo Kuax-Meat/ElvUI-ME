@@ -31,7 +31,15 @@ function A:StyleBuffs(buttonName, index, debuff)
 		icon:Point("TOPLEFT", buff, 2, -2)
 		icon:Point("BOTTOMRIGHT", buff, -2, 2)
 		
-		buff:Size(30)
+		if E.myname == "쩌는미트" or E.myname == "허는미트" then
+			if debuff == true then
+				buff:Size(40)
+			else
+				buff:Size(30)
+			end
+		else
+			buff:Size(30)
+		end
 				
 		duration:ClearAllPoints()
 		duration:Point("BOTTOM", 0, -13)
