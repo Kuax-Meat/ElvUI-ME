@@ -9,6 +9,9 @@ E.Layout = LO;
 function LO:Initialize()
 	self:CreateChatPanels()
 	self:CreateMinimapPanels()
+	if E.myname == "쩌는미트" or E.myname == "허는미트" then
+		self:CreateUpperPanels()
+	end
 end
 
 local panel
@@ -158,6 +161,23 @@ function LO:CreateMinimapPanels()
 	configtoggle.text:SetPoint('CENTER')
 	configtoggle.text:SetJustifyH('CENTER')
 	configtoggle:SetScript('OnClick', function() E:ToggleConfig() end)
+end
+
+function LO:CreateUpperPanels()
+	local upperpanels = CreateFrame("Frame", nil, E.UIParent)
+	upperpanels:SetHeight(23)
+	upperpanels:SetWidth(E.UIParent:GetWidth() + (E.mult * 2))
+	upperpanels:SetPoint("TOPLEFT", E.UIParent, "TOPLEFT", -2, 2)
+	upperpanels:SetPoint("BOTTOMRIGHT", E.UIParent, "TOPRIGHT", 2, -20)
+	upperpanels:SetFrameStrata("BACKGROUND")
+	upperpanels:SetFrameLevel(0)
+	upperpanels:SetTemplate("Transparent")
+	
+	upperpanels.text = upperpanels:CreateFontString(nil, 'OVERLAY')
+	upperpanels.text:FontTemplate()
+	upperpanels.text:SetPoint('CENTER')
+	upperpanels.text:SetJustifyH('CENTER')
+	upperpanels.text:SetFormattedText("ElvUI |cffff139b%s|r : Meat Edition", E.version)
 end
 
 E:RegisterModule(LO:GetName())

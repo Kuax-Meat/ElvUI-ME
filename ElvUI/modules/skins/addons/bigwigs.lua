@@ -69,7 +69,7 @@ local applystyle = function(bar)
 	bar.OldScale = bar:GetScale()
 	bar.OldSetScale=bar.SetScale
 	bar.SetScale=E.noop
-	bar:Height(buttonsize)
+	bar:SetHeight(buttonsize)
 	bar:SetScale(1)
 	
 	-- create or reparent and use bar background
