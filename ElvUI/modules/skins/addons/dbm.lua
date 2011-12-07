@@ -228,7 +228,7 @@ local function LoadSkin()
 	local RaidNotice_AddMessage_=RaidNotice_AddMessage
 	RaidNotice_AddMessage=function(noticeFrame, textString, colorInfo)
 		if textString:find(" |T") then
-			textString = string.gsub(textString,"(:12:12)",":18:18:0:0:64:64:5:59:5:59")
+			textString = string.gsub(textString,"(:12:12)",":14:14:0:0:64:64:5:59:5:59")
 		end
 		return RaidNotice_AddMessage_(noticeFrame, textString, colorInfo)
 	end

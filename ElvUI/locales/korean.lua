@@ -1,8 +1,4 @@
-﻿-------------------------------
--- ElvUI 3.0.2 Korean Locale --
---     BY MEAT (Elune-KR)    --
--------------------------------
-
+﻿-- Korean localization file for koKR.
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI", "koKR")
 if not L then return end
@@ -77,6 +73,14 @@ do
 	L["Movers unlocked. Move them now and click Lock when you are done."] = "Movers 잠금 풀림. 움직이시고 완료가 되시면 다시 잠금을 클릭하세요.";
 	L['Lock'] = "잠금";
 	L["This can't be right, you must of broke something! Please turn on lua errors and report the issue to Elv http://www.tukui.org/forums/forum.php?id=146"] = "정상 작동하지 않습니다. 다음 주소를 통해 Elv에게 Lua 오류를 제보해 주세요. http://www.tukui.org/forums/forum.php?id=146";
+	
+	L['Panel Width'] = "패널 너비";
+	L['Panel Height'] = "패널 높이";
+	L['PANEL_DESC'] = '좌측과 우측 패널의 크기를 조절합니다. 이것은 채팅창과 가방창의 크기에 영향을 미칩니다.';
+	L['URL Links'] = "URL 링크";
+	L['Attempt to create URL links inside the chat.'] = "대화창에서 URL 링크를 만들어줍니다.";
+	L['Short Channels'] = "채널명 단축";
+	L['Shorten the channel names in chat.'] = "대화창에서 채널명을 단축시켜줍니다.";
 end
 
 --Media	
@@ -463,7 +467,7 @@ do
 		L['When true, the header includes the player when not in a raid.'] = "활성화시, 레이드에 참여하지 않은 플레이어를 헤더에 포함합니다.";
 	L['Visibility'] = "표시";
 		L['The following macro must be true in order for the group to be shown, in addition to any filter that may already be set.'] = true;
-	L['Blank'] = true;
+	L['Blank'] = "공백";
 	L['Buff Indicator'] = "버프 지시기";
 	L['Color Icons'] = true;
 		L['Color the icon to their set color in the filters section, otherwise use the icon texture.'] = true;
@@ -577,8 +581,24 @@ end
 
 --Chat
 do
+	L['CHAT_DESC'] = 'ElvUI 용 대화창 설정을 조절합니다.';
 	L["Chat"] = "대화 (Chat)";
 	L['Invalid Target'] = "적절한 대상이 아님";
+	L['BG'] = true;
+	L['BGL'] = true;
+	L['G'] = true;
+	L['O'] = true;
+	L['P'] = true;
+	L['PG'] = true;
+	L['PL'] = true;
+	L['R'] = true;
+	L['RL'] = true;
+	L['RW'] = true;
+	L['DND'] = true;
+	L['AFK'] = true;
+	L['whispers'] = true;
+	L['says'] = true;
+	L['yells'] = true;
 end
 
 --Skins
@@ -649,6 +669,11 @@ do
 	L["Can't Roll"] = "굴릴 수 없음";
 	L['Disband Group'] = "그룹 해체";
 	L['Raid Menu'] = "공격대 메뉴";
+	L['Your items have been repaired for: '] = "모든 아이템이 수리되었습니다: ";
+	L["You don't have enough money to repair."] = "수리에 충분한 돈이 없습니다.";
+	L['Auto Repair'] = "자동 수리";
+	L['Automatically repair using the following method when visiting a merchant.'] = "상인 방문 시 자동으로 장비를 수리합니다.";
+	L['Your items have been repaired using guild bank funds for: '] = "길드 자금을 이용하여 모든 아이템이 수리되었습니다: ";
 end
 
 --Bags
