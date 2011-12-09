@@ -56,8 +56,6 @@ do
 	L["This part of the installation process sets up your chat windows names, positions and colors."] = "이 설치 단계는 당신의 대화창의 이름과 위치와 색상을 설정합니다.";
 	L["The chat windows function the same as Blizzard standard chat windows, you can right click the tabs and drag them around, rename, etc. Please click the button below to setup your chat windows."] = "이 대화창의 기능은 블리자드의 기본과 같아서, 탭 우클릭으로 모든 기능을 설정 가능합니다. 아래 버튼을 누르셔서 대화창을 설치하세요.";
 	L["Setup Chat"] = "Chat 설치";
-	L['AutoHide Panels'] = "패널 자동숨김";
-	L['When a chat frame does not exist, hide the panel.'] = "대화 프레임이 존재하지 않을경우, 패널을 숨깁니다.";
 	
 	L["Installation Complete"] = "설치 완료";
 	L["You are now finished with the installation process. If you are in need technical support please visit us at www.tukui.org."] = "이제 설치가 완료되었습니다. 만약 기술적인 지원이 필요하면 다음을 방문하세요. www.tukui.org";
