@@ -81,6 +81,7 @@ do
 	L['Attempt to create URL links inside the chat.'] = "대화창에서 URL 링크를 만들어줍니다.";
 	L['Short Channels'] = "채널명 단축";
 	L['Shorten the channel names in chat.'] = "대화창에서 채널명을 단축시켜줍니다.";
+	L["Are you sure you want to reset every mover back to it's default position?"] = "모든 앵커를 기본 위치로 되돌리시겠습니까?";
 end
 
 --Media	
@@ -284,6 +285,9 @@ do
 	L['Days'] = "일";
 		L['Color when the text is in the days format.'] = "하루 일 단위의 문자 색상";
 	L['Totem Bar'] = "토템 바";
+		
+	L['Action Mode'] = "행동 모드";
+	L['Use the button when clicking or pressing the keybind on the keydown motion or on the keyup motion.'] = "키를 눌렀을때 혹은 키를 눌렀다 뗐을 때 반응할지 결정합니다.";
 end
 
 --UNITFRAMES
@@ -556,6 +560,9 @@ do
 	L['AP'] = "전투력";
 	L['SP'] = "주문력";
 	L['HP'] = "주문력";
+	L["DPS"] = true;
+	L["HPS"] = true;
+	L['Hit'] = true;
 end
 
 --Tooltip
@@ -674,6 +681,15 @@ do
 	L['Auto Repair'] = "자동 수리";
 	L['Automatically repair using the following method when visiting a merchant.'] = "상인 방문 시 자동으로 장비를 수리합니다.";
 	L['Your items have been repaired using guild bank funds for: '] = "길드 자금을 이용하여 모든 아이템이 수리되었습니다: ";
+	L['Loot Roll'] = "주사위 굴림창";
+	L['Enable\Disable the loot roll frame.'] = "주사위 굴림창 활성/비활성";
+	L['Loot'] = "루팅창";
+	L['Enable\Disable the loot frame.'] = "루팅창 활성/비활성";
+	
+	L['Exp/Rep Position'] = "경험치/평판바 위치";
+	L['Change the position of the experience/reputation bar.'] = "경험치/평판 바의 위치를 조절합니다.";
+	L['Top Screen'] = "화면 최상단";
+	L["Below Minimap"] = "미니맵 아래";
 end
 
 --Bags
@@ -681,10 +697,10 @@ do
 	L['Click to search..'] = "검색하려면 클릭하세요";
 	L['Sort Bags'] = "가방 정리";
 	L['Stack Items'] = "아이템 덩어리 정리";
-	L['Vender Grays'] = "회색 아이템 팔기";
+	L['Vendor Grays'] = "회색 아이템 팔기";
 	L['Toggle Bags'] = "가방 토글";
-	L['You must be at a vender.'] = "상인을 만나야 합니다.";
-	L['Vendered gray items for:'] = "회색 아이템을 팔았습니다.";
+	L['You must be at a vendor.'] = "상인을 만나야 합니다.";
+	L['Vendored gray items for:'] = "회색 아이템을 팔았습니다.";
 	L['No gray items to sell.'] = "처분할 회색 아이템이 없습니다.";
 	L['Hold Shift:'] = "쉬프트를 누른 상태:";
 	L['Stack Special'] = "특수 덩어리 정리";
@@ -692,4 +708,5 @@ do
 	L['Purchase'] = "구입";
 	L["Can't buy anymore slots!"] = "더이상 추가 슬롯을 구매할 수 없습니다!";
 	L['You must purchase a bank slot first!'] = "우선 은행 슬롯을 구매해야 합니다!";
+	L['Enable\Disable the all-in-one bag.'] = "통합가방 활성/비활성";
 end

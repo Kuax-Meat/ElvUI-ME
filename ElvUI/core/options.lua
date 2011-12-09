@@ -70,17 +70,27 @@ E.Options.args.core = {
 					isPercent = true,
 					set = function(info, value) E.db.core[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL") end
 				},		
-				stickyFrames = {
-					name = L['Sticky Frames'],
-					desc = L['Attempt to snap frames to nearby frames.'],
-					type = 'toggle',
-				},
 				bags = {
 					type = "toggle",
 					name = L['Bags'],
+					desc = L['Enable\Disable the all-in-one bag.'],
 					get = function(info) return E.db.core.bags end,
 					set = function(info, value) E.db.core.bags = value; StaticPopup_Show("CONFIG_RL") end
 				},	
+				lootRoll = {
+					type = "toggle",
+					name = L['Loot Roll'],
+					desc = L['Enable\Disable the loot roll frame.'],
+					get = function(info) return E.db.core.lootRoll end,
+					set = function(info, value) E.db.core.lootRoll = value; StaticPopup_Show("CONFIG_RL") end
+				},	
+				loot = {
+					type = "toggle",
+					name = L['Loot'],
+					desc = L['Enable\Disable the loot frame.'],
+					get = function(info) return E.db.core.loot end,
+					set = function(info, value) E.db.core.loot = value; StaticPopup_Show("CONFIG_RL") end
+				},					
 				autoRepair = {
 					name = L['Auto Repair'],
 					desc = L['Automatically repair using the following method when visiting a merchant.'],
@@ -115,7 +125,17 @@ E.Options.args.core = {
 					desc = L['PANEL_DESC'],
 					set = function(info, value) E.db.core.panelHeight = value; E:GetModule('Chat'):PositionChat(true) end,
 					min = 150, max = 600, step = 1,
-				},					
+				},		
+				expRepPos = {
+					type = 'select',
+					name = L['Exp/Rep Position'],
+					desc = L['Change the position of the experience/reputation bar.'],
+					set = function(info, value) E.db.core.expRepPos = value; E:GetModule('Misc'):UpdateExpRepBarAnchor() end,
+					values = {
+						['TOP_SCREEN'] = L['Top Screen'],
+						['MINIMAP_BOTTOM'] = L["Below Minimap"],
+					},
+				},
 			},
 		},
 		media = {
@@ -277,6 +297,44 @@ E.Options.args.core = {
 	},
 }
 
+local DONATOR_STRING = ""
+local LINE_BREAK = "\n"
+local DONATORS = {
+	"Dandruff",
+	"Tobur/Tarilya",
+	"Netu",
+	"Alluren",
+	"Thorgnir",
+	"Emalal",
+	"Bendmeova",
+	"Curl",
+	"Zarac",
+	"Emmo",
+	"Oz",
+	"Hawké",
+	"Aynya",
+	"Tahira",
+	"Karsten Lumbye Thomsen",
+	"Thomas B. aka Pitschiqüü",
+	"Sea Garnet",
+	"Paul Storry",
+	"Azagar",
+	"Archury",
+	"Donhorn",
+	"Woodson Harmon",
+	"Phoenyx",
+	"Feat",
+	"Konungr",
+	"Leyrin",
+	"Woodson Harmon",
+	"Dragonsys",
+}
+
+table.sort(DONATORS, function(a,b) return a < b end) --Alphabetize
+for _, donatorName in pairs(DONATORS) do
+	DONATOR_STRING = DONATOR_STRING..LINE_BREAK..donatorName
+end
+
 E.Options.args.credits = {
 	type = "group",
 	name = L["Credits"],
@@ -285,7 +343,7 @@ E.Options.args.credits = {
 		text = {
 			order = 1,
 			type = "description",
-			name = L['ELVUI_CREDITS']..'\n\n'..L['Coding:']..'\nTukz\nHaste\nNightcracker\nOmega1970\nHydrazine\n\n'..L['Testing:']..'\nTukui Community\nAffinity\nModarch\nBladesdruid\nTirain\nPhima\n\n'..L['Donations:']..'\nDandruff\nTobur/Tarilya\nNetu\nAlluren\nThorgnir\nEmalal\nDandruff\nBendmeova\nCurl\nZarac\nEmmo\nOz\nHawké\nAynya\nTahira\nKarsten Lumbye Thomsen\nThomas B. aka Pitschiqüü\nSea Garnet\nPaul Storry\nAzagar\nArchury\nDonhorn\nWoodson Harmon\nPhoenyx\nFeat\nKonungr',
+			name = L['ELVUI_CREDITS']..'\n\n'..L['Coding:']..'\nTukz\nHaste\nNightcracker\nOmega1970\nHydrazine\n\n'..L['Testing:']..'\nTukui Community\nAffinity\nModarch\nBladesdruid\nTirain\nPhima\n\n'..L['Donations:']..DONATOR_STRING,
 		},
 	},
 }

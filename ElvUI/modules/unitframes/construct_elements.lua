@@ -398,6 +398,8 @@ function UF:Construct_NameText(frame)
 	UF['fontstrings'][name] = true
 	if frame.unit == 'player' or frame.unit == 'target' then
 		frame:Tag(name, '[Elv:getnamecolor][Elv:namelong] [Elv:diffcolor][level] [shortclassification]')
+	elseif frame.unit == 'targettarget' or frame.unit == 'focus' or frame.unit == 'focustarget' then
+		frame:Tag(name, '[Elv:getnamecolor][Elv:nameshort]')
 	else
 		frame:Tag(name, '[Elv:getnamecolor][Elv:namemedium]')
 	end
