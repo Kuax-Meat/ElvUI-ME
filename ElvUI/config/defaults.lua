@@ -30,6 +30,7 @@ DF["core"] = {
 	--panels
 	['panelWidth'] = 347,
 	['panelHeight'] = 180,
+	['panelBackdrop'] = 'SHOWBOTH',
 	['expRepPos'] = 'MINIMAP_BOTTOM',
 	
 	--misc
@@ -1864,7 +1865,7 @@ DF["actionbar"] = {
 	["buttonspacing"] = 4,
 	['fontsize'] = 10,
 	["enablecd"] = true,
-	["buttonActionMode"] = 'DOWN';
+	["buttonActionMode"] = 'UP',
 	["treshold"] = 3,
 	["expiringcolor"] = { r = 1, g = 0, b = 0 },
 	["secondscolor"] = { r = 1, g = 1, b = 0 },

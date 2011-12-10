@@ -80,6 +80,13 @@ do
 	L['Short Channels'] = "채널명 단축";
 	L['Shorten the channel names in chat.'] = "대화창에서 채널명을 단축시켜줍니다.";
 	L["Are you sure you want to reset every mover back to it's default position?"] = "모든 앵커를 기본 위치로 되돌리시겠습니까?";
+
+	L['Panel Backdrop'] = "패널 배경";
+	L['Toggle showing of the left and right chat panels.'] = "좌측과 우측 채팅창 패널을 토글합니다.";
+	L['Hide Both'] = "모두 숨김";
+	L['Show Both'] = "모두 보임";
+	L['Left Only'] = "왼쪽만";
+	L['Right Only'] = "오른쪽만";	
 end
 
 --Media	

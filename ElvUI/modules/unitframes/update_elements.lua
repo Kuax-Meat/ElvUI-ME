@@ -241,7 +241,7 @@ function UF:PostUpdatePower(unit, min, max)
 	if not self.value or self.value and not self.value:IsShown() then return end		
 	
 	self.value:SetJustifyH("LEFT")	
-	
+
 	if color then
 		self.value:SetTextColor(color[1], color[2], color[3])
 	else
