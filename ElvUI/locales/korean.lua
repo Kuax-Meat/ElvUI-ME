@@ -87,6 +87,18 @@ do
 	L['Show Both'] = "모두 보임";
 	L['Left Only'] = "왼쪽만";
 	L['Right Only'] = "오른쪽만";	
+	
+	L['Tank'] = "탱커";
+	L['Healer'] = "힐러";
+	L['Melee DPS'] = "밀리 딜러";
+	L['Caster DPS'] = "캐스터 딜러";
+	L["Primary Layout"] = "주 레이아웃";
+	L["Secondary Layout"] = "보조 레이아웃";
+	L["Primary Layout Set"] = "주 레이아웃 세팅";
+	L["Secondary Layout Set"] = "보조 레이아웃 세팅";
+	L["You can now choose what layout you wish to use for your primary talents."] = "사용하기 원하는 주 특성을 선택할 수 있습니다.";
+	L["You can now choose what layout you wish to use for your secondary talents."] = "사용하기 원하는 보조 특성을 선택할 수 있습니다.";
+	L["This will change the layout of your unitframes, raidframes, and datatexts."] = "이것은 유닛프레임, 공격대프레임, 정보글자의 레이아웃을 바꿔줍니다.";
 end
 
 --Media	
