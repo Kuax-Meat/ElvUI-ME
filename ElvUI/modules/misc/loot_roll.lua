@@ -1,4 +1,4 @@
-local E, L, DF = unpack(select(2, ...)); --Engine
+﻿local E, L, DF = unpack(select(2, ...)); --Engine
 local M = E:GetModule('Misc');
 
 local anchor
@@ -10,35 +10,35 @@ local FRAME_WIDTH, FRAME_HEIGHT = 328, 28
 local locale = GetLocale()
 local rollpairs = locale == "deDE" and {
 	["(.*) passt automatisch bei (.+), weil [ersi]+ den Gegenstand nicht benutzen kann.$"]  = "pass",
-	["(.*) w?felt nicht f?: (.+|r)$"] = "pass",
-	["(.*) hat f? (.+) 'Gier' ausgew?lt"] = "greed",
-	["(.*) hat f? (.+) 'Bedarf' ausgew?lt"] = "need",
-	["(.*) hat f? '(.+)' Entzauberung gew?lt."]  = "disenchant",
+	["(.*) würfelt nicht für: (.+|r)$"] = "pass",
+	["(.*) hat für (.+) 'Gier' ausgewählt"] = "greed",
+	["(.*) hat für (.+) 'Bedarf' ausgewählt"] = "need",
+	["(.*) hat für '(.+)' Entzauberung gewählt."]  = "disenchant",
 } or locale == "frFR" and {
-	["(.*) a pass?pour? (.+) parce qu'((il)|(elle)) ne peut pas ramasser cette objet.$"]  = "pass",
-	["(.*) a pass?pour? (.+)"]  = "pass",
-	["(.*) a choisi Cupidit?pour? (.+)"] = "greed",
-	["(.*) a choisi Besoin pour? (.+)"]  = "need",
-	["(.*) a choisi D?enchantement pour? (.+)"]  = "disenchant",
+	["(.*) a passé pour : (.+) parce qu'((il)|(elle)) ne peut pas ramasser cette objet.$"]  = "pass",
+	["(.*) a passé pour : (.+)"]  = "pass",
+	["(.*) a choisi Cupidité pour : (.+)"] = "greed",
+	["(.*) a choisi Besoin pour : (.+)"]  = "need",
+	["(.*) a choisi Désenchantement pour : (.+)"]  = "disenchant",
 } or locale == "zhTW" and {
-	["(.*)????:(.+),??"]  = "pass",
-	["(.*)???:(.+)"] = "pass",
-	["(.*)???????:(.+)"] = "greed",
-	["(.*)???????:(.+)"] = "need",
-	["(.*)????:(.+)"] = "disenchant",
+	["(.*)自動放棄:(.+)，因為"]  = "pass",
+	["(.*)放棄了:(.+)"] = "pass",
+	["(.*)選擇了貪婪優先:(.+)"] = "greed",
+	["(.*)選擇了需求優先:(.+)"] = "need",
+	["(.*)選擇分解:(.+)"] = "disenchant",
 } or locale == "ruRU" and {
-	["(.*) ????????????? ???????? ??????? (.+), ????????? ?? ????? ??? ???????"] = "pass",
-	["(.*) ?????????? ???????? ???????? \"(.+)\", ????????? ?? ????? ??? ???????"] = "pass",
-	["(.*) ???????????? ?? ???????? (.+)%."]  = "pass",
-	["?????????????: (.+)%. (.*): \"?? ????????\""] = "greed",
-	["?????????????: (.+)%. (.*): \"??? ??? ?????\""] = "need",
-	["?????????????: (.+)%. (.*): \"?????????\""] = "disenchant",
+	["(.*) автоматически передает предмет (.+), поскольку не может его забрать"] = "pass",
+	["(.*) пропускает розыгрыш предмета \"(.+)\", поскольку не может его забрать"] = "pass",
+	["(.*) отказывается от предмета (.+)%."]  = "pass",
+	["Разыгрывается: (.+)%. (.*): \"Не откажусь\""] = "greed",
+	["Разыгрывается: (.+)%. (.*): \"Мне это нужно\""] = "need",
+	["Разыгрывается: (.+)%. (.*): \"Распылить\""] = "disenchant",
 } or locale == "koKR" and {
-    ["(.*)님이 획득할 수 없는 아이템이어서 자동으로 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
-    ["(.*)님이 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
-    ["(.*)님이 차비를 선택했습니다: (.+)"] = "greed",
-    ["(.*)님이 입찰을 선택했습니다: (.+)"] = "need",
-    ["(.*)님이 마력 추출을 선택했습니다: (.+)"] = "disenchant",	
+       ["(.+)님이 획득할 수 없는 아이템이어서 자동으로 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
+       ["(.+)님이 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
+       ["(.+)님이 차비를 선택했습니다: (.+)"] = "greed",
+       ["(.+)님이 입찰을 선택했습니다: (.+)"] = "need",
+       ["(.+)님이 마력 추출을 선택했습니다: (.+)"] = "disenchant",	
 } or {
 	["^(.*) automatically passed on: (.+) because s?he cannot loot that item.$"] = "pass",
 	["^(.*) passed on: (.+|r)$"]  = "pass",
