@@ -17,9 +17,12 @@ function UF:Construct_PetFrame(frame)
 	frame.Buffs = self:Construct_Buffs(frame)
 	
 	frame.Debuffs = self:Construct_Debuffs(frame)
+	
+	frame.Castbar = CreateFrame("StatusBar", nil, frame) -- Dummy Bar
 end
 
 function UF:Update_PetFrame(frame, db)
+	frame.db = db
 	local BORDER = E:Scale(2)
 	local SPACING = E:Scale(1)
 	local UNIT_WIDTH = db.width

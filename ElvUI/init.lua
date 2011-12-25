@@ -39,8 +39,10 @@ function AddOn:OnInitialize()
 	self.data.RegisterCallback(self, "OnProfileReset", "OnProfileChanged")
 	
 	self.db = self.data.profile;
-	
-	self:Initialize()
+	self:UIScale();
+	self:UpdateMedia();
+	self:GetModule('RaidUtility'):Initialize()
+	self:RegisterEvent('PLAYER_LOGIN', 'Initialize')
 end
 
 function AddOn:OnProfileChanged()

@@ -24,9 +24,9 @@ function AB:Initialize()
 	self:CreateActionBars()
 	self:LoadKeyBinder()
 	self:UpdateCooldownSettings()
-	self:UnregisterEvent('PLAYER_ENTERING_WORLD')
 	self:RegisterEvent("UPDATE_BINDINGS", "ReassignBindings")
 	self:RegisterEvent('CVAR_UPDATE')
+	self:ReassignBindings()
 end
 
 function AB:CreateActionBars()
@@ -343,7 +343,7 @@ function AB:UpdateButtonConfig(bar, buttonName)
 	bar.buttonConfig.hideElements.macro = self.db.macrotext
 	bar.buttonConfig.hideElements.hotkey = self.db.hotkeytext
 	bar.buttonConfig.showGrid = GetCVar('alwaysShowActionBars') == '1' and true or false
-	bar.buttonConfig.clickOnDown = self.db.buttonActionMode == 'DOWN' and true or false
+	bar.buttonConfig.clickOnDown = GetCVar('ActionButtonUseKeyDown') == '1' and true or false
 	
 	for i, button in pairs(bar.buttons) do
 		bar.buttonConfig.keyBoundTarget = format(buttonName.."%d", i)
@@ -402,7 +402,8 @@ function AB:ToggleMovers(move)
 	end
 end
 
-function AB:ResetMovers(bar)
+function AB:ResetMovers(...)
+	local bar = ...
 	for name, _ in pairs(self.movers) do
 		local mover = self.movers[name].bar
 		if bar == '' then
@@ -412,7 +413,7 @@ function AB:ResetMovers(bar)
 			if self.db[name] then
 				self.db[name]['position'] = nil		
 			end
-		elseif name == mover.textString then
+		elseif bar == mover.textString then
 			mover:ClearAllPoints()
 			mover:Point(self.movers[name]["p"], self.movers[name]["p2"], self.movers[name]["p3"], self.movers[name]["p4"], self.movers[name]["p5"])
 			

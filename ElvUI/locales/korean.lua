@@ -58,7 +58,7 @@ do
 	L["Setup Chat"] = "Chat 설치";
 	
 	L["Installation Complete"] = "설치 완료";
-	L["You are now finished with the installation process. If you are in need technical support please visit us at www.tukui.org."] = "이제 설치가 완료되었습니다. 만약 기술적인 지원이 필요하면 다음을 방문하세요. www.tukui.org";
+	L["You are now finished with the installation process. Bonus Hint: If you wish to access blizzard micro menu, middle click on the minimap. If you don't have a middle click button then hold down shift and right click the minimap. If you are in need of technical support please visit us at www.tukui.org."] = "이제 설치가 완료되었습니다. TIP: 블리자드 기본 메뉴바에 접근하시려면 미니맵에 휠클릭(미들클릭) 또는 쉬프트 + 우클릭을 하세요. 만약 기술적인 지원이 필요하면 다음을 방문하세요. www.tukui.org";
 	L["Please click the button below so you can setup variables and ReloadUI."] = "아래 버튼을 누르시면 설치를 마무리하고 UI를 재시작합니다.";
 	L["Finished"] = "마침";
 	L["CVars Set"] = "CVars 설정";
@@ -99,6 +99,7 @@ do
 	L["You can now choose what layout you wish to use for your primary talents."] = "사용하기 원하는 주 특성을 선택할 수 있습니다.";
 	L["You can now choose what layout you wish to use for your secondary talents."] = "사용하기 원하는 보조 특성을 선택할 수 있습니다.";
 	L["This will change the layout of your unitframes, raidframes, and datatexts."] = "이것은 유닛프레임, 공격대프레임, 정보글자의 레이아웃을 바꿔줍니다.";
+	L['INCOMPATIBLE_ADDON'] = "%s 애드온은 ElvUI의 %s 모듈과 서로 호환되지 않습니다. 모듈이나 애드온 둘 중 하나를 꺼주셔야 합니다.";
 end
 
 --Media	
@@ -302,9 +303,6 @@ do
 	L['Days'] = "일";
 		L['Color when the text is in the days format.'] = "하루 일 단위의 문자 색상";
 	L['Totem Bar'] = "토템 바";
-		
-	L['Action Mode'] = "행동 모드";
-	L['Use the button when clicking or pressing the keybind on the keydown motion or on the keyup motion.'] = "키를 눌렀을때 혹은 키를 눌렀다 뗐을 때 반응할지 결정합니다.";
 end
 
 --UNITFRAMES

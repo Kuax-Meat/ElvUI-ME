@@ -269,12 +269,12 @@ end
 
 function TT:SetStyle(tt)
 	if not tt.backdropTexture then
-		tt:SetTemplate("Default", true)
+		tt:SetTemplate("Transparent")
 		tt:SetClampedToScreen(true)
 	end
 	
 	tt:SetBackdropBorderColor(unpack(E.media.bordercolor))
-	tt:SetBackdropColor(unpack(E.media.backdropcolor))
+	tt:SetBackdropColor(unpack(E.media.backdropfadecolor))
 	self:Colorize(tt)
 end
 
@@ -308,7 +308,7 @@ function TT:PLAYER_ENTERING_WORLD()
 		end
 		
 		self:HookScript(ItemRefTooltip, "OnTooltipSetItem", 'SetStyle')
-		FriendsTooltip:SetTemplate("Default", true)
+		FriendsTooltip:SetTemplate("Transparent")
 		
 		if IsAddOnLoaded('Blizzard_DebugTools') and not self.debugloaded then
 			self:ADDON_LOADED('ADDON_LOADED', 'Blizzard_DebugTools')
@@ -524,7 +524,7 @@ end
 
 function TT:GameTooltip_OnUpdate(tt)
 	if tt.needRefresh and tt:GetAnchorType() == 'ANCHOR_CURSOR' and E.db.tooltip.anchor ~= 'CURSOR' then
-		tt:SetBackdropColor(unpack(E["media"].backdropcolor))
+		tt:SetBackdropColor(unpack(E["media"].backdropfadecolor))
 		tt:SetBackdropBorderColor(unpack(E["media"].bordercolor))
 		tt.needRefresh = nil
 	end
@@ -564,7 +564,7 @@ function TT:Initialize()
 	GameTooltipStatusBar:Point("TOPLEFT", GameTooltipStatusBar:GetParent(), "BOTTOMLEFT", 2, -5)
 	GameTooltipStatusBar:Point("TOPRIGHT", GameTooltipStatusBar:GetParent(), "BOTTOMRIGHT", -2, -5)
 	GameTooltipStatusBar:SetStatusBarTexture(E["media"].normTex)
-	GameTooltipStatusBar:CreateBackdrop('Default')
+	GameTooltipStatusBar:CreateBackdrop('Transparent')
 	GameTooltipStatusBar.ColorBar = GameTooltipStatusBar.SetStatusBarColor
 	GameTooltipStatusBar.SetStatusBarColor = E.noop
 	GameTooltipStatusBar.text = GameTooltipStatusBar:CreateFontString(nil, "OVERLAY")

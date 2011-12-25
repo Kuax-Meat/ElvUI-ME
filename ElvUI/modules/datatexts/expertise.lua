@@ -5,7 +5,8 @@ local format = string.format
 local lastPanel
 local displayString = '';
 
-local function OnEvent(self, event)
+local function OnEvent(self, event, unit)
+	if event == "UNIT_AURA" and unit ~= 'player' then return end
 	lastPanel = self
 
 	local expertise, offhandExpertise = GetExpertise();
@@ -80,7 +81,7 @@ local function OnEnter(self)
 end
 
 local function ValueColorUpdate(hex, r, g, b)
-	displayString = string.join("", "%s", hex, "%d|r")
+	displayString = string.join("", "%s", hex, "%s|r")
 
 	if lastPanel ~= nil then
 		OnEvent(lastPanel, 2000)

@@ -27,7 +27,9 @@ local function OnEvent(self, event)
 	LoadTalentTrees()
 	
 	active = GetActiveTalentGroup(false, false)
-	self.text:SetFormattedText(displayString, select(2, GetTalentTabInfo(GetPrimaryTalentTree(false, false, active))), talent[active][1], talent[active][2], talent[active][3])
+	if GetPrimaryTalentTree(false, false, active) then
+		self.text:SetFormattedText(displayString, select(2, GetTalentTabInfo(GetPrimaryTalentTree(false, false, active))), talent[active][1], talent[active][2], talent[active][3])
+	end
 end
 
 local function OnEnter(self)
@@ -65,4 +67,4 @@ E['valueColorUpdateFuncs'][ValueColorUpdate] = true
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('Spec Switch',{"PLAYER_LOGIN", "CHARACTER_POINTS_CHANGED", "PLAYER_TALENT_UPDATE", "ACTIVE_TALENT_GROUP_CHANGED"}, OnEvent, nil, OnClick, OnEnter)
+DT:RegisterDatatext('Spec Switch',{"PLAYER_ENTERING_WORLD", "CHARACTER_POINTS_CHANGED", "PLAYER_TALENT_UPDATE", "ACTIVE_TALENT_GROUP_CHANGED"}, OnEvent, nil, OnClick, OnEnter)

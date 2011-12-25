@@ -64,7 +64,7 @@ do
 	L["Setup Chat"] = true;
 		
 	L["Installation Complete"] = true;
-	L["You are now finished with the installation process. If you are in need technical support please visit us at www.tukui.org."] = true;
+	L["You are now finished with the installation process. Bonus Hint: If you wish to access blizzard micro menu, middle click on the minimap. If you don't have a middle click button then hold down shift and right click the minimap. If you are in need of technical support please visit us at www.tukui.org."] = true;
 	L["Please click the button below so you can setup variables and ReloadUI."] = true;
 	L["Finished"] = true;
 	L["CVars Set"] = true;
@@ -105,6 +105,8 @@ do
 	L["You can now choose what layout you wish to use for your primary talents."] = true;
 	L["You can now choose what layout you wish to use for your secondary talents."] = true;
 	L["This will change the layout of your unitframes, raidframes, and datatexts."] = true;
+	
+	L['INCOMPATIBLE_ADDON'] = "The addon %s is not compatible with ElvUI's %s module. Please disable the incompatible addon or module.";
 end
 
 --Media	
@@ -308,9 +310,6 @@ do
 	L['Days'] = true;
 		L['Color when the text is in the days format.'] = true;
 	L['Totem Bar'] = true;
-	
-	L['Action Mode'] = true;
-	L['Use the button when clicking or pressing the keybind on the keydown motion or on the keyup motion.'] = true;
 end
 
 --UNITFRAMES

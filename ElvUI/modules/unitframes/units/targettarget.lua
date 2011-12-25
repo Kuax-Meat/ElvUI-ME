@@ -1,8 +1,6 @@
 local E, L, DF = unpack(select(2, ...)); --Engine
 local UF = E:GetModule('UnitFrames');
 
-
-
 local _, ns = ...
 local ElvUF = ns.oUF
 assert(ElvUF, "ElvUI was unable to locate oUF.")
@@ -20,6 +18,7 @@ function UF:Construct_TargetTargetFrame(frame)
 end
 
 function UF:Update_TargetTargetFrame(frame, db)
+	frame.db = db
 	local BORDER = E:Scale(2)
 	local SPACING = E:Scale(1)
 	local UNIT_WIDTH = db.width
@@ -258,7 +257,7 @@ function UF:Update_TargetTargetFrame(frame, db)
 	
 	if not frame.mover then
 		frame:ClearAllPoints()
-		frame:Point('BOTTOM', UIParent, 'BOTTOM', 0, 130) --Set to default position
+		frame:Point('BOTTOM', E.UIParent, 'BOTTOM', 0, 130) --Set to default position
 	end
 	
 	frame:UpdateAllElements()

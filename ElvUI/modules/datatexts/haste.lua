@@ -4,7 +4,8 @@ local DT = E:GetModule('DataTexts')
 local displayNumberString = ''
 local lastPanel;
 
-local function OnEvent(self, event, ...)
+local function OnEvent(self, event, unit)
+	if event == "UNIT_AURA" and unit ~= 'player' then return end
 	lastPanel = self
 	
 	local hasteRating
@@ -37,4 +38,4 @@ E['valueColorUpdateFuncs'][ValueColorUpdate] = true
 	click - function to fire when clicking the datatext
 	onEnterFunc - function to fire OnEnter
 ]]
-DT:RegisterDatatext('Haste', {"UNIT_STATS", "UNIT_AURA", "FORGE_MASTER_ITEM_CHANGED", "ACTIVE_TALENT_GROUP_CHANGED", "PLAYER_TALENT_UPDATE"}, OnEvent)
+DT:RegisterDatatext('Haste', {"UNIT_STATS", "UNIT_AURA", "FORGE_MASTER_ITEM_CHANGED", "ACTIVE_TALENT_GROUP_CHANGED", "PLAYER_TALENT_UPDATE", "UNIT_SPELL_HASTE"}, OnEvent)
