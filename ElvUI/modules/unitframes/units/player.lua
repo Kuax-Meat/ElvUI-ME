@@ -46,6 +46,8 @@ function UF:Construct_PlayerFrame(frame)
 	frame.PvPText = self:Construct_PvPIndicator(frame)
 	frame.AltPowerBar = self:Construct_AltPowerBar(frame)
 	frame.DebuffHighlight = self:Construct_DebuffHighlight(frame)
+	frame.HealPrediction = self:Construct_HealComm(frame)
+
 	frame.CombatFade = true
 end
 
@@ -746,11 +748,36 @@ function UF:Update_PlayerFrame(frame, db)
 		end
 	end
 	
+	--OverHealing
+	do
+		local healPrediction = frame.HealPrediction
+		
+		if db.healPrediction then
+			if not frame:IsElementEnabled('HealPrediction') then
+				frame:EnableElement('HealPrediction')
+			end
+
+			healPrediction.myBar:ClearAllPoints()
+			healPrediction.myBar:Width(db.width - (BORDER*2))
+			healPrediction.myBar:SetPoint('BOTTOMLEFT', frame.Health:GetStatusBarTexture(), 'BOTTOMRIGHT')
+			healPrediction.myBar:SetPoint('TOPLEFT', frame.Health:GetStatusBarTexture(), 'TOPRIGHT')	
+
+			healPrediction.otherBar:ClearAllPoints()
+			healPrediction.otherBar:SetPoint('TOPLEFT', healPrediction.myBar:GetStatusBarTexture(), 'TOPRIGHT')	
+			healPrediction.otherBar:SetPoint('BOTTOMLEFT', healPrediction.myBar:GetStatusBarTexture(), 'BOTTOMRIGHT')	
+			healPrediction.otherBar:Width(db.width - (BORDER*2))
+		else
+			if frame:IsElementEnabled('HealPrediction') then
+				frame:DisableElement('HealPrediction')
+			end		
+		end
+	end
+	
 	frame.snapOffset = -(12 + db.castbar.height)
 	
 	if not frame.mover then
 		frame:ClearAllPoints()
-		frame:Point('BOTTOMLEFT', UIParent, 'BOTTOM', -367, 130) --Set to default position
+		frame:Point('BOTTOMLEFT', E.UIParent, 'BOTTOM', -367, 130) --Set to default position
 	end
 
 	frame:UpdateAllElements()

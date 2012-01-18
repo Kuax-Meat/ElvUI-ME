@@ -245,20 +245,25 @@ function UF:CreateAndUpdateUFGroup(group, numGroup)
 			local unit = group..i
 			if not self[unit] then
 				self['handledgroupunits'][unit] = group;
-				self[unit] = ElvUF:Spawn(unit, 'ElvUF_'..E:StringTitle(unit))
+				
+				local frameName = E:StringTitle(unit)
+				frameName = frameName:gsub('t(arget)', 'T%1')				
+				self[unit] = ElvUF:Spawn(unit, 'ElvUF_'..frameName)
 				self[unit].index = i
 			else
 				self[unit]:Enable()
 			end
 			
-			UF["Update_"..E:StringTitle(group).."Frames"](self, self[unit], self.db['layouts'][self.ActiveLayout][group])	
+			local frameName = E:StringTitle(group)
+			frameName = frameName:gsub('t(arget)', 'T%1')				
+			UF["Update_"..E:StringTitle(frameName).."Frames"](self, self[unit], self.db['layouts'][self.ActiveLayout][group])	
 		elseif self[unit] then
 			self[unit]:Disable()
 		end
 	end
 end
 
-function UF:CreateAndUpdateHeaderGroup(group)
+function UF:CreateAndUpdateHeaderGroup(group, groupFilter, template)
 	if InCombatLockdown() then self:RegisterEvent('PLAYER_REGEN_ENABLED'); return end
 	
 	self:UpdateColors()
@@ -266,9 +271,14 @@ function UF:CreateAndUpdateHeaderGroup(group)
 	if self.db['layouts'][self.ActiveLayout][group].enable then
 		local db = self.db['layouts'][self.ActiveLayout][group]
 		if not self[group] then
-			ElvUF:RegisterStyle("ElvUF_"..group, UF["Construct_"..E:StringTitle(group).."Frames"])
-			ElvUF:SetActiveStyle("ElvUF_"..group)
-			self[group] = ElvUF:SpawnHeader("ElvUF_"..E:StringTitle(group), nil, nil, 'point', self.db['layouts'][self.ActiveLayout][group].point, 'oUF-initialConfigFunction', ([[self:SetWidth(%d); self:SetHeight(%d); self:SetFrameLevel(5)]]):format(db.width, db.height))
+			ElvUF:RegisterStyle("ElvUF_"..E:StringTitle(group), UF["Construct_"..E:StringTitle(group).."Frames"])
+			ElvUF:SetActiveStyle("ElvUF_"..E:StringTitle(group))
+
+			if template then
+				self[group] = ElvUF:SpawnHeader("ElvUF_"..E:StringTitle(group), nil, 'raid', 'point', self.db['layouts'][self.ActiveLayout][group].point, 'oUF-initialConfigFunction', ([[self:SetWidth(%d); self:SetHeight(%d); self:SetFrameLevel(5)]]):format(db.width, db.height), 'template', template, 'groupFilter', groupFilter)
+			else
+				self[group] = ElvUF:SpawnHeader("ElvUF_"..E:StringTitle(group), nil, 'raid', 'point', self.db['layouts'][self.ActiveLayout][group].point, 'oUF-initialConfigFunction', ([[self:SetWidth(%d); self:SetHeight(%d); self:SetFrameLevel(5)]]):format(db.width, db.height), 'groupFilter', groupFilter)
+			end
 			self['handledheaders'][group] = self[group]
 			self[group].groupName = group
 		end
@@ -278,6 +288,10 @@ function UF:CreateAndUpdateHeaderGroup(group)
 		for i=1, self[group]:GetNumChildren() do
 			local child = select(i, self[group]:GetChildren())
 			UF["Update_"..E:StringTitle(group).."Frames"](self, child, self.db['layouts'][self.ActiveLayout][group])
+			
+			if _G[child:GetName()..'Pet'] then
+				UF["Update_"..E:StringTitle(group).."Frames"](self, _G[child:GetName()..'Pet'], self.db['layouts'][self.ActiveLayout][group])
+			end
 		end
 	elseif self[group] then
 		self[group]:SetAttribute("showParty", false)
@@ -299,17 +313,18 @@ function UF:CreateAndUpdateUF(unit)
 	
 	if self.db['layouts'][self.ActiveLayout][unit].enable then
 		if not self[unit] then
-			self[unit] = ElvUF:Spawn(unit, 'ElvUF_'..E:StringTitle(unit))
+			local frameName = E:StringTitle(unit)
+			frameName = frameName:gsub('t(arget)', 'T%1')
+			
+			self[unit] = ElvUF:Spawn(unit, 'ElvUF_'..frameName)
 			self['handledunits'][unit] = unit
 		else
 			self[unit]:Enable()
 		end
 		
-		local stringTitle = E:StringTitle(unit)
-		if stringTitle:find('target') then
-			stringTitle = gsub(stringTitle, 'target', 'Target')
-		end
-		UF["Update_"..stringTitle.."Frame"](self, self[unit], self.db['layouts'][self.ActiveLayout][unit])
+		local frameName = E:StringTitle(unit)
+		frameName = frameName:gsub('t(arget)', 'T%1')
+		UF["Update_"..frameName.."Frame"](self, self[unit], self.db['layouts'][self.ActiveLayout][unit])
 	elseif self[unit] then
 		self[unit]:Disable()
 	end
@@ -327,8 +342,13 @@ function UF:LoadUnits()
 	end
 	self['unitgroupstoload'] = nil
 	
-	for group, numGroup in pairs(self['headerstoload']) do
-		self:CreateAndUpdateHeaderGroup(group, numGroup)
+	for group, groupOptions in pairs(self['headerstoload']) do
+		local groupFilter, template
+		if type(groupOptions) == 'table' then
+			groupFilter, template = unpack(groupOptions)
+		end
+
+		self:CreateAndUpdateHeaderGroup(group, groupFilter, template)
 	end
 	self['headerstoload'] = nil
 end
@@ -382,7 +402,7 @@ end
 
 function HideRaid()
 	if InCombatLockdown() then return end
-	CompactRaidFrameManager:Hide()
+	CompactRaidFrameManager:Kill()
 	local compact_raid = CompactRaidFrameManager_GetSetting("IsShown")
 	if compact_raid and compact_raid ~= "0" then 
 		CompactRaidFrameManager_SetSetting("IsShown", "0")
@@ -392,14 +412,21 @@ end
 function UF:DisableBlizzard(event)
 	hooksecurefunc("CompactRaidFrameManager_UpdateShown", HideRaid)
 	CompactRaidFrameManager:HookScript('OnShow', HideRaid)
-	CompactRaidFrameManager:SetScale(0.000001)
-	CompactRaidFrameManager:UnregisterAllEvents()
+	CompactRaidFrameContainer:UnregisterAllEvents()
+	HideRaid()
 end
 
 function UF:Initialize()	
 	self.db = E.db["unitframe"]
 	if self.db.enable ~= true then return; end
 	E.UnitFrames = UF;
+
+	--Update all created profiles just in case.			
+	for layout in pairs(DF['unitframe']['layouts']) do	
+		if layout ~= 'Primary' then
+			self:CopySettings('Primary', layout)
+		end
+	end
 	
 	ElvUF:RegisterStyle('ElvUF', function(frame, unit)
 		self:Construct_UF(frame, unit)
@@ -414,17 +441,24 @@ function UF:Initialize()
 	if self.db.disableBlizzard then
 		self:DisableBlizzard()	
 
+
 		UnitPopupMenus["SELF"] = { "PVP_FLAG", "LOOT_METHOD", "LOOT_THRESHOLD", "OPT_OUT_LOOT_TITLE", "LOOT_PROMOTE", "DUNGEON_DIFFICULTY", "RAID_DIFFICULTY", "RESET_INSTANCES", "RAID_TARGET_ICON", "SELECT_ROLE", "CONVERT_TO_PARTY", "CONVERT_TO_RAID", "LEAVE", "CANCEL" };
 		UnitPopupMenus["PET"] = { "PET_PAPERDOLL", "PET_RENAME", "PET_ABANDON", "PET_DISMISS", "CANCEL" };
 		UnitPopupMenus["PARTY"] = { "MUTE", "UNMUTE", "PARTY_SILENCE", "PARTY_UNSILENCE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "WHISPER", "PROMOTE", "PROMOTE_GUIDE", "LOOT_PROMOTE", "VOTE_TO_KICK", "UNINVITE", "INSPECT", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "SELECT_ROLE", "PVP_REPORT_AFK", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" }
 		UnitPopupMenus["PLAYER"] = { "WHISPER", "INSPECT", "INVITE", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" }
-		UnitPopupMenus["RAID_PLAYER"] = { "MUTE", "UNMUTE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "WHISPER", "INSPECT", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "SELECT_ROLE", "RAID_LEADER", "RAID_PROMOTE", "RAID_DEMOTE", "LOOT_PROMOTE", "RAID_REMOVE", "PVP_REPORT_AFK", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" };
-		UnitPopupMenus["RAID"] = { "MUTE", "UNMUTE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "RAID_LEADER", "RAID_PROMOTE", "RAID_MAINTANK", "RAID_MAINASSIST", "RAID_TARGET_ICON", "SELECT_ROLE", "LOOT_PROMOTE", "RAID_DEMOTE", "RAID_REMOVE", "PVP_REPORT_AFK", "CANCEL" };
+		UnitPopupMenus["RAID_PLAYER"] = { "MUTE", "UNMUTE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "WHISPER", "INSPECT", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "SELECT_ROLE", "RAID_LEADER", "RAID_PROMOTE", "RAID_DEMOTE", "LOOT_PROMOTE", "VOTE_TO_KICK", "RAID_REMOVE", "PVP_REPORT_AFK", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" };
+		UnitPopupMenus["RAID"] = { "MUTE", "UNMUTE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "RAID_LEADER", "RAID_PROMOTE", "RAID_MAINTANK", "RAID_MAINASSIST", "RAID_TARGET_ICON", "SELECT_ROLE", "LOOT_PROMOTE", "RAID_DEMOTE", "VOTE_TO_KICK", "RAID_REMOVE", "PVP_REPORT_AFK", "CANCEL" };
 		UnitPopupMenus["VEHICLE"] = { "RAID_TARGET_ICON", "VEHICLE_LEAVE", "CANCEL" }
 		UnitPopupMenus["TARGET"] = { "RAID_TARGET_ICON", "CANCEL" }
 		UnitPopupMenus["ARENAENEMY"] = { "CANCEL" }
 		UnitPopupMenus["FOCUS"] = { "RAID_TARGET_ICON", "CANCEL" }
 		UnitPopupMenus["BOSS"] = { "RAID_TARGET_ICON", "CANCEL" }	
+		
+		if E.myclass == 'HUNTER' then
+			UnitPopupMenus["PET"] = { "PET_PAPERDOLL", "PET_RENAME", "PET_ABANDON", "CANCEL" };
+		end
+		
+		self:RegisterEvent('RAID_ROSTER_UPDATE', 'DisableBlizzard')
 	end
 		
 	local ORD = ns.oUF_RaidDebuffs or oUF_RaidDebuffs

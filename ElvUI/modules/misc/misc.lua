@@ -1,5 +1,5 @@
 local E, L, DF = unpack(select(2, ...)); --Engine
-local M = E:NewModule('Misc', 'AceEvent-3.0');
+local M = E:NewModule('Misc', 'AceEvent-3.0', 'AceTimer-3.0');
 
 E.Misc = M;
 local UIErrorsFrame = UIErrorsFrame;
@@ -69,6 +69,44 @@ function M:ForceProfanity()
 	SetCVar("profanityFilter", 0)
 end
 
+function M:DisbandRaidGroup()
+	if InCombatLockdown() then return end -- Prevent user error in combat
+
+	if UnitInRaid("player") then
+		for i = 1, GetNumRaidMembers() do
+			local name, _, _, _, _, _, _, online = GetRaidRosterInfo(i)
+			if online and name ~= E.myname then
+				UninviteUnit(name)
+			end
+		end
+	else
+		for i = MAX_PARTY_MEMBERS, 1, -1 do
+			if GetPartyMember(i) then
+				UninviteUnit(UnitName("party"..i))
+			end
+		end
+	end
+	LeaveParty()
+end
+
+local oldX, oldY
+function M:CheckMovement()	
+	local curX, curY = GetPlayerMapPosition("player")
+	curX = E:Round(curX, 3) * 100
+	curY = E:Round(curY, 3) * 100
+
+	if oldX == curX and oldY == curY then
+		WorldMapFrame:SetAlpha(1)
+	else
+		oldX, oldY = curX, curY
+		WorldMapFrame:SetAlpha(E.db.core.mapTransparency)
+	end
+end
+
+function M:PVPMessageEnhancement(_, msg)
+	RaidNotice_AddMessage(RaidBossEmoteFrame, msg, ChatTypeInfo["RAID_BOSS_EMOTE"]);
+end
+
 function M:Initialize()
 	self:LoadRaidMarker()
 	self:LoadExpRepBar()
@@ -79,10 +117,15 @@ function M:Initialize()
 	self:RegisterEvent('PLAYER_REGEN_DISABLED', 'ErrorFrameToggle')
 	self:RegisterEvent('PLAYER_REGEN_ENABLED', 'ErrorFrameToggle')
 	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_HORDE', 'PVPMessageEnhancement')
+	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_ALLIANCE', 'PVPMessageEnhancement')
+	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_NEUTRAL', 'PVPMessageEnhancement')
 	
 	--%TEMP BLIZZARD FIX%
 	self:RegisterEvent('CVAR_UPDATE', 'ForceProfanity')
 	self:RegisterEvent('BN_MATURE_LANGUAGE_FILTER', 'ForceProfanity')
+	
+	--self.MovingTimer = self:ScheduleRepeatingTimer("CheckMovement", 0.4)
 end
 
 E:RegisterModule(M:GetName())

@@ -107,6 +107,10 @@ do
 	L["This will change the layout of your unitframes, raidframes, and datatexts."] = true;
 	
 	L['INCOMPATIBLE_ADDON'] = "The addon %s is not compatible with ElvUI's %s module. Please disable the incompatible addon or module.";
+	
+	L['Panel Texture'] = true;
+	L['Specify a filename located inside the Interface\\AddOns\\ElvUI\\media\\textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.'] = true;
+	L["Are you sure you want to disband the group?"] = true;
 end
 
 --Media	
@@ -189,6 +193,11 @@ do
 	L['Good Scale'] = true;
 	L['Bad Scale'] = true;
 	L["Auras"] = true;
+	L['Healer Icon'] = true;
+	L['Display a healer icon over known healers inside battlegrounds.'] = true;
+	L['Restoration'] = true;
+	L['Holy'] = true;
+	L['Discipline'] = true;
 end
 
 --ClassTimers
@@ -283,9 +292,9 @@ do
 	L['Width Multiplier'] = true;
 		L['Multiply the backdrops height or width by this value. This is usefull if you wish to have more than one bar behind a backdrop.'] = true;
 	L['Action Paging'] = true;
-		L["This works like a macro, you can run differant situations to get the actionbar to page differantly.\n Example: '[combat] 2;'"] = true;
+		L["This works like a macro, you can run different situations to get the actionbar to page differently.\n Example: '[combat] 2;'"] = true;
 	L['Visibility State'] = true;
-		L["This works like a macro, you can run differant situations to get the actionbar to show/hide differantly.\n Example: '[combat] show;hide'"] = true;
+		L["This works like a macro, you can run different situations to get the actionbar to show/hide differently.\n Example: '[combat] show;hide'"] = true;
 	L['Restore Bar'] = true;
 		L['Restore the actionbars default settings'] = true;
 		L['Set the font size of the action buttons.'] = true;
@@ -518,6 +527,13 @@ do
 	L['Role Icon'] = true;
 	L['Smart Raid Filter'] = true;
 	L['Override any custom visibility setting in certain situations, EX: Only show groups 1 and 2 inside a 10 man instance.'] = true;
+	L['Heal Prediction'] = true;
+	L['Show a incomming heal prediction bar on the unitframe. Also display a slightly different colored bar for incoming overheals.'] = true;
+	L['Assist Frames'] = true;
+	L['Tank Frames'] = true;
+	
+	L['Display Pets'] = true;
+	L['Display group members pets above the unitframe.'] = true;
 end
 
 --Datatext
@@ -711,6 +727,8 @@ do
 	L['Change the position of the experience/reputation bar.'] = true;
 	L['Top Screen'] = true;
 	L["Below Minimap"] = true;
+	L['Map Transparency'] = true;
+	L['Controls what the transparency of the worldmap will be set to when you are moving.'] = true;
 end
 
 --Bags

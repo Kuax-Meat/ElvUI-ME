@@ -99,7 +99,12 @@ do
 	L["You can now choose what layout you wish to use for your primary talents."] = "사용하기 원하는 주 특성을 선택할 수 있습니다.";
 	L["You can now choose what layout you wish to use for your secondary talents."] = "사용하기 원하는 보조 특성을 선택할 수 있습니다.";
 	L["This will change the layout of your unitframes, raidframes, and datatexts."] = "이것은 유닛프레임, 공격대프레임, 정보글자의 레이아웃을 바꿔줍니다.";
+
 	L['INCOMPATIBLE_ADDON'] = "%s 애드온은 ElvUI의 %s 모듈과 서로 호환되지 않습니다. 모듈이나 애드온 둘 중 하나를 꺼주셔야 합니다.";
+	
+	L['Panel Texture'] = "패널 텍스쳐";
+	L['Specify a filename located inside the Interface\\AddOns\\ElvUI\\media\\textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.'] = "Interface\\AddOns\\ElvUI\\media\\textures 폴더 안에 파일이 위치해야 합니다.\n\n주의:\n-이미지 크기는 256x128을 추천\n-파일을 등록 후 완전히 게임을 재시작해야 함.\n-파일 종류는 반드시 tga 포맷이어야 함.";
+	L["Are you sure you want to disband the group?"] = "정말 그룹 해체를 하시겠습니까?";
 end
 
 --Media	
@@ -182,6 +187,11 @@ do
 	L['Good Scale'] = "안전할 때 크기";
 	L['Bad Scale'] = "위험할 때 크기";
 	L["Auras"] = "오라";
+	L['Healer Icon'] = "힐러 아이콘";
+	L['Display a healer icon over known healers inside battlegrounds.'] = "전장 내에서 힐러 아이콘 표시";
+	L['Restoration'] = "회복";
+	L['Holy'] = "신성";
+	L['Discipline'] = "수양";
 end
 
 --ClassTimers
@@ -276,9 +286,9 @@ do
 	L['Width Multiplier'] = "너비 배수";
 		L['Multiply the backdrops height or width by this value. This is usefull if you wish to have more than one bar behind a backdrop.'] = "액션바 배경의 너비나 높이의 배수를 설정합니다. 이것은 하나 이상의 바를 한 배경에 집어넣고 싶을때 유용합니다.";
 	L['Action Paging'] = "행동 페이지";
-		L["This works like a macro, you can run differant situations to get the actionbar to page differantly.\n Example: '[combat] 2;'"] = "이건 마치 매크로와 비슷하게 작동하며, 다른 상황에 따라 액션바의 페이지를 다르게 적용할 수 있습니다.\n예: '[combat] 2;'";
+		L["This works like a macro, you can run different situations to get the actionbar to page differently.\n Example: '[combat] 2;'"] = "이건 마치 매크로와 비슷하게 작동하며, 다른 상황에 따라 액션바의 페이지를 다르게 적용할 수 있습니다.\n예: '[combat] 2;'";
 	L['Visibility State'] = "보여지는 상태";
-		L["This works like a macro, you can run differant situations to get the actionbar to show/hide differantly.\n Example: '[combat] show;hide'"] = "이건 마치 매크로와 비슷하게 작동하며, 다른 상황에 따라 액션바를 보이거나 숨길 수 있습니다.\n예: '[combat] show;hide'";
+		L["This works like a macro, you can run different situations to get the actionbar to show/hide differently.\n Example: '[combat] show;hide'"] = "이건 마치 매크로와 비슷하게 작동하며, 다른 상황에 따라 액션바를 보이거나 숨길 수 있습니다.\n예: '[combat] show;hide'";
 	L['Restore Bar'] = "바 복원하기";
 		L['Restore the actionbars default settings'] = "행동 단축바를 원래대로 되돌립니다.";
 		L['Set the font size of the action buttons.'] = "액션바 버튼의 폰트 크기를 설정합니다.";
@@ -502,7 +512,6 @@ do
 	L['Move UnitFrames'] = "유닛프레임 이동";
 	L['Reset Positions'] = "위치 초기화";
 	L['Sticky Frames'] = "접착식 프레임(스내핑)";
-	L['Attempt to snap frames to nearby frames.'] = "프레임 근처에서 스내핑 기능을 사용합니다.";
 	L['Raid625 Frames'] = "레이드 6~25 창";
 	L['Raid2640 Frames'] = "레이드 26~40 창";
 	L['Copy From'] = "복사해오기";
@@ -512,6 +521,13 @@ do
 	L['Role Icon'] = "역할 아이콘";
 	L['Smart Raid Filter'] = "똑똑한 레이드 필터";
 	L['Override any custom visibility setting in certain situations, EX: Only show groups 1 and 2 inside a 10 man instance.'] = "상황에 따라 맞춤 레이드 표시를 사용합니다. 예: 10인 인스턴스 던전 진입 시 1, 2파티만 표시됨.";
+	L['Heal Prediction'] = "예상 힐";
+	L['Show a incomming heal prediction bar on the unitframe. Also display a slightly different colored bar for incoming overheals.'] = "들어오는 힐의 바를 유닛프레임에 표시합니다. 또한 들어오는 오버힐을 다른 색상으로 표시합니다.";
+	L['Assist Frames'] = "어시스트 프레임";
+	L['Tank Frames'] = "탱커 프레임";
+	
+	L['Display Pets'] = "펫 표시";
+	L['Display group members pets above the unitframe.'] = "유닛프레임 위에 그룹 내 멤버의 펫을 표시합니다.";
 end
 
 --Datatext
@@ -705,6 +721,8 @@ do
 	L['Change the position of the experience/reputation bar.'] = "경험치/평판 바의 위치를 조절합니다.";
 	L['Top Screen'] = "화면 최상단";
 	L["Below Minimap"] = "미니맵 아래";
+	L['Map Transparency'] = "맵 투명도";
+	L['Controls what the transparency of the worldmap will be set to when you are moving.'] = "세계 지도의 투명도를 조절합니다.";
 end
 
 --Bags

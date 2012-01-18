@@ -68,6 +68,14 @@ function E:UpdateMedia()
 	self["media"].hexvaluecolor = self:RGBToHex(value.r, value.g, value.b)
 	self["media"].rgbvaluecolor = {value.r, value.g, value.b}
 	
+	if LeftChatPanel and LeftChatPanel.tex and RightChatPanel and RightChatPanel.tex then
+		LeftChatPanel.tex:SetTexture('Interface\\AddOns\\ElvUI\\media\\textures\\'..E.db.core.panelBackdropName..'.tga')
+		LeftChatPanel.tex:SetAlpha(E.db.core.backdropfadecolor.a - 0.55 > 0 and E.db.core.backdropfadecolor.a - 0.55 or 0.5)		
+		
+		RightChatPanel.tex:SetTexture('Interface\\AddOns\\ElvUI\\media\\textures\\'..E.db.core.panelBackdropName..'.tga')
+		RightChatPanel.tex:SetAlpha(E.db.core.backdropfadecolor.a - 0.55 > 0 and E.db.core.backdropfadecolor.a - 0.55 or 0.5)		
+	end
+	
 	self:ValueFuncCall()
 	self:UpdateBlizzardFonts()
 end
@@ -134,6 +142,9 @@ E.UIParent:SetFrameLevel(UIParent:GetFrameLevel());
 E.UIParent:SetPoint('CENTER', UIParent, 'CENTER');
 E.UIParent:SetSize(UIParent:GetSize());
 tinsert(E['snapBars'], E.UIParent)
+
+E.HiddenFrame = CreateFrame('Frame')
+E.HiddenFrame:Hide()
 
 --Check if PTR version of WoW is loaded
 function E:IsPTRVersion()
@@ -290,6 +301,15 @@ function E:CheckIncompatible()
 		E:Print(format(L['INCOMPATIBLE_ADDON'], 'OneBag3', 'Bags'))
 	elseif IsAddOnLoaded('OneBank3') and E.db.core.bags then
 		E:Print(format(L['INCOMPATIBLE_ADDON'], 'OneBank3', 'Bags'))
+	end
+end
+
+function E:IsFoolsDay()
+	local date = date()
+	if string.find(date, '04/01/') then
+		return true;
+	else
+		return false;
 	end
 end
 
