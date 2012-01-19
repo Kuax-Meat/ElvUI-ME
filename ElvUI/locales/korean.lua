@@ -103,8 +103,10 @@ do
 	L['INCOMPATIBLE_ADDON'] = "%s 애드온은 ElvUI의 %s 모듈과 서로 호환되지 않습니다. 모듈이나 애드온 둘 중 하나를 꺼주셔야 합니다.";
 	
 	L['Panel Texture'] = "패널 텍스쳐";
-	L['Specify a filename located inside the Interface\\AddOns\\ElvUI\\media\\textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.'] = "Interface\\AddOns\\ElvUI\\media\\textures 폴더 안에 파일이 위치해야 합니다.\n\n주의:\n-이미지 크기는 256x128을 추천\n-파일을 등록 후 완전히 게임을 재시작해야 함.\n-파일 종류는 반드시 tga 포맷이어야 함.";
+	L['Specify a filename located inside the World of Warcraft directory. Textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.\n\nExample: Interface\\AddOns\\ElvUI\\media\\textures\\copy\n\nOr for most users it would be easier to simply put a tga file into your WoW folder, then type the name of the file here.'] = "Interface\\AddOns\\ElvUI\\media\\textures 폴더 안에 파일이 위치해야 합니다.\n\n주의:\n-이미지 크기는 256x128을 추천\n-파일을 등록 후 완전히 게임을 재시작해야 함.\n-파일 종류는 반드시 tga 포맷이어야 함.";
 	L["Are you sure you want to disband the group?"] = "정말 그룹 해체를 하시겠습니까?";
+	
+	L["Your version of ElvUI is out of date. You can download the latest version from www.curse.com"] = "당신의 ElvUI 버전이 구버전입니다. ElvUI : Meat Edition 은 와우인벤 애드온 자료실에서 받으실 수 있습니다.";
 end
 
 --Media	
@@ -526,8 +528,9 @@ do
 	L['Assist Frames'] = "어시스트 프레임";
 	L['Tank Frames'] = "탱커 프레임";
 	
-	L['Display Pets'] = "펫 표시";
-	L['Display group members pets above the unitframe.'] = "유닛프레임 위에 그룹 내 멤버의 펫을 표시합니다.";
+	L['Party Pets'] = "파티 펫";
+	L['Ticks'] = "틱";
+	L['Display tick marks on the castbar for channelled spells. This will adjust automatically for spells like Drain Soul and add additional ticks based on haste.'] = "채널링 스킬에 대해 캐스트바에 틱을 표시합니다. 영혼 흡수나 해로운 주문에 기반한 여타 스킬들에 자동으로 틱을 표시합니다.";
 end
 
 --Datatext

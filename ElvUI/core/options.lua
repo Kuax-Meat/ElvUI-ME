@@ -130,14 +130,14 @@ E.Options.args.core = {
 					isPercent = true,
 					set = function(info, value) E.db.core[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL") end
 				},		
-				--[[mapTransparency = {
+				mapTransparency = {
 					order = 9,
 					name = L['Map Transparency'],
 					desc = L['Controls what the transparency of the worldmap will be set to when you are moving.'],
 					type = 'range',
 					isPercent = true,
 					min = 0, max = 1, step = 0.01,
-				},]]
+				},
 				panelWidth = {
 					order = 100,
 					type = 'range',
@@ -170,8 +170,9 @@ E.Options.args.core = {
 				panelBackdropName = {
 					order = 103,
 					type = 'input',
+					width = 'full',
 					name = L['Panel Texture'],
-					desc = L['Specify a filename located inside the Interface\\AddOns\\ElvUI\\media\\textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.'],
+					desc = L['Specify a filename located inside the World of Warcraft directory. Textures folder that you wish to have set as a panel background.\n\nPlease Note:\n-The image size recommended is 256x128\n-You must do a complete game restart after adding a file to the folder.\n-The file type must be tga format.\n\nExample: Interface\\AddOns\\ElvUI\\media\\textures\\copy\n\nOr for most users it would be easier to simply put a tga file into your WoW folder, then type the name of the file here.'],
 					set = function(info, value) 
 						E.db.core[ info[#info] ] = value
 						E:UpdateMedia()

@@ -89,17 +89,17 @@ function M:DisbandRaidGroup()
 	LeaveParty()
 end
 
-local oldX, oldY
-function M:CheckMovement()	
-	local curX, curY = GetPlayerMapPosition("player")
-	curX = E:Round(curX, 3) * 100
-	curY = E:Round(curY, 3) * 100
+function M:IsPlayerMoving()
+	local val = GetUnitSpeed('player')
+	return val ~= 0
+end
 
-	if oldX == curX and oldY == curY then
-		WorldMapFrame:SetAlpha(1)
-	else
-		oldX, oldY = curX, curY
+function M:CheckMovement()
+	if not WorldMapFrame:IsShown() then return; end
+	if self:IsPlayerMoving() then
 		WorldMapFrame:SetAlpha(E.db.core.mapTransparency)
+	else
+		WorldMapFrame:SetAlpha(1)
 	end
 end
 
@@ -125,7 +125,7 @@ function M:Initialize()
 	self:RegisterEvent('CVAR_UPDATE', 'ForceProfanity')
 	self:RegisterEvent('BN_MATURE_LANGUAGE_FILTER', 'ForceProfanity')
 	
-	--self.MovingTimer = self:ScheduleRepeatingTimer("CheckMovement", 0.4)
+	self.MovingTimer = self:ScheduleRepeatingTimer("CheckMovement", 0.1)
 end
 
 E:RegisterModule(M:GetName())

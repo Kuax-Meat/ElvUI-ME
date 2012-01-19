@@ -384,7 +384,11 @@ function UF:PostUpdateAura(unit, button, index, offset, filter, isDebuff, durati
 	if button.isDebuff then
 		if(not UnitIsFriend("player", unit) and button.owner ~= "player" and button.owner ~= "vehicle") --[[and (not E.isDebuffWhiteList[name])]] then
 			button:SetBackdropBorderColor(unpack(E["media"].bordercolor))
-			button.icon:SetDesaturated(true)
+			if unit and not unit:find('arena%d') then
+				button.icon:SetDesaturated(true)
+			else
+				button.icon:SetDesaturated(false)
+			end
 		else
 			local color = DebuffTypeColor[dtype] or DebuffTypeColor.none
 			if (name == "Unstable Affliction" or name == "Vampiric Touch") and E.myclass ~= "WARLOCK" then
@@ -458,6 +462,32 @@ function UF:CustomTimeText(duration)
 	end
 end
 
+local ticks = {}
+function UF:HideTicks()
+	for _, tick in pairs(ticks) do
+		tick:Hide()
+	end		
+end
+
+function UF:SetCastTicks(frame, numTicks)
+	UF:HideTicks()
+	if numTicks and numTicks > 0 then
+		local d = frame:GetWidth() / numTicks
+		for i = 1, numTicks do
+			if not ticks[i] then
+				ticks[i] = frame:CreateTexture(nil, 'OVERLAY')
+				ticks[i]:SetTexture(E["media"].normTex)
+				ticks[i]:SetVertexColor(0, 0, 0)
+				ticks[i]:SetWidth(1)
+				ticks[i]:SetHeight(frame:GetHeight())
+			end
+			ticks[i]:ClearAllPoints()
+			ticks[i]:SetPoint("CENTER", frame, "LEFT", d * i, 0)
+			ticks[i]:Show()
+		end
+	end
+end
+
 function UF:PostCastStart(unit, name, rank, castid)
 	if unit == "vehicle" then unit = "player" end
 	self.Text:SetText(string.sub(name, 0, math.floor((((32/245) * self:GetWidth()) / E.db['unitframe'].fontsize) * 12)))
@@ -465,6 +495,36 @@ function UF:PostCastStart(unit, name, rank, castid)
 	local db = self:GetParent().db
 	local color		
 	self.unit = unit
+	
+	if db.castbar.ticks and unit == "player" then
+		local baseTicks = UF.db.ChannelTicks[name]
+		if baseTicks and UF.db.HastedChannelTicks[name] then
+			local tickIncRate = 1 / baseTicks
+			local curHaste = UnitSpellHaste("player") * 0.01
+			local firstTickInc = tickIncRate / 2
+			local bonusTicks = 0
+			if curHaste >= firstTickInc then
+				bonusTicks = bonusTicks + 1
+			end
+			
+			local x = tonumber(E:Round(firstTickInc + tickIncRate, 2))
+			while curHaste >= x do
+				x = tonumber(E:Round(firstTickInc + (tickIncRate * bonusTicks), 2))
+				if curHaste >= x then
+					bonusTicks = bonusTicks + 1
+				end
+			end
+
+			UF:SetCastTicks(self, baseTicks + bonusTicks)
+		elseif baseTicks then
+			UF:SetCastTicks(self, baseTicks)
+		else
+			UF:HideTicks()
+		end
+	else
+		UF:HideTicks()			
+	end	
+	
 	if self.interrupt and unit ~= "player" then
 		if UnitCanAttack("player", unit) then
 			color = db['castbar']['interruptcolor']
@@ -506,12 +566,30 @@ end
 function UF:UpdateHoly(event, unit, powerType)
 	if(self.unit ~= unit or (powerType and powerType ~= 'HOLY_POWER')) then return end
 	local num = UnitPower(unit, SPELL_POWER_HOLY_POWER)
-
+	local db = self.db
 	for i = 1, MAX_HOLY_POWER do
 		if(i <= num) then
 			self.HolyPower[i]:SetAlpha(1)
+			
+			if i == 3 and db.classbar.fill == 'spaced' then
+				for h = 1, MAX_HOLY_POWER do
+					self.HolyPower[h].backdrop.shadow:Show()
+					self.HolyPower[h]:SetScript('OnUpdate', function(self)
+						E:Flash(self.backdrop.shadow, 0.6)
+					end)
+				end
+			else
+				for h = 1, MAX_HOLY_POWER do
+					self.HolyPower[h].backdrop.shadow:Hide()
+					self.HolyPower[h]:SetScript('OnUpdate', nil)
+				end
+			end
 		else
 			self.HolyPower[i]:SetAlpha(.2)
+			for h = 1, MAX_HOLY_POWER do
+				self.HolyPower[h].backdrop.shadow:Hide()
+				self.HolyPower[h]:SetScript('OnUpdate', nil)
+			end		
 		end
 	end
 end	
