@@ -239,6 +239,7 @@ local function LoadSkin()
 	DBT_SavedOptions["DBM"].Scale = 1
 	DBT_SavedOptions["DBM"].HugeScale = 1
 	DBT_SavedOptions["DBM"].BarXOffset = 0
+	DBT_SavedOptions["DBM"].BarYOffset = 9
 	DBT_SavedOptions["DBM"].Texture = "ElvUI Norm"
 	DBT_SavedOptions["DBM"].Font = "ElvUI Font"	
 end

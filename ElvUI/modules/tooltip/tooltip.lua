@@ -422,9 +422,9 @@ function TT:GameTooltip_OnTooltipSetUnit(tt)
 	
 	if(UnitIsPlayer(unit)) then
 		if UnitIsAFK(unit) then
-			tt:AppendText((" %s"):format(CHAT_FLAG_AFK))
+			tt:AppendText((" %s"):format("[|cffFF0000"..L['AFK'].."|r]"))
 		elseif UnitIsDND(unit) then 
-			tt:AppendText((" %s"):format(CHAT_FLAG_DND))
+			tt:AppendText((" %s"):format("[|cffE7E716"..L["DND"].."|r]"))
 		end
 
 		local offset = 2
@@ -523,7 +523,7 @@ function TT:GameTooltip_OnTooltipCleared(tt)
 end
 
 function TT:GameTooltip_OnUpdate(tt)
-	if tt.needRefresh and tt:GetAnchorType() == 'ANCHOR_CURSOR' and E.db.tooltip.anchor ~= 'CURSOR' then
+	if (tt.needRefresh and tt:GetAnchorType() == 'ANCHOR_CURSOR' and E.db.tooltip.anchor ~= 'CURSOR') then
 		tt:SetBackdropColor(unpack(E["media"].backdropfadecolor))
 		tt:SetBackdropBorderColor(unpack(E["media"].bordercolor))
 		tt.needRefresh = nil
@@ -626,7 +626,6 @@ function TT:Initialize()
 			self:Show()
 		end
 	end)
-	
 	
 	BNToastFrame:Point('TOPRIGHT', MMHolder, 'BOTTOMRIGHT', 0, -10);
 	E:CreateMover(BNToastFrame, 'BNETMover', 'BNet Frame')

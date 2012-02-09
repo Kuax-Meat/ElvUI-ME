@@ -20,6 +20,7 @@ function UF:Construct_PetFrame(frame)
 	frame.Castbar = CreateFrame("StatusBar", nil, frame) -- Dummy Bar
 	
 	frame.HealPrediction = self:Construct_HealComm(frame)
+	frame.CombatFade = true
 end
 
 function UF:Update_PetFrame(frame, db)
@@ -208,7 +209,7 @@ function UF:Update_PetFrame(frame, db)
 		buffs.size = ((((buffs:GetWidth() - (buffs.spacing*(buffs.num/rows - 1))) / buffs.num)) * rows)
 
 		local x, y = self:GetAuraOffset(db.buffs.initialAnchor, db.buffs.anchorPoint)
-		local attachTo = self:GetAuraAnchorFrame(frame, db.buffs.attachTo, db.debuffs.attachTo)
+		local attachTo = self:GetAuraAnchorFrame(frame, db.buffs.attachTo)
 
 		buffs:Point(db.buffs.initialAnchor, attachTo, db.buffs.anchorPoint, x, y)
 		buffs:Height(buffs.size * rows)
@@ -243,7 +244,7 @@ function UF:Update_PetFrame(frame, db)
 		debuffs.size = ((((debuffs:GetWidth() - (debuffs.spacing*(debuffs.num/rows - 1))) / debuffs.num)) * rows)
 
 		local x, y = self:GetAuraOffset(db.debuffs.initialAnchor, db.debuffs.anchorPoint)
-		local attachTo = self:GetAuraAnchorFrame(frame, db.debuffs.attachTo, db.buffs.attachTo)
+		local attachTo = self:GetAuraAnchorFrame(frame, db.debuffs.attachTo, db.buffs.attachTo == 'DEBUFFS' and db.debuffs.attachTo == 'BUFFS')
 
 		debuffs:Point(db.debuffs.initialAnchor, attachTo, db.debuffs.anchorPoint, x, y)
 		debuffs:Height(debuffs.size * rows)
@@ -281,6 +282,15 @@ function UF:Update_PetFrame(frame, db)
 				frame:DisableElement('HealPrediction')
 			end		
 		end
+	end	
+	
+	--Combat Fade
+	do
+		if ElvUF_Player.db.combatfade and not frame:IsElementEnabled('CombatFade') then
+			frame:EnableElement('CombatFade')
+		elseif not ElvUF_Player.db.combatfade and frame:IsElementEnabled('CombatFade') then
+			frame:DisableElement('CombatFade')
+		end		
 	end	
 	
 	if not frame.mover then

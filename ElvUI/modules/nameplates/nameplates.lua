@@ -479,6 +479,8 @@ function NP:OnHide(frame)
 	frame.hp.rcolor = nil
 	frame.hp.gcolor = nil
 	frame.hp.bcolor = nil
+	frame.hp.shadow:SetAlpha(0)
+	self:SetVirtualBackdrop(frame.hp, unpack(E["media"].backdropcolor))
 	if frame.icons then
 		for _,icon in ipairs(frame.icons) do
 			icon:Hide()
@@ -497,6 +499,14 @@ function NP:SkinPlate(frame)
 		frame.hp = CreateFrame("Statusbar", nil, frame)
 		frame.hp:SetFrameLevel(oldhp:GetFrameLevel())
 		frame.hp:SetFrameStrata(oldhp:GetFrameStrata())
+		frame.hp:CreateShadow('Default')
+		frame.hp.shadow:ClearAllPoints()
+		frame.hp.shadow:Point("TOPLEFT", frame.hp, -5, 5)
+		frame.hp.shadow:Point("BOTTOMLEFT", frame.hp, -5, -5)
+		frame.hp.shadow:Point("TOPRIGHT", frame.hp, 5, 5)
+		frame.hp.shadow:Point("BOTTOMRIGHT", frame.hp, 5, -5)	
+		frame.hp.shadow:SetBackdropBorderColor(1, 1, 1, 0.75)
+		frame.hp.shadow:SetAlpha(0)
 		self:CreateVirtualFrame(frame.hp)
 		
 		frame.hp.hpbg = frame.hp:CreateTexture(nil, 'BORDER')
@@ -826,12 +836,15 @@ function NP:CheckUnit_Guid(frame, ...)
 		frame.guid = UnitGUID("target")
 		frame.unit = "target"
 		self:OnAura(frame, "target")
+		frame.hp.shadow:SetAlpha(1)
 	elseif frame.overlay:IsShown() and UnitExists("mouseover") and UnitName("mouseover") == frame.hp.name:GetText() then
 		frame.guid = UnitGUID("mouseover")
 		frame.unit = "mouseover"
 		self:OnAura(frame, "mouseover")
+		frame.hp.shadow:SetAlpha(0)
 	else
 		frame.unit = nil
+		frame.hp.shadow:SetAlpha(0)
 	end	
 end
 
@@ -907,11 +920,13 @@ end
 function NP:CheckHealers()
 	for i = 1, GetNumBattlefieldScores() do
 		local name, _, _, _, _, faction, _, _, _, _, _, _, _, _, _, talentSpec = GetBattlefieldScore(i);
-		name = name:match("(.+)%-.+") or name
-		if name and self.Healers[talentSpec] and self.factionOpposites[self.PlayerFaction] == faction then
-			self.BattleGroundHealers[name] = talentSpec
-		elseif name and self.BattleGroundHealers[name] then
-			self.BattleGroundHealers[name] = nil;
+		if name then
+			name = name:match("(.+)%-.+") or name
+			if name and self.Healers[talentSpec] and self.factionOpposites[self.PlayerFaction] == faction then
+				self.BattleGroundHealers[name] = talentSpec
+			elseif name and self.BattleGroundHealers[name] then
+				self.BattleGroundHealers[name] = nil;
+			end
 		end
 	end
 end

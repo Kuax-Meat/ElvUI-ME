@@ -87,8 +87,17 @@ function UF:GetAuraOffset(p1, p2)
 	return E:Scale(x), E:Scale(y)
 end
 
-function UF:GetAuraAnchorFrame(frame, attachTo, otherAuraAnchor)
-	if attachTo == otherAuraAnchor or attachTo == 'FRAME' then
+local opposites = {
+	['DEBUFFS'] = 'BUFFS',
+	['BUFFS'] = 'DEBUFFS'
+}
+
+function UF:GetAuraAnchorFrame(frame, attachTo, isConflict)
+	if isConflict then
+		E:Print(string.format(L['%s frame(s) has a conflicting anchor point, please change either the buff or debuff anchor point so they are not attached to each other. Forcing the debuffs to be attached to the main unitframe until fixed.'], E:StringTitle(frame:GetName())))
+	end
+	
+	if isConflict or attachTo == 'FRAME' then
 		return frame
 	elseif attachTo == 'BUFFS' then
 		return frame.Buffs
@@ -228,6 +237,14 @@ function UF:Update_AllFrames()
 			local frame = select(i, header:GetChildren())
 			if frame and frame.unit then
 				UF["Update_"..E:StringTitle(header.groupName).."Frames"](self, frame, self.db['layouts'][self.ActiveLayout][header.groupName])
+				
+				if frame.childList then
+					for child, _ in pairs(frame.childList) do
+						if child and child.isChild then
+							UF["Update_"..E:StringTitle(header.groupName).."Frames"](self, child, self.db['layouts'][self.ActiveLayout][header.groupName])
+						end
+					end	
+				end
 			end
 		end	
 	end	
@@ -288,10 +305,14 @@ function UF:CreateAndUpdateHeaderGroup(group, groupFilter, template)
 		for i=1, self[group]:GetNumChildren() do
 			local child = select(i, self[group]:GetChildren())
 			UF["Update_"..E:StringTitle(group).."Frames"](self, child, self.db['layouts'][self.ActiveLayout][group])
-			
+
 			if _G[child:GetName()..'Pet'] then
 				UF["Update_"..E:StringTitle(group).."Frames"](self, _G[child:GetName()..'Pet'], self.db['layouts'][self.ActiveLayout][group])
 			end
+			
+			if _G[child:GetName()..'Target'] then
+				UF["Update_"..E:StringTitle(group).."Frames"](self, _G[child:GetName()..'Target'], self.db['layouts'][self.ActiveLayout][group])
+			end			
 		end
 	elseif self[group] then
 		self[group]:SetAttribute("showParty", false)
@@ -422,7 +443,7 @@ function UF:Initialize()
 	E.UnitFrames = UF;
 
 	--Update all created profiles just in case.			
-	for layout in pairs(DF['unitframe']['layouts']) do	
+	for layout in pairs(E.db["unitframe"]['layouts']) do	
 		if layout ~= 'Primary' then
 			self:CopySettings('Primary', layout)
 		end
@@ -447,7 +468,7 @@ function UF:Initialize()
 		UnitPopupMenus["PARTY"] = { "MUTE", "UNMUTE", "PARTY_SILENCE", "PARTY_UNSILENCE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "WHISPER", "PROMOTE", "PROMOTE_GUIDE", "LOOT_PROMOTE", "VOTE_TO_KICK", "UNINVITE", "INSPECT", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "SELECT_ROLE", "PVP_REPORT_AFK", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" }
 		UnitPopupMenus["PLAYER"] = { "WHISPER", "INSPECT", "INVITE", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" }
 		UnitPopupMenus["RAID_PLAYER"] = { "MUTE", "UNMUTE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "WHISPER", "INSPECT", "ACHIEVEMENTS", "TRADE", "FOLLOW", "DUEL", "RAID_TARGET_ICON", "SELECT_ROLE", "RAID_LEADER", "RAID_PROMOTE", "RAID_DEMOTE", "LOOT_PROMOTE", "VOTE_TO_KICK", "RAID_REMOVE", "PVP_REPORT_AFK", "RAF_SUMMON", "RAF_GRANT_LEVEL", "CANCEL" };
-		UnitPopupMenus["RAID"] = { "MUTE", "UNMUTE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "RAID_LEADER", "RAID_PROMOTE", "RAID_MAINTANK", "RAID_MAINASSIST", "RAID_TARGET_ICON", "SELECT_ROLE", "LOOT_PROMOTE", "RAID_DEMOTE", "VOTE_TO_KICK", "RAID_REMOVE", "PVP_REPORT_AFK", "CANCEL" };
+		UnitPopupMenus["RAID"] = { "WHISPER", "MUTE", "UNMUTE", "RAID_SILENCE", "RAID_UNSILENCE", "BATTLEGROUND_SILENCE", "BATTLEGROUND_UNSILENCE", "RAID_LEADER", "RAID_PROMOTE", "RAID_MAINTANK", "RAID_MAINASSIST", "RAID_TARGET_ICON", "SELECT_ROLE", "LOOT_PROMOTE", "RAID_DEMOTE", "VOTE_TO_KICK", "RAID_REMOVE", "PVP_REPORT_AFK", "CANCEL" };
 		UnitPopupMenus["VEHICLE"] = { "RAID_TARGET_ICON", "VEHICLE_LEAVE", "CANCEL" }
 		UnitPopupMenus["TARGET"] = { "RAID_TARGET_ICON", "CANCEL" }
 		UnitPopupMenus["ARENAENEMY"] = { "CANCEL" }

@@ -92,7 +92,7 @@ function M:ADDON_LOADED(event, addon)
 end
 
 function M:Minimap_OnMouseUp(btn)
-	local position = Minimap:GetPoint()
+	local position = self:GetPoint()
 	if btn == "MiddleButton" or (btn == "RightButton" and IsShiftKeyDown()) then
 		if position:match("LEFT") then
 			EasyMenu(menuList, menuFrame, "cursor", 0, 0, "MENU", 2)
@@ -100,11 +100,11 @@ function M:Minimap_OnMouseUp(btn)
 			EasyMenu(menuList, menuFrame, "cursor", -160, 0, "MENU", 2)
 		end	
 	elseif btn == "RightButton" then
-		local xoff = 0
+		local xoff = -1
 
 		if position:match("RIGHT") then xoff = E:Scale(-16) end
 	
-		ToggleDropDownMenu(1, nil, MiniMapTrackingDropDown, Minimap, xoff, E:Scale(-2))
+		ToggleDropDownMenu(1, nil, MiniMapTrackingDropDown, self, xoff, E:Scale(-3))
 	else
 		Minimap_OnClick(self)
 	end
@@ -140,7 +140,7 @@ function M:Minimap_UpdateSettings()
 end
 
 function M:LoadMinimap()	
-	local mmholder = CreateFrame('Frame', 'MMHolder', E.UIParent)
+	local mmholder = CreateFrame('Frame', 'MMHolder', Minimap)
 	mmholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -3, -3)
 	mmholder:Width((Minimap:GetWidth() + 29) + E.RBRWidth)
 	mmholder:Height(Minimap:GetHeight() + 53)
@@ -235,4 +235,50 @@ function M:LoadMinimap()
 	self:RegisterEvent("ZONE_CHANGED_INDOORS", "Update_ZoneText")		
 	self:RegisterEvent('ADDON_LOADED')
 	self:Minimap_UpdateSettings()
+	
+	--Create Farmmode Minimap
+	local fm = CreateFrame('Minimap', 'FarmModeMap', E.UIParent)
+	fm:Size(340)
+	fm:Point('TOP', E.UIParent, 'TOP', 0, -120)
+	
+	fm:CreateBackdrop('Default')
+	fm:EnableMouseWheel(true)
+	fm:SetScript("OnMouseWheel", M.Minimap_OnMouseWheel)	
+	fm:SetScript("OnMouseUp", M.Minimap_OnMouseUp)	
+	fm:RegisterForDrag("LeftButton", "RightButton")
+	fm:SetMovable(true)
+	fm:SetScript("OnDragStart", function(self) self:StartMoving() end)
+	fm:SetScript("OnDragStop", function(self) self:StopMovingOrSizing() end)
+	fm:Hide()
+	
+	FarmModeMap:SetScript('OnShow', function() 	
+		if E.db["movers"] == nil or (E.db["movers"] and E.db["movers"]['AurasMover'] == nil) then
+			AurasMover:ClearAllPoints()
+			AurasMover:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -3, -3)
+		end
+		MinimapCluster:ClearAllPoints()
+		MinimapCluster:SetAllPoints(FarmModeMap)
+	end)
+	
+	FarmModeMap:SetScript('OnHide', function() 
+		if E.db["movers"] == nil or (E.db["movers"] and E.db["movers"]['AurasMover'] == nil) then
+			E:ResetMovers('Auras Frame')
+		end	
+		MinimapCluster:ClearAllPoints()
+		MinimapCluster:SetAllPoints(Minimap)		
+	end)
+
+	
+	UIParent:HookScript('OnShow', function()
+		FarmModeMap:Hide()
+	end)
+	
+	
+	if IsAddOnLoaded('Routes') then
+		LibStub("AceAddon-3.0"):GetAddon('Routes'):ReparentMinimap(FarmModeMap)
+	end
+
+	if IsAddOnLoaded('GatherMate2') then
+		LibStub('AceAddon-3.0'):GetAddon('GatherMate2'):GetModule('Display'):ReparentMinimapPins(FarmModeMap)
+	end
 end

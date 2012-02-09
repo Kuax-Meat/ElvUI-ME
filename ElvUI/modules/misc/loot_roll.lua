@@ -21,11 +21,12 @@ local rollpairs = locale == "deDE" and {
 	["(.*) a choisi Besoin pour : (.+)"]  = "need",
 	["(.*) a choisi Désenchantement pour : (.+)"]  = "disenchant",
 } or locale == "zhTW" and {
-	["(.*)自動放棄:(.+)，因為"]  = "pass",
-	["(.*)放棄了:(.+)"] = "pass",
-	["(.*)選擇了貪婪優先:(.+)"] = "greed",
-	["(.*)選擇了需求優先:(.+)"] = "need",
-	["(.*)選擇分解:(.+)"] = "disenchant",
+    ["(.*)自動放棄:(.+)，因為他無法拾取該物品$"]  = "pass",
+    ["(.*)自動放棄:(.+)，因為她無法拾取該物品$"]  = "pass",
+    ["(.*)放棄了:(.+)"] = "pass",
+    ["(.*)選擇了貪婪:(.+)"] = "greed",
+    ["(.*)選擇了需求:(.+)"] = "need",
+    ["(.*)選擇了分解:(.+)"] = "disenchant",
 } or locale == "ruRU" and {
 	["(.*) автоматически передает предмет (.+), поскольку не может его забрать"] = "pass",
 	["(.*) пропускает розыгрыш предмета \"(.+)\", поскольку не может его забрать"] = "pass",
@@ -34,11 +35,11 @@ local rollpairs = locale == "deDE" and {
 	["Разыгрывается: (.+)%. (.*): \"Мне это нужно\""] = "need",
 	["Разыгрывается: (.+)%. (.*): \"Распылить\""] = "disenchant",
 } or locale == "koKR" and {
-       ["(.+)님이 획득할 수 없는 아이템이어서 자동으로 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
-       ["(.+)님이 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
-       ["(.+)님이 차비를 선택했습니다: (.+)"] = "greed",
-       ["(.+)님이 입찰을 선택했습니다: (.+)"] = "need",
-       ["(.+)님이 마력 추출을 선택했습니다: (.+)"] = "disenchant",	
+       ["(.*)님이 획득할 수 없는 아이템이어서 자동으로 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
+       ["(.*)님이 주사위 굴리기를 포기했습니다: (.+)"] = "pass",
+       ["(.*)님이 차비를 선택했습니다: (.+)"] = "greed",
+       ["(.*)님이 입찰을 선택했습니다: (.+)"] = "need",
+       ["(.*)님이 마력 추출을 선택했습니다: (.+)"] = "disenchant",	
 } or locale == "esES" or locale == "esMX" and {
 	["^(.*) pasó automáticamente de: (.+) porque no puede despojar este objeto.$"] = "pass",
 	["^(.*) pasó de: (.+|r)$"]  = "pass",
@@ -322,8 +323,4 @@ function M:LoadLootRoll()
 	UIParent:UnregisterEvent("CANCEL_LOOT_ROLL")
 	
 	E:CreateMover(anchor, "LootRollMover", "LootRoll Frame", nil, PostMoveLootRoll)
-	
-	local f = self:CreateRollFrame() -- Create one for good measure
-	f:Point("TOPLEFT", next(frames) and frames[#frames] or anchor, "BOTTOMLEFT", 0, -4)
-	table.insert(frames, f)	
 end

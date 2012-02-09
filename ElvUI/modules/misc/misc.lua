@@ -60,15 +60,6 @@ function M:MERCHANT_SHOW()
 	end
 end
 
-function M:ForceProfanity()
-	local isOnline = BNConnected()
-	if(isOnline) then
-		BNSetMatureLanguageFilter(false)
-	end
-	
-	SetCVar("profanityFilter", 0)
-end
-
 function M:DisbandRaidGroup()
 	if InCombatLockdown() then return end -- Prevent user error in combat
 
@@ -107,6 +98,70 @@ function M:PVPMessageEnhancement(_, msg)
 	RaidNotice_AddMessage(RaidBossEmoteFrame, msg, ChatTypeInfo["RAID_BOSS_EMOTE"]);
 end
 
+local hideStatic = false;
+function M:AutoInvite(event, leaderName)
+	if not E.db.core.autoAcceptInvite then return; end
+	
+	if event == "PARTY_INVITE_REQUEST" then
+		if MiniMapLFGFrame:IsShown() then return end -- Prevent losing que inside LFD if someone invites you to group
+		if GetNumPartyMembers() > 0 or GetNumRaidMembers() > 0 then return end
+		hideStatic = true
+	
+		-- Update Guild and Friendlist
+		if GetNumFriends() > 0 then ShowFriends() end
+		if IsInGuild() then GuildRoster() end
+		
+		for friendIndex = 1, GetNumFriends() do
+			local friendName = GetFriendInfo(friendIndex)
+			if friendName == leaderName then
+				AcceptGroup()
+				ingroup = true
+				break
+			end
+		end
+		
+		if not ingroup then
+			for guildIndex = 1, GetNumGuildMembers(true) do
+				local guildMemberName = GetGuildRosterInfo(guildIndex)
+				if guildMemberName == leaderName then
+					AcceptGroup()
+					ingroup = true
+					break
+				end
+			end
+		end
+		
+		if not ingroup then
+			for bnIndex = 1, BNGetNumFriends() do
+				local _, _, _, name = BNGetFriendInfo(bnIndex)
+				leaderName = leaderName:match("(.+)%-.+") or leaderName
+				if name == leaderName then
+					AcceptGroup()
+					break
+				end
+			end
+		end
+	elseif event == "PARTY_MEMBERS_CHANGED" and hideStatic == true then
+		StaticPopup_Hide("PARTY_INVITE")
+		hideStatic = false
+	end
+end
+
+function M:ForceCVars()
+	if not GetCVarBool('lockActionBars') and E.db.actionbar.enable then
+		SetCVar('lockActionBars', 1)
+	end
+end
+
+function M:PLAYER_ENTERING_WORLD()
+	self:ForceCVars()
+end
+
+function M:Kill()
+	--Kill Frames
+	HelpOpenTicketButtonTutorial:Kill()
+end
+
 function M:Initialize()
 	self:LoadRaidMarker()
 	self:LoadExpRepBar()
@@ -120,12 +175,13 @@ function M:Initialize()
 	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_HORDE', 'PVPMessageEnhancement')
 	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_ALLIANCE', 'PVPMessageEnhancement')
 	self:RegisterEvent('CHAT_MSG_BG_SYSTEM_NEUTRAL', 'PVPMessageEnhancement')
-	
-	--%TEMP BLIZZARD FIX%
-	self:RegisterEvent('CVAR_UPDATE', 'ForceProfanity')
-	self:RegisterEvent('BN_MATURE_LANGUAGE_FILTER', 'ForceProfanity')
+	self:RegisterEvent('PARTY_INVITE_REQUEST', 'AutoInvite')
+	self:RegisterEvent('PARTY_MEMBERS_CHANGED', 'AutoInvite')
+	self:RegisterEvent('CVAR_UPDATE', 'ForceCVars')
+	self:RegisterEvent('PLAYER_ENTERING_WORLD')
 	
 	self.MovingTimer = self:ScheduleRepeatingTimer("CheckMovement", 0.1)
+	self:Kill()
 end
 
 E:RegisterModule(M:GetName())

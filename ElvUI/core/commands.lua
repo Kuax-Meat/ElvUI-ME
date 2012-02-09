@@ -25,6 +25,22 @@ function E:ResetGold()
 	ReloadUI();
 end
 
+function FarmMode()
+	if Minimap:IsShown() then
+		UIFrameFadeOut(Minimap, 0.3)
+		UIFrameFadeIn(FarmModeMap, 0.3) 
+		Minimap.fadeInfo.finishedFunc = function() Minimap:Hide(); _G.MinimapZoomIn:Click(); _G.MinimapZoomOut:Click(); Minimap:SetAlpha(1) end
+	else
+		UIFrameFadeOut(FarmModeMap, 0.3)
+		UIFrameFadeIn(Minimap, 0.3) 
+		FarmModeMap.fadeInfo.finishedFunc = function() FarmModeMap:Hide(); _G.MinimapZoomIn:Click(); _G.MinimapZoomOut:Click(); Minimap:SetAlpha(1) end
+	end
+end
+
+function E:FarmMode()
+	FarmMode()
+end
+
 function E:LoadCommands()
 	self:RegisterChatCommand("ec", "ToggleConfig")
 	self:RegisterChatCommand("elvui", "ToggleConfig")
@@ -34,6 +50,7 @@ function E:LoadCommands()
 	self:RegisterChatCommand("enable", "EnableAddon")
 	self:RegisterChatCommand("disable", "DisableAddon")
 	self:RegisterChatCommand('resetgold', 'ResetGold')
+	self:RegisterChatCommand('farmmode', 'FarmMode')
 	
 	if E.ActionBars then
 		self:RegisterChatCommand('kb', E.ActionBars.ActivateBindMode)

@@ -1,0 +1,11 @@
+Elv:
+	- Attempt to fix action buttons being used while repositioning buttons.
+	- Fix nameplate target glow appearing on blacklisted targetted nameplates.
+	- Fix spacing on recount buttons
+	- Change recount icon skins again, this time desaturate them to match the skin.
+	- Reverting font outline to how it was in previous versions.
+	- Fix skada lua error when repeatidly setting embed right to skada
+	- Add sanity check to unitframes. Users were able to attach buffs frame to debuffs frame and vice versa at the same time, causing the UI not to load properly on the next load. Adding a warning to the chat frame when a user attempts to do this, and forcing the anchor to the actual unitframe when it occurs to prevent users from making this mistake.
+	- Holding down shift while clicking on the vendor gray items button on the bags frame will now prompt you to delete all your gray items.
+	- Add support for the Routes and GatherMate2 addon to the ElvUI Farmmode. This will however make it so you can only view these addons with the farmmode minimap.
+	- Add a white glow to nameplates when the nameplate is your target.

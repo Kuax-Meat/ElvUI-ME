@@ -20,7 +20,6 @@ function UF:Construct_Raid2640Frames(unitGroup)
 	self.Buffs = UF:Construct_Buffs(self)
 	self.Debuffs = UF:Construct_Debuffs(self)
 	self.AuraWatch = UF:Construct_AuraWatch(self)
-	self.RaidDebuffs = UF:Construct_RaidDebuffs(self)
 	self.DebuffHighlight = UF:Construct_DebuffHighlight(self)
 	self.ResurrectIcon = UF:Construct_ResurectionIcon(self)
 	
@@ -159,13 +158,14 @@ function UF:Update_Raid2640Frames(frame, db)
 		--Text
 		if db.health.text then
 			health.value:Show()
-			
-			local x, y = self:GetPositionOffset(db.health.position)
-			health.value:ClearAllPoints()
-			health.value:Point(db.health.position, health, db.health.position, x, y)
 		else
 			health.value:Hide()
 		end
+		
+		--Position this even if disabled because resurrection icon depends on the position
+		local x, y = self:GetPositionOffset(db.health.position)
+		health.value:ClearAllPoints()
+		health.value:Point(db.health.position, health, db.health.position, x, y)
 		
 		--Colors
 		health.colorSmooth = nil
@@ -309,7 +309,7 @@ function UF:Update_Raid2640Frames(frame, db)
 		buffs.size = ((((buffs:GetWidth() - (buffs.spacing*(buffs.num/rows - 1))) / buffs.num)) * rows)
 
 		local x, y = self:GetAuraOffset(db.buffs.initialAnchor, db.buffs.anchorPoint)
-		local attachTo = self:GetAuraAnchorFrame(frame, db.buffs.attachTo, db.debuffs.attachTo)
+		local attachTo = self:GetAuraAnchorFrame(frame, db.buffs.attachTo)
 
 		buffs:Point(db.buffs.initialAnchor, attachTo, db.buffs.anchorPoint, x, y)
 		buffs:Height(buffs.size * rows)
@@ -344,7 +344,7 @@ function UF:Update_Raid2640Frames(frame, db)
 		debuffs.size = ((((debuffs:GetWidth() - (debuffs.spacing*(debuffs.num/rows - 1))) / debuffs.num)) * rows)
 
 		local x, y = self:GetAuraOffset(db.debuffs.initialAnchor, db.debuffs.anchorPoint)
-		local attachTo = self:GetAuraAnchorFrame(frame, db.debuffs.attachTo, db.buffs.attachTo)
+		local attachTo = self:GetAuraAnchorFrame(frame, db.debuffs.attachTo, db.buffs.attachTo == 'DEBUFFS' and db.debuffs.attachTo == 'BUFFS')
 
 		debuffs:Point(db.debuffs.initialAnchor, attachTo, db.debuffs.anchorPoint, x, y)
 		debuffs:Height(debuffs.size * rows)
@@ -413,7 +413,9 @@ function UF:Update_Raid2640Frames(frame, db)
 	end	
 	
 	UF:UpdateAuraWatch(frame)
-
+	if not frame:IsElementEnabled('ReadyCheck') then
+		frame:EnableElement('ReadyCheck')
+	end		
 	frame:UpdateAllElements()
 end
 
