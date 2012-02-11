@@ -23,7 +23,7 @@ DF["core"] = {
 	["glossTex"] = "ElvUI Gloss",
 	
 	--colors
-	["bordercolor"] = { r = .31,g = .31,b = .31 },
+	["bordercolor"] = { r = .23,g = .23,b = .23 },
 	["backdropcolor"] = { r = .1,g = .1,b = .1 },
 	["backdropfadecolor"] = { r = .06,g = .06,b = .06, a = 0.9 },
 	["valuecolor"] = {r = 23/255,g = 132/255,b = 209/255},

@@ -1,4 +1,8 @@
 Elv:
+	- Fix bank search function. Fixgbank search box skin.
+	- Skin a blizzard scroll bar on character frame gear manager.
+	- Add a small spam filter for enUS, enGB clients. At the moment it only blocks some chinease letters from beind displayed.
+	- Minor tweak to the pickup actionbutton change i made recently.
 	- Attempt to fix action buttons being used while repositioning buttons.
 	- Fix nameplate target glow appearing on blacklisted targetted nameplates.
 	- Fix spacing on recount buttons
