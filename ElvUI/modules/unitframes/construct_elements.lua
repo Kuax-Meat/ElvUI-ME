@@ -19,14 +19,14 @@ end
 function UF:Construct_ThreatGlow(frame, glow)
 	local threat
 	if glow then
-		frame:CreateShadow('Default')
-		threat = frame.shadow
-		frame.shadow = nil
+		--frame:CreateShadow('Default')
+		--threat = frame.shadow
+		--frame.shadow = nil
 	else
-		threat = CreateFrame('Frame')
+		--threat = CreateFrame('Frame')
 	end
-	threat.Override = self.UpdateThreat
-	threat:SetFrameStrata('BACKGROUND')
+	--threat.Override = self.UpdateThreat
+	--threat:SetFrameStrata('BACKGROUND')
 	return threat
 end
 
@@ -61,6 +61,7 @@ function UF:Construct_HealthBar(frame, bg, text, textPos)
 	health.colorTapping = true	
 	health.colorDisconnected = true
 	health:CreateBackdrop('Default')	
+	health.backdrop:CreateShadow('Default')
 	
 	return health
 end
@@ -104,6 +105,7 @@ function UF:Construct_PowerBar(frame, bg, text, textPos, lowtext)
 	power.colorDisconnected = false
 	power.colorTapping = false
 	power:CreateBackdrop('Default')
+	power.backdrop:CreateShadow('Default')
 
 	return power
 end	
@@ -117,6 +119,7 @@ function UF:Construct_Portrait(frame)
 	portrait.overlay = CreateFrame("Frame", nil, frame)
 	portrait.overlay:SetFrameLevel(frame:GetFrameLevel() - 5)
 	
+	portrait.backdrop:CreateShadow('Default')
 	return portrait
 end
 
@@ -250,6 +253,7 @@ function UF:Construct_PaladinWarlockResourceBar(frame, class)
 		bars.Override = UF.UpdateShards
 	end	
 	
+	bars.backdrop:CreateShadow('Default')
 	return bars
 end
 
@@ -267,6 +271,7 @@ function UF:Construct_DeathKnightResourceBar(frame)
 		runes[i].backdrop:SetParent(runes)
 	end
 	
+	runes.backdrop:CreateShadow('Default')
 	return runes
 end
 
@@ -294,6 +299,7 @@ function UF:Construct_ShamanTotemBar(frame)
 		totems[i].bg.multiplier = 0.3
 	end
 	
+	totems.backdrop:CreateShadow('Default')
 	return totems
 end
 
@@ -321,6 +327,9 @@ function UF:Construct_DruidResourceBar(frame)
 	UF['fontstrings'][eclipseBar.Text] = true
 	eclipseBar.Text:SetPoint("CENTER", lunarBar:GetStatusBarTexture(), "RIGHT")
 	
+	lunarBar.backdrop:CreateShadow('Default')
+	solarBar.backdrop:CreateShadow('Default')
+	eclipseBar.backdrop:CreateShadow('Default')
 	return eclipseBar
 end
 
@@ -348,6 +357,7 @@ function UF:Construct_DruidAltManaBar(frame)
 	dpower.Text = dpower:CreateFontString(nil, 'OVERLAY')
 	UF['fontstrings'][dpower.Text] = true
 	
+	dpower.backdrop:CreateShadow('Default')
 	return dpower
 end
 
@@ -439,6 +449,7 @@ function UF:Construct_Combobar(frame)
 		CPoints[i].backdrop.shadow:SetBackdropBorderColor(CPoints[i]:GetStatusBarColor())
 	end
 	
+	CPoints.backdrop:CreateShadow('Default')
 	return CPoints
 end
 

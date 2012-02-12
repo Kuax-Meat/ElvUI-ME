@@ -242,9 +242,9 @@ function UF:Update_TargetFrame(frame, db)
 				portrait.backdrop:SetPoint("TOPRIGHT", frame, "TOPRIGHT")
 						
 				if USE_MINI_POWERBAR or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMLEFT", frame.Health.backdrop, "BOTTOMRIGHT", SPACING, 0)
+					portrait.backdrop:Point("BOTTOMLEFT", frame.Health.backdrop, "BOTTOMRIGHT", SPACING + 4, 0)
 				else
-					portrait.backdrop:Point("BOTTOMLEFT", frame.Power.backdrop, "BOTTOMRIGHT", SPACING, 0)
+					portrait.backdrop:Point("BOTTOMLEFT", frame.Power.backdrop, "BOTTOMRIGHT", SPACING + 4, 0)
 				end	
 							
 				portrait:Point('BOTTOMLEFT', portrait.backdrop, 'BOTTOMLEFT', BORDER, BORDER)		

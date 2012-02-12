@@ -221,7 +221,7 @@ end
 function AB:CreateBarShapeShift()
 	bar:CreateBackdrop('Default');
 	bar.backdrop:SetAllPoints();
-	bar:Point('TOPLEFT', E.UIParent, 'TOPLEFT', 4, -4);
+	bar:Point('TOPLEFT', E.UIParent, 'TOPLEFT', 324, -4);
 
 	bar:SetAttribute("_onstate-show", [[		
 		if newstate == "hide" then

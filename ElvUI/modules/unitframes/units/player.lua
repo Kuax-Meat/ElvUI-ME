@@ -114,7 +114,7 @@ function UF:Update_PlayerFrame(frame, db)
 	end
 	
 	--Threat
-	do
+	--[[do
 		local threat = frame.Threat
 		
 		local mini_classbarY = 0
@@ -149,7 +149,7 @@ function UF:Update_PlayerFrame(frame, db)
 			threat:Point("BOTTOMRIGHT", frame.Health, "BOTTOMRIGHT", 5, -5)
 		end				
 	end
-	
+	]]--
 	--Health
 	do
 		local health = frame.Health
@@ -324,9 +324,9 @@ function UF:Update_PlayerFrame(frame, db)
 				end		
 				
 				if USE_MINI_POWERBAR or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING, 0)
+					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 				else
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING, 0)
+					portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 				end	
 
 				portrait:Point('BOTTOMLEFT', portrait.backdrop, 'BOTTOMLEFT', BORDER, BORDER)		
