@@ -327,9 +327,6 @@ function UF:Construct_DruidResourceBar(frame)
 	UF['fontstrings'][eclipseBar.Text] = true
 	eclipseBar.Text:SetPoint("CENTER", lunarBar:GetStatusBarTexture(), "RIGHT")
 	
-	lunarBar.backdrop:CreateShadow('Default')
-	solarBar.backdrop:CreateShadow('Default')
-	eclipseBar.backdrop:CreateShadow('Default')
 	return eclipseBar
 end
 
@@ -357,7 +354,6 @@ function UF:Construct_DruidAltManaBar(frame)
 	dpower.Text = dpower:CreateFontString(nil, 'OVERLAY')
 	UF['fontstrings'][dpower.Text] = true
 	
-	dpower.backdrop:CreateShadow('Default')
 	return dpower
 end
 
