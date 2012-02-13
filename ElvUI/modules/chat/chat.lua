@@ -448,3 +448,5 @@ function CH:Initialize()
 end
 
 E:RegisterModule(CH:GetName())
+
+ChatTypeInfo.RAID_WARNING.sticky = 1
