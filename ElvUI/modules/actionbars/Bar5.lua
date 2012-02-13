@@ -33,6 +33,7 @@ function AB:PositionAndSizeBar5()
 	bar.mouseover = self.db[barName].mouseover
 	
 	if self.db[barName].backdrop == true then
+		bar.backdrop:CreateShadow("Default")
 		bar.backdrop:Show();
 	else
 		bar.backdrop:Hide();

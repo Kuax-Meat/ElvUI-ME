@@ -114,6 +114,7 @@ function AB:PositionAndSizeBarShapeShift()
 	end
 	
 	if self.db['barShapeShift'].backdrop == true then
+		bar.backdrop:CreateShadow("Default")
 		bar.backdrop:Show();
 	else
 		bar.backdrop:Hide();

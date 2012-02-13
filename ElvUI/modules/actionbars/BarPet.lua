@@ -105,6 +105,7 @@ function AB:PositionAndSizeBarPet()
 	end
 	
 	if self.db['barPet'].backdrop == true then
+		bar.backdrop:CreateShadow("Default")
 		bar.backdrop:Show();
 	else
 		bar.backdrop:Hide();

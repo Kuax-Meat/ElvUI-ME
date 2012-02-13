@@ -20,11 +20,11 @@ DF["core"] = {
 		
 	-- textures
 	["normTex"] = "ElvUI Norm",
-	["glossTex"] = "ElvUI Gloss",
+	["glossTex"] = "Minimalist",
 	
 	--colors
-	["bordercolor"] = { r = .23,g = .23,b = .23 },
-	["backdropcolor"] = { r = .1,g = .1,b = .1 },
+	["bordercolor"] = { r = 30/255,g = 30/255,b = 30/255},
+	["backdropcolor"] = { r = 34/255,g = 34/255,b = 36/255},
 	["backdropfadecolor"] = { r = .06,g = .06,b = .06, a = 0.9 },
 	["valuecolor"] = {r = 255/255,g = 19/255,b = 155/255},
 	
@@ -234,7 +234,7 @@ DF['tooltip'] = {
 DF['unitframe'] = {
 	['enable'] = true,
 	['smoothbars'] = true,
-	['statusbar'] = "ElvUI Norm",
+	['statusbar'] = "Minimalist",
 	['font'] = 'ElvUI Font',
 	['fontsize'] = 11,
 	['fontoutline'] = 'OUTLINE',
@@ -254,7 +254,7 @@ DF['unitframe'] = {
 		['customhealthbackdrop'] = false,
 		['classbackdrop'] = false,
 	
-		['health'] = DF.core.bordercolor,
+		['health'] = { r = 46/255, g = 46/255, b = 46/255 },
 		['health_backdrop'] = { r = .8,g = .01,b = .01 },
 		['tapped'] = { r = 0.55, g = 0.57, b = 0.61},
 		['disconnected'] = { r = 0.84, g = 0.75, b = 0.65},
@@ -1196,7 +1196,7 @@ DF["actionbar"] = {
 		['backdrop'] = true,
 		['heightMult'] = 2,
 		['widthMult'] = 1,
-		["buttonsize"] = 26,
+		["buttonsize"] = 28,
 		["buttonspacing"] = 4,		
 		['paging'] = {
 			["DRUID"] = "[bonusbar:1,nostealth] 7; [bonusbar:1,stealth] 8; [bonusbar:2] 8; [bonusbar:3] 9; [bonusbar:4] 10;",
@@ -1215,7 +1215,7 @@ DF["actionbar"] = {
 		['backdrop'] = false,
 		['heightMult'] = 1,
 		['widthMult'] = 1,
-		["buttonsize"] = 26,
+		["buttonsize"] = 28,
 		["buttonspacing"] = 4,		
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide;show",
@@ -1229,7 +1229,7 @@ DF["actionbar"] = {
 		['backdrop'] = true,
 		['heightMult'] = 1,
 		['widthMult'] = 1,
-		["buttonsize"] = 26,
+		["buttonsize"] = 28,
 		["buttonspacing"] = 4,
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide;show",
@@ -1243,7 +1243,7 @@ DF["actionbar"] = {
 		['backdrop'] = true,
 		['heightMult'] = 1,
 		['widthMult'] = 1,
-		["buttonsize"] = 26,
+		["buttonsize"] = 28,
 		["buttonspacing"] = 4,
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide;show",
@@ -1257,7 +1257,7 @@ DF["actionbar"] = {
 		['backdrop'] = true,
 		['heightMult'] = 1,
 		['widthMult'] = 1,
-		["buttonsize"] = 26,
+		["buttonsize"] = 28,
 		["buttonspacing"] = 4,
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide;show",
@@ -1271,7 +1271,7 @@ DF["actionbar"] = {
 		['backdrop'] = true,
 		['heightMult'] = 1,
 		['widthMult'] = 1,
-		["buttonsize"] = 26,
+		["buttonsize"] = 28,
 		["buttonspacing"] = 4,
 		['visibility'] = "[pet,novehicleui,nobonusbar:5] show;hide",
 	},
@@ -1284,7 +1284,7 @@ DF["actionbar"] = {
 		['backdrop'] = true,
 		['heightMult'] = 1,
 		['widthMult'] = 1,
-		["buttonsize"] = 26,
+		["buttonsize"] = 28,
 		["buttonspacing"] = 4,
 	},
 	['barTotem'] = {

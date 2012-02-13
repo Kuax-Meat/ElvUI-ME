@@ -122,6 +122,7 @@ function LO:CreateChatPanels()
 	lchat:Point('BOTTOMLEFT', E.UIParent, 4, 4)
 	lchat:CreateBackdrop('Transparent')
 	lchat.backdrop:SetAllPoints()
+	lchat.backdrop:CreateShadow("Default")
 	
 	--Background Texture
 	lchat.tex = lchat:CreateTexture(nil, 'OVERLAY')
@@ -167,6 +168,7 @@ function LO:CreateChatPanels()
 	rchat:Point('BOTTOMRIGHT', E.UIParent, -4, 4)
 	rchat:CreateBackdrop('Transparent')
 	rchat.backdrop:SetAllPoints()
+	rchat.backdrop:CreateShadow("Default")
 	
 	--Background Texture
 	rchat.tex = rchat:CreateTexture(nil, 'OVERLAY')
@@ -253,6 +255,7 @@ function LO:CreateUpperPanels()
 	upperpanels:SetFrameStrata("BACKGROUND")
 	upperpanels:SetFrameLevel(0)
 	upperpanels:SetTemplate("Transparent")
+	upperpanels:CreateShadow("Default")
 	
 	upperpanels.text = upperpanels:CreateFontString(nil, 'OVERLAY')
 	upperpanels.text:FontTemplate()

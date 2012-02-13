@@ -777,7 +777,7 @@ function UF:Update_PlayerFrame(frame, db)
 	
 	if not frame.mover then
 		frame:ClearAllPoints()
-		frame:Point('BOTTOMLEFT', E.UIParent, 'BOTTOM', -367, 130) --Set to default position
+		frame:Point('BOTTOMLEFT', E.UIParent, 'BOTTOM', -399, 130) --Set to default position
 	end
 
 	frame:UpdateAllElements()
