@@ -1,4 +1,5 @@
 Elv:
+	- Add a castbar spark option to all castbars on the unitframes.
 	- Fix URL in trade/yell/say.
 	- Add missing localization for "No gray items to delete."
 	- Prefix too long lua error.

@@ -351,6 +351,7 @@ DF['unitframe'] = {
 					['yOffset'] = 0,
 					['format'] = 'CURRENTMAX',
 					["ticks"] = true,
+					['spark'] = true,
 				},
 				['classbar'] = {
 					['enable'] = false,
@@ -426,6 +427,7 @@ DF['unitframe'] = {
 					['xOffset'] = 0,
 					['yOffset'] = 0,
 					['format'] = 'CURRENTMAX',
+					['spark'] = true,
 				},	
 				['combobar'] = {
 					['enable'] = true,
@@ -547,6 +549,7 @@ DF['unitframe'] = {
 					['xOffset'] = 0,
 					['yOffset'] = 0,
 					['format'] = 'CURRENTMAX',
+					['spark'] = true,
 				},					
 			},	
 			['focustarget'] = {
@@ -772,6 +775,7 @@ DF['unitframe'] = {
 					['color'] = DF.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 					['format'] = 'CURRENTMAX',
+					['spark'] = true,
 				},					
 			},	
 			['arena'] = {
@@ -835,6 +839,7 @@ DF['unitframe'] = {
 					['color'] = DF.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 					['format'] = 'CURRENTMAX',
+					['spark'] = true,
 				},					
 			},
 			['party'] = {

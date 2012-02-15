@@ -278,6 +278,13 @@ function UF:Update_FocusFrame(frame, db)
 			castbar.Icon = nil
 		end
 		
+		if db.castbar.spark then
+			castbar.Spark:Show()
+		else
+			castbar.Spark:Hide()
+		end
+		
+		
 		castbar:ClearAllPoints()
 		-- FIX FOCUS CASTBAR POSITION
 		if db.castbar.xOffset == 0 and db.castbar.yOffset == 0 then
