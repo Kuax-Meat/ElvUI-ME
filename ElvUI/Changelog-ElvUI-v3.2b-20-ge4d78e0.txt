@@ -1,4 +1,5 @@
 Elv:
+	- Fix URL in trade/yell/say.
 	- Add missing localization for "No gray items to delete."
 	- Prefix too long lua error.
 	- Change addon prefix so you will only notice people sending messages from v3.21 and up that way you don't get spammed by older versions.
