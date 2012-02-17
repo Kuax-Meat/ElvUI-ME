@@ -273,6 +273,8 @@ function UF:Construct_DeathKnightResourceBar(frame)
 		
 		runes[i]:CreateBackdrop('Default')
 		runes[i].backdrop:SetParent(runes)
+		
+		runes[i].backdrop:CreateShadow('Default')
 	end
 	
 	runes.backdrop:CreateShadow('Default')
@@ -301,6 +303,8 @@ function UF:Construct_ShamanTotemBar(frame)
 		totems[i].bg:SetAllPoints()
 		totems[i].bg:SetTexture(E['media'].blankTex)
 		totems[i].bg.multiplier = 0.3
+		
+		totems[i].backdrop:CreateShadow('Default')
 	end
 	
 	totems.backdrop:CreateShadow('Default')
@@ -406,6 +410,7 @@ function UF:Construct_AltPowerBar(frame)
 	altpower.text:SetJustifyH("CENTER")		
 	UF['fontstrings'][altpower.text] = true
 	
+	altpower.backdrop:CreateShadow('Default')
 	return altpower
 end
 

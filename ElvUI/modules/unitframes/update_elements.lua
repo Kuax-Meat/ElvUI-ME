@@ -635,29 +635,28 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 	local USE_MINI_POWERBAR = db.power.width ~= 'fill' and USE_POWERBAR
 	local USE_POWERBAR_OFFSET = db.power.offset ~= 0 and USE_POWERBAR
 	local SPACING = E:Scale(1)
-	local BORDER = E:Scale(2)
 	
 	if USE_PORTRAIT_OVERLAY or not USE_PORTRAIT then
 		PORTRAIT_WIDTH = 0
 	end
 	
 	if USE_MINI_CLASSBAR then
-		CLASSBAR_HEIGHT = 0 --CLASSBAR_HEIGHT / 2
+		CLASSBAR_HEIGHT = CLASSBAR_HEIGHT / 2
 	end
 	
 	if eclipseBar:IsShown() or druidAltMana:IsShown() then
 		if db.power.offset ~= 0 then
 			health:Point("TOPRIGHT", frame, "TOPRIGHT", -(2+db.power.offset), -(2 + CLASSBAR_HEIGHT + 1))
 		else
-			health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -(BORDER + CLASSBAR_HEIGHT))
+			health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -(2 + CLASSBAR_HEIGHT + 1))
 		end
-		health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -(BORDER + CLASSBAR_HEIGHT))	
+		health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -(2 + CLASSBAR_HEIGHT + 1))	
 		
 		if db.portrait.enable and not db.portrait.overlay then
 			local portrait = self:GetParent().Portrait
 			portrait.backdrop:ClearAllPoints()
 			if USE_MINI_CLASSBAR and USE_CLASSBAR then
-				portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT", 0, -(CLASSBAR_HEIGHT))
+				portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT", 0, -(CLASSBAR_HEIGHT + 1))
 			else
 				portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
 			end		
@@ -870,9 +869,8 @@ function UF:UpdateComboDisplay(event, unit)
 	if cpoints[1]:GetAlpha() == 1 then
 		cpoints:Show()
 		if USE_MINI_COMBOBAR then
-			COMBOBAR_HEIGHT = 0
-			self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, -((COMBOBAR_HEIGHT/2)))
-			self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -(BORDER + (COMBOBAR_HEIGHT/2)))
+			self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, -((COMBOBAR_HEIGHT/2) + SPACING - BORDER))
+			self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -(SPACING + (COMBOBAR_HEIGHT/2)))
 		else
 			self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT")
 			self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -(BORDER + SPACING + COMBOBAR_HEIGHT))
