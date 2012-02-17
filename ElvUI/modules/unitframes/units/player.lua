@@ -10,7 +10,7 @@ assert(ElvUF, "ElvUI was unable to locate oUF.")
 local CAN_HAVE_CLASSBAR = (E.myclass == "PALADIN" or E.myclass == "SHAMAN" or E.myclass == "DRUID" or E.myclass == "DEATHKNIGHT" or E.myclass == "WARLOCK")
 
 function UF:Construct_PlayerFrame(frame)
-	frame.Threat = self:Construct_ThreatGlow(frame, true)
+	--frame.Threat = self:Construct_ThreatGlow(frame, true)
 	
 	frame.Health = self:Construct_HealthBar(frame, true, true, 'RIGHT')
 	frame.Health.frequentUpdates = true;

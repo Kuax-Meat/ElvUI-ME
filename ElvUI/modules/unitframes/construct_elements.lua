@@ -19,14 +19,14 @@ end
 function UF:Construct_ThreatGlow(frame, glow)
 	local threat
 	if glow then
-		--frame:CreateShadow('Default')
-		--threat = frame.shadow
-		--frame.shadow = nil
+		frame:CreateShadow('Default')
+		threat = frame.shadow
+		frame.shadow = nil
 	else
-		--threat = CreateFrame('Frame')
+		threat = CreateFrame('Frame')
 	end
-	--threat.Override = self.UpdateThreat
-	--threat:SetFrameStrata('BACKGROUND')
+	threat.Override = self.UpdateThreat
+	threat:SetFrameStrata('BACKGROUND')
 	return threat
 end
 
@@ -331,6 +331,7 @@ function UF:Construct_DruidResourceBar(frame)
 	UF['fontstrings'][eclipseBar.Text] = true
 	eclipseBar.Text:SetPoint("CENTER", lunarBar:GetStatusBarTexture(), "RIGHT")
 	
+	eclipseBar.backdrop:CreateShadow('Default')
 	return eclipseBar
 end
 
@@ -358,6 +359,7 @@ function UF:Construct_DruidAltManaBar(frame)
 	dpower.Text = dpower:CreateFontString(nil, 'OVERLAY')
 	UF['fontstrings'][dpower.Text] = true
 	
+	dpower:CreateShadow('Default')
 	return dpower
 end
 

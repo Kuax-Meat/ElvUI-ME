@@ -354,8 +354,8 @@ DF['unitframe'] = {
 					['spark'] = true,
 				},
 				['classbar'] = {
-					['enable'] = false,
-					['fill'] = 'filled',
+					['enable'] = true,
+					['fill'] = 'spaced',
 					['height'] = 9,
 				},
 			},	
@@ -431,7 +431,7 @@ DF['unitframe'] = {
 				},	
 				['combobar'] = {
 					['enable'] = true,
-					['fill'] = 'filled',
+					['fill'] = 'spaced',
 					['height'] = 9,
 				},				
 			},
@@ -1207,7 +1207,7 @@ DF["actionbar"] = {
 			["DRUID"] = "[bonusbar:1,nostealth] 7; [bonusbar:1,stealth] 8; [bonusbar:2] 8; [bonusbar:3] 9; [bonusbar:4] 10;",
 			["WARRIOR"] = "[bonusbar:1] 7; [bonusbar:2] 8; [bonusbar:3] 9;",
 			["PRIEST"] = "[bonusbar:1] 7;",
-			["ROGUE"] = "[bonusbar:1] 7; [form:3] 8;",	
+			["ROGUE"] = "[bonusbar:1] 7; [form:3] 7;",	
 		},
 		['visibility'] = "",
 	},

@@ -634,6 +634,7 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 	local USE_POWERBAR = db.power.enable
 	local USE_MINI_POWERBAR = db.power.width ~= 'fill' and USE_POWERBAR
 	local USE_POWERBAR_OFFSET = db.power.offset ~= 0 and USE_POWERBAR
+	local SPACING = E:Scale(1)
 	
 	if USE_PORTRAIT_OVERLAY or not USE_PORTRAIT then
 		PORTRAIT_WIDTH = 0
@@ -661,9 +662,9 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 			end		
 			
 			if USE_MINI_POWERBAR or USE_POWERBAR_OFFSET then
-				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -1, 0)
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 			else
-				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -1, 0)
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 			end				
 		end
 	else
@@ -680,9 +681,9 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 			portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT")
 			
 			if USE_MINI_POWERBAR or USE_POWERBAR_OFFSET then
-				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -1, 0)
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 			else
-				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -1, 0)
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 			end				
 		end		
 	end
