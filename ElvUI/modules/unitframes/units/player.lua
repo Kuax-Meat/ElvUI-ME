@@ -208,7 +208,7 @@ function UF:Update_PlayerFrame(frame, db)
 		if USE_CLASSBAR then
 			local DEPTH
 			if USE_MINI_CLASSBAR then
-				DEPTH = -(BORDER+(CLASSBAR_HEIGHT/2))
+				DEPTH = -BORDER --(BORDER+(CLASSBAR_HEIGHT/2))
 			else
 				DEPTH = -(BORDER+CLASSBAR_HEIGHT+SPACING)
 			end
@@ -318,7 +318,7 @@ function UF:Update_PlayerFrame(frame, db)
 				portrait:Show()
 				
 				if USE_MINI_CLASSBAR and USE_CLASSBAR then
-					portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT", 0, -((CLASSBAR_HEIGHT/2)))
+					portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT", 0, 0) --((CLASSBAR_HEIGHT/2)))
 				else
 					portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
 				end		
