@@ -115,7 +115,7 @@ end
 function LO:CreateChatPanels()
 	--Left Chat
 	local lchat = CreateFrame('Frame', 'LeftChatPanel', E.UIParent)
-	lchat:SetFrameStrata('BACKGROUND')
+	lchat:SetFrameStrata('LOW')
 	lchat:Width(420)
 	lchat:Height(180)
 	lchat:Point('BOTTOMLEFT', E.UIParent, 4, 4)
@@ -161,7 +161,7 @@ function LO:CreateChatPanels()
 	
 	--Right Chat
 	local rchat = CreateFrame('Frame', 'RightChatPanel', E.UIParent)
-	rchat:SetFrameStrata('BACKGROUND')
+	rchat:SetFrameStrata('LOW')
 	rchat:Width(420)
 	rchat:Height(180)
 	rchat:Point('BOTTOMRIGHT', E.UIParent, -4, 4)

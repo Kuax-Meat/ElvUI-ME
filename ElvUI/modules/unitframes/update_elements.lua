@@ -635,6 +635,8 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 	local USE_MINI_POWERBAR = db.power.width ~= 'fill' and USE_POWERBAR
 	local USE_POWERBAR_OFFSET = db.power.offset ~= 0 and USE_POWERBAR
 	local SPACING = E:Scale(1)
+	local POWERBAR_HEIGHT = db.power.height
+	local BORDER = E:Scale(2)
 	
 	if USE_PORTRAIT_OVERLAY or not USE_PORTRAIT then
 		PORTRAIT_WIDTH = 0
@@ -661,8 +663,10 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 				portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
 			end		
 			
-			if USE_MINI_POWERBAR or USE_POWERBAR_OFFSET then
-				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
+			if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
+			elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
 			else
 				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 			end				
@@ -680,8 +684,10 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 			portrait.backdrop:ClearAllPoints()
 			portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT")
 			
-			if USE_MINI_POWERBAR or USE_POWERBAR_OFFSET then
-				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
+			if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
+			elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
 			else
 				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 			end				

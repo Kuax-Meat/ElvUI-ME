@@ -165,7 +165,7 @@ function AB:StyleButton(button, noBackdrop)
 	if count then
 		count:ClearAllPoints();
 		count:SetPoint("BOTTOMRIGHT", 0, 2);
-		count:FontTemplate(nil, 11, "OUTLINE");
+		count:FontTemplate(nil, E.db.actionbar.fontsize, "OUTLINE");
 	end
 
 	if not button.noBackdrop and not button.backdrop then
