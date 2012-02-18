@@ -1,4 +1,4 @@
-local E, L, DF = unpack(select(2, ...)); --Engine
+local E, L, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, ProfileDB, GlobalDB
 local LO = E:NewModule('Layout', 'AceEvent-3.0');
 
 local PANEL_HEIGHT = 22;
@@ -9,7 +9,6 @@ E.Layout = LO;
 function LO:Initialize()
 	self:CreateChatPanels()
 	self:CreateMinimapPanels()
-	self:CreateUpperPanels()
 end
 
 
@@ -244,24 +243,6 @@ function LO:CreateMinimapPanels()
 	configtoggle.text:SetPoint('CENTER')
 	configtoggle.text:SetJustifyH('CENTER')
 	configtoggle:SetScript('OnClick', function() E:ToggleConfig() end)
-end
-
-function LO:CreateUpperPanels()
-	local upperpanels = CreateFrame("Frame", nil, E.UIParent)
-	upperpanels:SetHeight(23)
-	upperpanels:SetWidth(E.UIParent:GetWidth() + (E.mult * 2))
-	upperpanels:SetPoint("TOPLEFT", E.UIParent, "TOPLEFT", -2, 2)
-	upperpanels:SetPoint("BOTTOMRIGHT", E.UIParent, "TOPRIGHT", 2, -20)
-	upperpanels:SetFrameStrata("BACKGROUND")
-	upperpanels:SetFrameLevel(0)
-	upperpanels:SetTemplate("Transparent")
-	upperpanels:CreateShadow("Default")
-	
-	upperpanels.text = upperpanels:CreateFontString(nil, 'OVERLAY')
-	upperpanels.text:FontTemplate()
-	upperpanels.text:SetPoint('CENTER')
-	upperpanels.text:SetJustifyH('CENTER')
-	upperpanels.text:SetFormattedText("%sElvUI|r v%s%s|r : Meat Edition", E["media"].hexvaluecolor, E["media"].hexvaluecolor, E.version)
 end
 
 E:RegisterModule(LO:GetName())

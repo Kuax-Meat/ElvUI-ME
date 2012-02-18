@@ -1,4 +1,10 @@
 Elv:
+	- Change important to addon coders I'm changing the engine table around a bit by adding a fourth arguement:
+	Instead of: local E, L, DF = unpack(ElvUI);
+	
+	It is now: local E, L, P, G = unpack(ElvUI); --Inport: Engine, Locales, ProfileDB, GlobalDB
+	- Remove an unneeded block of code that may of caused unitframe lua errors when changing specs.
+	- Skin and position the guild challenge alert frame to the achievements anchor.
 	- Remove the character frame from being skinned when misc skinning option is set
 	- Accidently commited a change to the rogue shadowdance bar, wasn't intended on being in last version.
 	- Add a castbar spark option to all castbars on the unitframes.

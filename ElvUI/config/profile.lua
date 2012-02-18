@@ -1,10 +1,7 @@
-﻿local E, L, DF = unpack(select(2, ...)); --Engine
-
---Global defaults
-E.DF["global"] = {};
+﻿local E, L, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, ProfileDB, GlobalDB
 
 --Core
-DF["core"] = {
+P["core"] = {
 	["uiscale"] = 0.75,
 	["autoscale"] = false,
 	["stickyFrames"] = true,
@@ -19,14 +16,14 @@ DF["core"] = {
 	["dmgfont"] = "ElvUI Alt-Combat-2",
 		
 	-- textures
-	["normTex"] = "ElvUI Norm",
+	["normTex"] = "Minimalist",
 	["glossTex"] = "Minimalist",
 	
 	--colors
-	["bordercolor"] = { r = 30/255,g = 30/255,b = 30/255},
-	["backdropcolor"] = { r = 34/255,g = 34/255,b = 36/255},
+	["bordercolor"] = { r = 30/255,g = 30/255,b = 30/255 },
+	["backdropcolor"] = { r = 34/255,g = 34/255,b = 36/255 },
 	["backdropfadecolor"] = { r = .06,g = .06,b = .06, a = 0.9 },
-	["valuecolor"] = {r = 255/255,g = 19/255,b = 155/255},
+	["valuecolor"] = {r = 255/255,g = 19/255,b = 155/255 },
 	
 	--panels
 	['panelWidth'] = 347,
@@ -40,15 +37,15 @@ DF["core"] = {
 	['bags'] = true,
 	['loot'] = true,
 	['lootRoll'] = true,
-	['mapTransparency'] = 0.5,
+	['mapTransparency'] = 1,
 };
 
 --NamePlate
-DF["nameplate"] = {
+P["nameplate"] = {
 	["enable"] = true,
 	["markBGHealers"] = true,
 	["width"] = 113,
-	["height"] = 12,
+	["height"] = 14,
 	["cbheight"] = 5,
 	["showlevel"] = true,
 	["enhancethreat"] = true,
@@ -69,31 +66,31 @@ DF["nameplate"] = {
 };
 
 --Auras
-DF['auras'] = {
+P['auras'] = {
 	['enable'] = true,
 	['perRow'] = 12,
 }
 
 --Chat
-DF['chat'] = {
+P['chat'] = {
 	['enable'] = true,
 	['url'] = true;
 	['shortChannels'] = true;
 }
 
 --ClassTimers
-DF['classtimer'] = {
+P['classtimer'] = {
 	['enable'] = true,
 	['player'] = {
 		['enable'] = true,
 		['anchor'] = 'PLAYERDEBUFFS',
-		["buffcolor"] = DF.core.bordercolor,
+		["buffcolor"] = P.core.bordercolor,
 		["debuffcolor"] = {r = 0.78, g = 0.25, b = 0.25},		
 	},
 	['target'] = {
 		['enable'] = true,
 		['anchor'] = 'TARGETDEBUFFS',
-		["buffcolor"] = DF.core.bordercolor,
+		["buffcolor"] = P.core.bordercolor,
 		["debuffcolor"] = {r = 0.78, g = 0.25, b = 0.25},			
 	},	
 	['trinket'] = {
@@ -104,7 +101,7 @@ DF['classtimer'] = {
 }
 
 --Skins
-DF['skins'] = {
+P['skins'] = {
 	['embedRight'] = '',
 	['bigwigs'] = {
 		['enable'] = true,
@@ -185,7 +182,7 @@ DF['skins'] = {
 }
 
 --Datatexts
-DF['datatexts'] = {
+P['datatexts'] = {
 	['panels'] = {
 		['spec1'] = {
 			['LeftChatDataPanel'] = {
@@ -222,7 +219,7 @@ DF['datatexts'] = {
 }
 
 --Tooltip
-DF['tooltip'] = {
+P['tooltip'] = {
 	['enable'] = true,
 	['anchor'] = 'CURSOR',
 	['ufhide'] = false,
@@ -231,7 +228,7 @@ DF['tooltip'] = {
 }
 
 --UnitFrame
-DF['unitframe'] = {
+P['unitframe'] = {
 	['enable'] = true,
 	['smoothbars'] = true,
 	['statusbar'] = "Minimalist",
@@ -336,7 +333,7 @@ DF['unitframe'] = {
 					['anchorPoint'] = 'TOPRIGHT',					
 					['fontsize'] = 10,
 					['showPlayerOnly'] = false,
-					['useFilter'] = '',	
+					['useFilter'] = 'DebuffBlacklist',	
 					['durationLimit'] = 0,
 				},
 				['castbar'] = {
@@ -345,7 +342,7 @@ DF['unitframe'] = {
 					['height'] = 21,
 					['icon'] = true,
 					['latency'] = true,
-					['color'] = DF.core.bordercolor,
+					['color'] = P.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 					['xOffset'] = 0,
 					['yOffset'] = 0,
@@ -422,7 +419,7 @@ DF['unitframe'] = {
 					['width'] = 280,
 					['height'] = 21,
 					['icon'] = true,
-					['color'] = DF.core.bordercolor,
+					['color'] = P.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 					['xOffset'] = 0,
 					['yOffset'] = 0,
@@ -483,7 +480,7 @@ DF['unitframe'] = {
 					['anchorPoint'] = 'BOTTOMRIGHT',					
 					['fontsize'] = 10,
 					['showPlayerOnly'] = false,
-					['useFilter'] = 'DebuffBlacklist',	
+					['useFilter'] = '',	
 					['durationLimit'] = 0,
 				},			
 			},
@@ -536,7 +533,7 @@ DF['unitframe'] = {
 					['anchorPoint'] = 'BOTTOMRIGHT',					
 					['fontsize'] = 10,
 					['showPlayerOnly'] = false,
-					['useFilter'] = 'DebuffBlacklist',	
+					['useFilter'] = '',	
 					['durationLimit'] = 0,
 				},	
 				['castbar'] = {
@@ -544,7 +541,7 @@ DF['unitframe'] = {
 					['width'] = 450,
 					['height'] = 30,
 					['icon'] = true,
-					['color'] = DF.core.bordercolor,
+					['color'] = P.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 					['xOffset'] = 0,
 					['yOffset'] = 0,
@@ -713,7 +710,7 @@ DF['unitframe'] = {
 				['enable'] = true,
 				['growthDirection'] = 'UP',
 				['width'] = 200,
-				['height'] = 45,
+				['height'] = 43,
 				['health'] = {
 					['text'] = true,
 					['text_format'] = 'current-percent',
@@ -737,7 +734,7 @@ DF['unitframe'] = {
 				},				
 				['name'] = {
 					['enable'] = true,
-					['position'] = 'LEFT',
+					['position'] = 'CENTER',
 				},
 				['buffs'] = {
 					['enable'] = true,
@@ -772,7 +769,7 @@ DF['unitframe'] = {
 					['width'] = 200,
 					['height'] = 18,
 					['icon'] = true,
-					['color'] = DF.core.bordercolor,
+					['color'] = P.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 					['format'] = 'CURRENTMAX',
 					['spark'] = true,
@@ -783,7 +780,7 @@ DF['unitframe'] = {
 				['growthDirection'] = 'UP',
 				['pvpTrinket'] = true,
 				['width'] = 200,
-				['height'] = 45,
+				['height'] = 43,
 				['health'] = {
 					['text'] = true,
 					['text_format'] = 'current-percent',
@@ -793,7 +790,7 @@ DF['unitframe'] = {
 					['enable'] = true,
 					['text'] = true,
 					['text_format'] = 'current',	
-					['width'] = 'fill',
+					['width'] = 'spaced',
 					['height'] = 7,
 					['offset'] = 0,
 					['position'] = 'LEFT',
@@ -814,7 +811,7 @@ DF['unitframe'] = {
 					['anchorPoint'] = 'LEFT',					
 					['fontsize'] = 10,
 					['showPlayerOnly'] = false,
-					['useFilter'] = '',		
+					['useFilter'] = 'TurtleBuffs',		
 					['durationLimit'] = 0,
 				},
 				['debuffs'] = {
@@ -828,7 +825,7 @@ DF['unitframe'] = {
 					['anchorPoint'] = 'RIGHT',					
 					['fontsize'] = 10,
 					['showPlayerOnly'] = false,
-					['useFilter'] = '',	
+					['useFilter'] = 'CCDebuffs',	
 					['durationLimit'] = 0,
 				},	
 				['castbar'] = {
@@ -836,7 +833,7 @@ DF['unitframe'] = {
 					['width'] = 200,
 					['height'] = 18,
 					['icon'] = true,
-					['color'] = DF.core.bordercolor,
+					['color'] = P.core.bordercolor,
 					['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 					['format'] = 'CURRENTMAX',
 					['spark'] = true,
@@ -956,7 +953,7 @@ DF['unitframe'] = {
 				['width'] = 77,
 				['height'] = 44,
 				['health'] = {
-					['text'] = false,
+					['text'] = true,
 					['text_format'] = 'deficit',
 					['position'] = 'BOTTOM',
 					['orientation'] = 'HORIZONTAL',
@@ -1180,7 +1177,7 @@ DF['unitframe'] = {
 }
 
 --Actionbar
-DF["actionbar"] = {
+P["actionbar"] = {
 	["enable"] = true,
 	["macrotext"] = true,
 	["hotkeytext"] = true,
@@ -1286,7 +1283,7 @@ DF["actionbar"] = {
 		['buttonsPerRow'] = NUM_SHAPESHIFT_SLOTS,
 		['buttons'] = NUM_SHAPESHIFT_SLOTS,
 		['point'] = 'TOPLEFT',
-		['backdrop'] = true,
+		['backdrop'] = false,
 		['heightMult'] = 1,
 		['widthMult'] = 1,
 		["buttonsize"] = 28,
