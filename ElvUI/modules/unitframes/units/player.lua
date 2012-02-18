@@ -323,8 +323,10 @@ function UF:Update_PlayerFrame(frame, db)
 					portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
 				end		
 				
-				if USE_MINI_POWERBAR or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
+				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
+				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
+					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
 				else
 					portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 				end	
