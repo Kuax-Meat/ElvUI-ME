@@ -246,7 +246,7 @@ P['unitframe'] = {
 
 	['colors'] = {
 		['healthclass'] = false,
-		['powerclass'] = false,
+		['powerclass'] = true,
 		['colorhealthbyvalue'] = false,
 		['customhealthbackdrop'] = false,
 		['classbackdrop'] = false,

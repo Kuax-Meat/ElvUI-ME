@@ -636,6 +636,7 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 	local USE_POWERBAR_OFFSET = db.power.offset ~= 0 and USE_POWERBAR
 	local SPACING = E:Scale(1)
 	local POWERBAR_HEIGHT = db.power.height
+	local POWERBAR_OFFSET = db.power.offset
 	local BORDER = E:Scale(2)
 	
 	if USE_PORTRAIT_OVERLAY or not USE_PORTRAIT then
