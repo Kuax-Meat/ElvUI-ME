@@ -1,0 +1,10 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Include file='defaults.lua'/>
+	<Include file='actionbars\actionbars.lua'/>
+	<Include file='blizzard\load_blizzard.xml'/>
+	<Include file='tooltips\tooltips.lua'/>
+	<Include file='unitframes\load_unitframes.xml'/>
+	<Include file='microbar.lua'/>
+	<Include file='reminder\load_reminder.xml'/>
+	<Include file='auras.lua'/>
+</Ui>

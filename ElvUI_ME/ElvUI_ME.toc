@@ -1,0 +1,16 @@
+﻿## Interface: 40300
+## Author: Meat
+## Version: 0.1 alpha
+## Title: |cff1784D1ElvUI|r : |cffFF139BMeat Edition|r
+## Notes: Enhanced features of ElvUI v3
+## RequiredDeps: ElvUI
+## X-oUF: ElvUF
+
+libs\load_libs.xml
+media\load_media.xml
+config\load_config.xml
+core\load_core.xml
+layout\load_layout.xml
+init.lua
+modules\load_modules.xml
+options.lua

@@ -1,0 +1,20 @@
+## Interface: 40000
+## LoadOnDemand: 1
+## Title: Lib: DualSpec-1.0
+## Version: v1.6
+## X-Date: @project-date@
+## Notes: Adds dual spec support to individual AceDB-3.0 databases
+## Author: Adirelle
+## OptionalDeps: LibStub, Ace3
+## X-Curse-Packaged-Version: v1.6
+## X-Curse-Project-Name: LibDualSpec-1.0
+## X-Curse-Project-ID: libdualspec-1-0
+## X-Curse-Repository-ID: wow/libdualspec-1-0/mainline
+## X-Curse-Packaged-Version: v3.2b-35-g0f2c980
+## X-Curse-Project-Name: ElvUI
+## X-Curse-Project-ID: elvui
+## X-Curse-Repository-ID: wow/elvui/mainline
+
+LibStub.lua
+LibDualSpec-1.0.lua
+
