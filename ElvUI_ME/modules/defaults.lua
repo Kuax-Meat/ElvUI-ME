@@ -5,7 +5,8 @@ function MEAT:LoadDefaultSetting()
 	if E.db.meat.setup == false then
 		-- uiScale
 		SetCVar('uiScale', 0.75)
-		
+		-- dmgFontset
+		E.global.general.dmgfont = "ElvUI Alt-Combat 2"
 		--Core
 		E.db['general'] = {
 			["autoscale"] = false,

@@ -1,7 +1,9 @@
-local E, L, P, G = unpack(ElvUI); --Inport: Engine, Locales, ProfileDB, GlobalDB
+local E, L, P, G = unpack(ElvUI); --Import: Engine, Locales, ProfileDB, GlobalDB
 local AB = E:GetModule('ActionBars');
 local LSM = LibStub("LibSharedMedia-3.0")
 
+
+-- Action Bar fontset
 function AB:StyleFont(button, noBackdrop)
 	local name = button:GetName();
 	local count = _G[name.."Count"];
@@ -26,6 +28,7 @@ function AB:StyleFont(button, noBackdrop)
 end
 
 function AB:UpdateABFont()
+	if E.global.actionbar.enable ~= true then return end
 	for button, _ in pairs(self["handledbuttons"]) do
 		if button then
 			self:StyleFont(button, button.noBackdrop)
@@ -36,6 +39,8 @@ function AB:UpdateABFont()
 	end
 end
 
+
+-- Blizz&chat fontset
 local function SetFont(obj, font, size, style, r, g, b, sr, sg, sb, sox, soy)
 	obj:SetFont(font, size, style)
 	if sr and sg and sb then obj:SetShadowColor(sr, sg, sb) end
@@ -50,21 +55,21 @@ function E:SetFrameFont(cf, fontSize)
 end
 
 function E:UpdateBlizzardFonts()	
-	local NORMAL     = LSM:Fetch("font", self.db['general'].font)
+	local NORMAL     = self["media"].normFont
 	local COMBAT     = LSM:Fetch('font', self.global.general.dmgfont)
-	local NUMBER     = LSM:Fetch("font", self.db['general'].font)
+	local NUMBER     = self["media"].normFont
 	local _, editBoxFontSize, _, _, _, _, _, _, _, _ = GetChatWindowInfo(1)
 	
 	UIDROPDOWNMENU_DEFAULT_TEXT_HEIGHT = 12
 	CHAT_FONT_HEIGHTS = {8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 	
 	ChatTypeInfo.RAID_WARNING.sticky = 1
-	
+
 	UNIT_NAME_FONT     = NORMAL
 	NAMEPLATE_FONT     = NORMAL
 	DAMAGE_TEXT_FONT   = COMBAT
 	STANDARD_TEXT_FONT = NORMAL
-	
+
 	if self.eyefinity then
 		-- damage are huge on eyefinity, so we disable it
 		InterfaceOptionsCombatTextPanelTargetDamage:Hide()

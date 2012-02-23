@@ -15,7 +15,6 @@ function MEAT:Initialize()
 	E:CreateMover(DBFAurasHolder, "DAurasMover", "Debuff Auras Frame", false, A.DAurasPostDrag)
 	
 	E:GetModule('Blizzard'):HandleBubbles()
-	E:UpdateBlizzardFonts()
 	LO:CreatePanels()
 	AB:UpdateABFont()
 	self:LoadDefaultSetting()

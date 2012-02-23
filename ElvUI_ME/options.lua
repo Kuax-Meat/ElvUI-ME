@@ -57,7 +57,7 @@ E.Options.args.meat = {
 		header = {
 			order = 1,
 			type = "header",
-			name = L["|cffff139bMeat Edition|r 1.01 Release"],
+			name = L["|cffff139bMeat Edition|r 1.03 Release"],
 		},
 		intro = {
 			order = 2,
@@ -80,7 +80,7 @@ E.Options.args.meat = {
 				notes = {
 					order = 1,
 					type = "description",
-					name = L["|cff599fff2012/2/22 - 1.0 Release|r\n  |cffff139b* Features|r\n   1. 기본 레이아웃 변경\n   2. 마이크로 바\n   3. 버프 알림기\n   4. 정보문자 패널 추가 등"],
+					name = L["|cff599fff2012/2/23 - 1.03 Release|r\n  |cffff139b* 버그 수정 내역|r\n   1. 행동 단축바 사용 안함시 발생하는 LUA 오류 해결\n   2. 전투문자 글꼴이 바뀌지 않던 점 수정\n   3. 코드 안정화\n   4. 유닛프레임 버그 픽스"],
 				},
 			},
 		},
