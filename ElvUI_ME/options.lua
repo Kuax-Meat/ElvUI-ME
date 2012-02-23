@@ -57,7 +57,7 @@ E.Options.args.meat = {
 		header = {
 			order = 1,
 			type = "header",
-			name = L["|cffff139bMeat Edition|r 1.03 Release"],
+			name = L["|cffff139bMeat Edition|r 1.04 Release"],
 		},
 		intro = {
 			order = 2,
@@ -67,7 +67,7 @@ E.Options.args.meat = {
 		reinstall = {
 			order = 3,
 			type = 'execute',
-			name = L['재설치'],
+			name = L['|cffff0000재설치|r'],
 			desc = L['Meat Edition을 재설치합니다.'],
 			func = function() E.db.meat.setup = false; StaticPopup_Show("CONFIG_RL"); end,
 		},
@@ -80,7 +80,7 @@ E.Options.args.meat = {
 				notes = {
 					order = 1,
 					type = "description",
-					name = L["|cff599fff2012/2/23 - 1.03 Release|r\n  |cffff139b* 버그 수정 내역|r\n   1. 행동 단축바 사용 안함시 발생하는 LUA 오류 해결\n   2. 전투문자 글꼴이 바뀌지 않던 점 수정\n   3. 코드 안정화\n   4. 유닛프레임 버그 픽스"],
+					name = L["|cff599fff2012/2/23 - 1.04 Release|r\n  |cffff139b* 버그 수정 내역|r\n   1. 행동 단축바 사용 안함시 발생하는 LUA 오류 해결\n   2. 전투문자 글꼴이 바뀌지 않던 점 수정\n   3. 코드 안정화\n   4. 유닛프레임 버그 픽스\n   5. 상단 패널에 현재 좌표와 위치를 표시하는 기능 추가"],
 				},
 			},
 		},
@@ -94,7 +94,7 @@ E.Options.args.meat = {
 					order = 1,
 					type = "toggle",
 					name = L["상단 패널"],
-					set = function(info, value) E.db.meat[ info[#info] ] = value; E:GetModule('Layout'):TogglePanels(); end
+					set = function(info, value) E.db.meat[ info[#info] ] = value; E:GetModule('Layout'):TogglePanels(); E:GetModule('MEAT'):MinimapLocToggle(); end
 				},
 				bottompanels = {
 					order = 2,
