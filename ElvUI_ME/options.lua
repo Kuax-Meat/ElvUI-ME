@@ -141,7 +141,7 @@ E.Options.args.meat = {
 					type = "toggle",
 					order = 11,
 					name = L['Mouse Over'],
-					disabled = function() return not E.db.actionbar.enable or not E.db.meat.microbar.enable end,
+					disabled = function() return not E.global.actionbar.enable or not E.db.meat.microbar.enable end,
 				},
 			},
 		},
