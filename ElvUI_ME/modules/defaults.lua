@@ -19,7 +19,6 @@ function MEAT:LoadDefaultSetting()
 			-- fonts
 			["fontsize"] = 12,
 			["font"] = "ElvUI Font",
-			["dmgfont"] = "ElvUI Combat",
 		
 			--colors
 			["bordercolor"] = { r = 30/255,g = 30/255,b = 30/255 },
@@ -70,8 +69,11 @@ function MEAT:LoadDefaultSetting()
 
 		--Chat
 		E.db['chat'] = {
-			['url'] = true;
-			['shortChannels'] = true;
+			['url'] = true,
+			['shortChannels'] = true,
+			['hyperlinkHover'] = true,
+			['throttleInterval'] = 0,
+			['scrollDownInterval'] = 15,
 		}
 
 		--ClassTimers
@@ -736,6 +738,7 @@ function MEAT:LoadDefaultSetting()
 						['text_format'] = 'current-percent',
 						['position'] = 'RIGHT',
 						['orientation'] = 'HORIZONTAL',
+						['frequentUpdates'] = false,
 					},
 					['power'] = {
 						['enable'] = true,
@@ -831,6 +834,7 @@ function MEAT:LoadDefaultSetting()
 						['text_format'] = 'deficit',
 						['position'] = 'BOTTOM',
 						['orientation'] = 'HORIZONTAL',
+						['frequentUpdates'] = false,
 					},
 					['power'] = {
 						['enable'] = true,
@@ -913,6 +917,7 @@ function MEAT:LoadDefaultSetting()
 						['text_format'] = 'deficit',
 						['position'] = 'BOTTOM',
 						['orientation'] = 'HORIZONTAL',
+						['frequentUpdates'] = false,
 					},
 					['power'] = {
 						['enable'] = false,

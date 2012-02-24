@@ -16,3 +16,10 @@ L["ME Chatfont"] = "채팅창 글꼴"
 L["ME Microbar"] = "마이크로바"
 L["TOPLEFTDT"] = "상단 로고 좌측 패널"
 L["TOPRIGHTDT"] = "상단 로고 우측 패널"
+
+
+-- fix Mistranslation
+L["copperabbrev"] = "|cffeda55f●|r"
+L["goldabbrev"] = "|cffffd700●|r"
+L["silverabbrev"] = "|cffc7c7cf●|r"
+L["HP"] = "주문력"
