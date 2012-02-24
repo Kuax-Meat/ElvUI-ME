@@ -1,12 +1,13 @@
 ﻿## Interface: 40300
 ## Author: Meat
-## Version: 1.04
+## Version: 1.05
 ## Title: |cff1784D1ElvUI|r : |cffFF139BMeat Edition|r
 ## Notes: Enhanced features of ElvUI v3
 ## RequiredDeps: ElvUI
 ## X-oUF: ElvUF
 
 libs\load_libs.xml
+locales\load_locales.xml
 media\load_media.xml
 config\load_config.xml
 core\load_core.xml

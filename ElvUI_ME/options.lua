@@ -3,9 +3,7 @@ local MEAT = E:GetModule('MEAT')
 local DT = E:GetModule('DataTexts')
 
 local datatexts = {}
-
-L['TOPLEFTDT'] = '상단 로고 좌측 패널';
-L['TOPRIGHTDT'] = '상단 로고 우측 패널';
+local version = GetAddOnMetadata("ElvUI_ME", "Version");
 
 function DT:PanelLayoutOptions2()	
 	for name, _ in pairs(DT.RegisteredDataTexts) do
@@ -49,7 +47,7 @@ end
 
 E.Options.args.meat = {
 	type = "group",
-	name = L["|cffff139bMeat Edition|r"],
+	name = L["Meat Edition"],
 	childGroups = "select",
 	get = function(info) return E.db.meat[ info[#info] ] end,
 	set = function(info, value) E.db.meat[ info[#info] ] = value; end,
@@ -57,32 +55,32 @@ E.Options.args.meat = {
 		header = {
 			order = 1,
 			type = "header",
-			name = L["|cffff139bMeat Edition|r 1.04 Release"],
+			name = L["Meat Edition"]..format(" %s", version),
 		},
 		intro = {
 			order = 2,
 			type = "description",
-			name = L["|cffff139bMeat Edition|r의 모든 코드는 |cff599fffElv|r와 |cff599fffMeat|r가 작성하였습니다. (Special Credit: odine)"],
-		},
-		reinstall = {
-			order = 3,
-			type = 'execute',
-			name = L['|cffff0000재설치|r'],
-			desc = L['Meat Edition을 재설치합니다.'],
-			func = function() E.db.meat.setup = false; StaticPopup_Show("CONFIG_RL"); end,
+			name = L["Meat Edition DESC"],
 		},
 		note = {
-			order = 4,
+			order = 3,
 			type = "group",
-			name = L["기능 및 변경사항"],
+			name = L["ME Changelog"],
 			guiInline = true,
 			args = {
 				notes = {
 					order = 1,
 					type = "description",
-					name = L["|cff599fff2012/2/23 - 1.04 Release|r\n  |cffff139b* 버그 수정 내역|r\n   1. 행동 단축바 사용 안함시 발생하는 LUA 오류 해결\n   2. 전투문자 글꼴이 바뀌지 않던 점 수정\n   3. 코드 안정화\n   4. 유닛프레임 버그 픽스\n   5. 상단 패널에 현재 좌표와 위치를 표시하는 기능 추가"],
+					name = L["ME Changelog DESC"],
 				},
 			},
+		},
+		reinstall = {
+			order = 4,
+			type = 'execute',
+			name = L["ME Reinstall"],
+			desc = L["ME Reinstall DESC"],
+			func = function() E.db.meat.setup = false; StaticPopup_Show("CONFIG_RL"); end,
 		},
 		generals = {
 			order = 5,
@@ -93,20 +91,20 @@ E.Options.args.meat = {
 				upperpanels = {
 					order = 1,
 					type = "toggle",
-					name = L["상단 패널"],
+					name = L["ME UPPANEL"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; E:GetModule('Layout'):TogglePanels(); E:GetModule('MEAT'):MinimapLocToggle(); end
 				},
 				bottompanels = {
 					order = 2,
 					type = "toggle",
-					name = L["하단 패널"],
+					name = L["ME BOTPANEL"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; E:GetModule('Layout'):TogglePanels(); end
 				},
 				actionbarlayout = {
 					order = 3,
 					type = "toggle",
-					name = L["액션바 고정"],
-					desc = L['바2를 바1 위에 끼워넣고 모든 바를 1번 바에 종속시킵니다.'],
+					name = L["ME AB FIX"],
+					desc = L["ME AB FIX DESC"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; E:GetModule('ActionBars'):AdjustBarPos(); StaticPopup_Show("CONFIG_RL"); end
 				},
 			},
@@ -114,14 +112,13 @@ E.Options.args.meat = {
 		medias = {
 			order = 6,
 			type = "group",
-			name = L["미디어"],
+			name = L["Media"],
 			guiInline = true,
 			args = {
 				font = {
 					type = "select", dialogControl = 'LSM30_Font',
 					order = 1,
-					name = L["채팅창 글꼴"],
-					desc = L["채팅창 글꼴 설정"],
+					name = L["ME Chatfont"],
 					values = AceGUIWidgetLSMlists.font,	
 					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end,
 				},
@@ -130,7 +127,7 @@ E.Options.args.meat = {
 		microbar = {
 			type = "group",
 			order = 7,
-			name = L["마이크로 바"],
+			name = L["ME Microbar"],
 			guiInline = true,
 			get = function(info) return E.db.meat.microbar[ info[#info] ] end,
 			set = function(info, value) E.db.meat.microbar[ info[#info] ] = value; E:GetModule('ActionBars'):UpdateMicroBar(); end,
@@ -144,7 +141,6 @@ E.Options.args.meat = {
 					type = "toggle",
 					order = 11,
 					name = L['Mouse Over'],
-					desc = L['The frame is not shown unless you mouse over the frame.'],
 					disabled = function() return not E.db.actionbar.enable or not E.db.meat.microbar.enable end,
 				},
 			},
