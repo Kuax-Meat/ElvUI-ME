@@ -74,7 +74,7 @@ function MEAT:LoadDefaultSetting()
 			['hyperlinkHover'] = true,
 			['throttleInterval'] = 0,
 			['scrollDownInterval'] = 15,
-			['minWhisperLevel'] = 5,
+			['minWhisperLevel'] = 4,
 		}
 
 		--ClassTimers

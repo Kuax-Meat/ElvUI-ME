@@ -1,6 +1,6 @@
 ﻿## Interface: 40300
 ## Author: Meat
-## Version: 1.06
+## Version: 1.08
 ## Title: |cff1784D1ElvUI|r : |cffFF139BMeat Edition|r
 ## Notes: Enhanced features of ElvUI v3
 ## RequiredDeps: ElvUI

@@ -1,4 +1,4 @@
-local E, L, P, G = unpack(ElvUI); --Inport: Engine, Locales, ProfileDB, GlobalDB
+local E, L, P, G = unpack(ElvUI); --Import: Engine, Locales, ProfileDB, GlobalDB
 local A = E:GetModule('Auras');
 
 local warningTime = 5

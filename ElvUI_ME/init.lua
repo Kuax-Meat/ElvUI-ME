@@ -77,7 +77,10 @@ function MEAT:Initialize()
 	DBFholder:Width(456)
 	DBFholder:Height(30)
 	E:CreateMover(DBFAurasHolder, "DAurasMover", "Debuff Auras Frame", false, A.DAurasPostDrag)
-	
+	DBFAurasHolder.ClearAllPoints = E.noop
+	DBFAurasHolder.SetPoint = E.noop
+	DBFAurasHolder.SetAllPoints = E.noop
+
 	E:GetModule('Blizzard'):HandleBubbles()
 	LO:CreatePanels()
 	AB:UpdateABFont()
