@@ -107,20 +107,49 @@ E.Options.args.meat = {
 					desc = L["ME AB FIX DESC"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; E:GetModule('ActionBars'):AdjustBarPos(); StaticPopup_Show("CONFIG_RL"); end
 				},
+				showtalent = {
+					order = 4,
+					type = "toggle",
+					name = L["ME Showtalent"],
+					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
+				},--[[
+				autogreed = {
+					order = 5,
+					type = "toggle",
+					name = L["ME Greed"],
+					desc = L["ME Greed DESC"],
+					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
+				}, ]]--
+				autorelease = {
+					order = 6,
+					type = "toggle",
+					name = L["ME autorelease"],
+					desc = L["ME autorelease DESC"],
+					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
+				},
 			},
 		},
-		medias = {
-			order = 6,
+		media = {
 			type = "group",
+			order = 6,
 			name = L["Media"],
 			guiInline = true,
 			args = {
-				font = {
-					type = "select", dialogControl = 'LSM30_Font',
+				whisper = {
 					order = 1,
-					name = L["ME Chatfont"],
-					values = AceGUIWidgetLSMlists.font,	
-					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end,
+					type = 'toggle',
+					name = L['ME Whispersound'],
+					desc = L['ME Whispersound DESC'],
+					set = function(info, value) E.db.meat[ info[#info] ] = value; end,
+				},
+				whispersound = {
+					order = 2,
+					type = 'select', dialogControl = 'LSM30_Sound',
+					name = L['ME Whispersound'],
+					desc = L['ME Whispersound DESC'],
+					disabled = function() return not E.db.meat.whisper end,
+					values = AceGUIWidgetLSMlists.sound,
+					set = function(info, value) E.db.meat[ info[#info] ] = value; MEAT:SetupMedia(); end,
 				},
 			},
 		},

@@ -21,10 +21,10 @@ function MEAT:LoadDefaultSetting()
 			["font"] = "ElvUI Font",
 		
 			--colors
-			["bordercolor"] = { r = 30/255,g = 30/255,b = 30/255 },
-			["backdropcolor"] = { r = 34/255,g = 34/255,b = 36/255 },
+			["bordercolor"] = { r = 63/255,g = 63/255,b = 63/255 },
+			["backdropcolor"] = { r = .1,g = .1,b = .1 },
 			["backdropfadecolor"] = { r = .06,g = .06,b = .06, a = 0.9 },
-			["valuecolor"] = {r = 255/255,g = 19/255,b = 155/255 },
+			["valuecolor"] = {r = 23/255,g = 132/255,b = 209/255},
 			
 			--panels
 			['panelWidth'] = 320,
@@ -36,6 +36,8 @@ function MEAT:LoadDefaultSetting()
 			
 			--misc
 			['mapTransparency'] = 1,
+			['minimapSize'] = 175,
+			['raidReminder'] = true,
 		};
 
 		--NamePlate
@@ -75,6 +77,8 @@ function MEAT:LoadDefaultSetting()
 			['throttleInterval'] = 0,
 			['scrollDownInterval'] = 15,
 			['minWhisperLevel'] = 4,
+			['font'] = 'ElvUI Font',
+			['fontoutline'] = 'NONE',
 		}
 
 		--ClassTimers

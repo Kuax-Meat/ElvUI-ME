@@ -8,4 +8,5 @@
 	<Include file='reminder\load_reminder.xml'/>
 	<Include file='auras.lua'/>
   <Include file='embedright.lua'/>
+  <Include file='autorelease.lua'/>
 </Ui>

@@ -71,6 +71,18 @@ function MEAT:MinimapLocToggle()
 	end
 end
 
+function MEAT:SetupMedia()
+	E["media"].whisper = LSM:Fetch("sound", E.db["meat"].whispersound)
+end
+
+function MEAT:WhisperAlarm(event)
+	if event == "CHAT_MSG_WHISPER" or "CHAT_MSG_BN_WHISPER" then
+		if E.db.meat.whisper == true then
+			PlaySoundFile(E["media"].whisper, "Master")
+		end
+	end
+end
+
 function MEAT:Initialize()
 	local DBFholder = CreateFrame("Frame", "DBFAurasHolder", E.UIParent)
 	DBFholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -((E.MinimapSize + 4) + E.RBRWidth + 7), -(4 + E.MinimapHeight))
@@ -90,6 +102,14 @@ function MEAT:Initialize()
 	DT:PanelLayoutOptions2()
 	DT:LoadDataTexts()
 	self:MinimapLocationPanels()
+
+	self:SetupMedia()
+
+	--RegisterEvent
+	self:RegisterEvent('CHAT_MSG_BN_WHISPER', 'WhisperAlarm')
+	self:RegisterEvent('CHAT_MSG_WHISPER', 'WhisperAlarm')
+	--self:Autogreed()
+	self:Autorelease()
 end
 
 E:RegisterModule(MEAT:GetName())

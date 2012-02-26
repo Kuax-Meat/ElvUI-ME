@@ -3,13 +3,17 @@
 P["meat"] = {
 	["upperpanels"] = true,
 	["bottompanels"] = true,
-	["font"] = "ElvUI Font",
 	["setup"] = false,
 	["microbar"] = {
 		["enable"] = true,
 		["mouseover"] = false,
 	},
 	["actionbarlayout"] = true,
+	["showtalent"] = true,
+	["whisper"] = true,
+	["whispersound"] = "ElvUI Warning",
+	["autogreed"] = true,
+	["autorelease"] = true,
 }
 
 P['datatexts'] = {

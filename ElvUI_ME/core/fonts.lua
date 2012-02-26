@@ -40,18 +40,13 @@ function AB:UpdateABFont()
 end
 
 
--- Blizz&chat fontset
+-- Blizz fontset
 local function SetFont(obj, font, size, style, r, g, b, sr, sg, sb, sox, soy)
 	obj:SetFont(font, size, style)
 	if sr and sg and sb then obj:SetShadowColor(sr, sg, sb) end
 	if sox and soy then obj:SetShadowOffset(sox, soy) end
 	if r and g and b then obj:SetTextColor(r, g, b)
 	elseif r then obj:SetAlpha(r) end
-end
-
-function E:SetFrameFont(cf, fontSize)
-	local font = LSM:Fetch("font", self.db['meat'].font)
-	cf:SetFont(font, fontSize, nil)
 end
 
 function E:UpdateBlizzardFonts()	
@@ -116,10 +111,4 @@ function E:UpdateBlizzardFonts()
 	SetFont(PVPInfoTextString,					NORMAL, 22, "OUTLINE")
 	SetFont(PVPArenaTextString,					NORMAL, 22, "OUTLINE")
 	SetFont(CombatTextFont,                     COMBAT, 100, "OUTLINE") -- number here just increase the font quality.
-	
-	for i = 1, NUM_CHAT_WINDOWS do
-		local cf = _G["ChatFrame" .. i]
-		local _, fontSize = FCF_GetChatWindowInfo(i)
-		self:SetFrameFont(cf, fontSize)
-	end
 end
