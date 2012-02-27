@@ -11,7 +11,7 @@ P["meat"] = {
 	["actionbarlayout"] = true,
 	["showtalent"] = true,
 	["whisper"] = true,
-	["whispersound"] = "ElvUI Warning",
+	["whispersound"] = "ElvUI Whisper",
 	["autogreed"] = true,
 	["autorelease"] = true,
 }
