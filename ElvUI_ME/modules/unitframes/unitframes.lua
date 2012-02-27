@@ -545,7 +545,7 @@ function UF:Update_PlayerFrame(frame, db)
 			threat:Point("BOTTOMRIGHT", 4-POWERBAR_OFFSET, -4)	
 		end		
 
-		if POWERTHEME == true or USE_POWERBAR_OFFSET == true then
+		if USE_POWERBAR_OFFSET == true then
 			if USE_PORTRAIT == true and not USE_PORTRAIT_OVERLAY then
 				threat:Point("BOTTOMLEFT", frame.Portrait.backdrop, "BOTTOMLEFT", -4, -4)
 			else
@@ -1904,6 +1904,7 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 	local db = E.db['unitframe']['units'].player
 	local health = self:GetParent().Health
 	local frame = self:GetParent()
+	local threat = frame.Threat
 	local PORTRAIT_WIDTH = db.portrait.width
 	local USE_PORTRAIT = db.portrait.enable
 	local USE_PORTRAIT_OVERLAY = db.portrait.overlay and USE_PORTRAIT
@@ -1920,6 +1921,10 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 	local POWERBAR_OFFSET = db.power.offset
 	local BORDER = E:Scale(2)
 	
+	if not USE_POWERBAR then
+		POWERBAR_HEIGHT = 0
+	end
+
 	if USE_PORTRAIT_OVERLAY or not USE_PORTRAIT then
 		PORTRAIT_WIDTH = 0
 	end
@@ -1936,6 +1941,28 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 		end
 		health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -(2 + CLASSBAR_HEIGHT + 1))	
 		
+		--[[
+		local mini_classbarY = 0
+		if USE_MINI_CLASSBAR then
+			mini_classbarY = -(SPACING+(CLASSBAR_HEIGHT))
+		end		
+
+		threat:Point("TOPLEFT", -4, 4+mini_classbarY)
+		threat:Point("TOPRIGHT", 4, 4+mini_classbarY)
+
+		if USE_MINI_POWERBAR then
+			threat:Point("BOTTOMLEFT", -4, -4 + (POWERBAR_HEIGHT/2))
+			threat:Point("BOTTOMRIGHT", 4, -4 + (POWERBAR_HEIGHT/2))		
+		else
+			threat:Point("BOTTOMLEFT", -4, -4)
+			threat:Point("BOTTOMRIGHT", 4, -4)
+		end		
+
+		if USE_POWERBAR_OFFSET then
+			threat:Point("TOPRIGHT", 4-POWERBAR_OFFSET, 4+mini_classbarY)
+			threat:Point("BOTTOMRIGHT", 4-POWERBAR_OFFSET, -4)	
+		end
+		]]--
 		if db.portrait.enable and not db.portrait.overlay then
 			local portrait = self:GetParent().Portrait
 			portrait.backdrop:ClearAllPoints()

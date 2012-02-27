@@ -22,7 +22,7 @@ function MEAT:LoadDefaultSetting()
 		
 			--colors
 			["bordercolor"] = { r = 63/255,g = 63/255,b = 63/255 },
-			["backdropcolor"] = { r = .1,g = .1,b = .1 },
+			["backdropcolor"] = { r = 42/255,g = 42/255,b = 42/255 },
 			["backdropfadecolor"] = { r = .06,g = .06,b = .06, a = 0.9 },
 			["valuecolor"] = {r = 23/255,g = 132/255,b = 209/255},
 			
