@@ -1,4 +1,5 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Include file='install.lua'/>
 	<Include file='defaults.lua'/>
 	<Include file='actionbars\actionbars.lua'/>
 	<Include file='blizzard\load_blizzard.xml'/>
