@@ -12,6 +12,9 @@ P["meat"] = {
 	["showtalent"] = true,
 	["whisper"] = true,
 	["whispersound"] = "ElvUI Whisper",
+	["fontsize"] = 12,
+	["font"] = "ElvUI Font",
+	["fontflag"] = "NONE",
 	["autogreed"] = true,
 	["autorelease"] = true,
 }

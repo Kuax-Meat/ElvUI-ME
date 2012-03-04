@@ -5,6 +5,7 @@ local AB = E:GetModule('ActionBars');
 local DT = E:GetModule('DataTexts')
 local A = E:GetModule('Auras');
 local M = E:GetModule('Maps');
+local CH = E:GetModule('Chat')
 
 local LSM = LibStub("LibSharedMedia-3.0")
 
@@ -14,7 +15,7 @@ function MEAT:MinimapLocationPanels()
 	y = math.floor(100 * y)	
 	
 	ElvuiLoc.zone = ElvuiLoc:CreateFontString(nil, "Overlay")
-	ElvuiLoc.zone:FontTemplate()
+	ElvuiLoc.zone:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 	ElvuiLoc.zone:SetPoint("CENTER")
 	ElvuiLoc.zone:SetText(strsub(GetMinimapZoneText(),1,36))
 	ElvuiLoc:EnableMouse(true)
@@ -22,13 +23,13 @@ function MEAT:MinimapLocationPanels()
 	
 	
 	ElvuiLocX.coord = ElvuiLocX:CreateFontString(nil, "Overlay")
-	ElvuiLocX.coord:FontTemplate()
+	ElvuiLocX.coord:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 	ElvuiLocX.coord:SetPoint("CENTER", ElvuiLocX, "CENTER")
 	ElvuiLocX.coord:SetText(x)	
 	ElvuiLocX.coord:SetTextColor(unpack(E["media"].rgbvaluecolor))
 	
 	ElvuiLocY.coord = ElvuiLocY:CreateFontString(nil, "Overlay")
-	ElvuiLocY.coord:FontTemplate()
+	ElvuiLocY.coord:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 	ElvuiLocY.coord:SetPoint("CENTER", ElvuiLocY, "CENTER")
 	ElvuiLocY.coord:SetText(y)	
 	ElvuiLocY.coord:SetTextColor(unpack(E["media"].rgbvaluecolor))
@@ -72,6 +73,7 @@ function MEAT:MinimapLocToggle()
 end
 
 function MEAT:SetupMedia()
+	E["meat"].font = LSM:Fetch("font", E.db['meat'].font)
 	E["media"].whisper = LSM:Fetch("sound", E.db["meat"].whispersound)
 end
 
@@ -83,7 +85,20 @@ function MEAT:WhisperAlarm(event)
 	end
 end
 
+function MEAT:UpdateMedia()
+	AB:UpdateABFont()
+	CH:UpdateTabFont()
+	DT:UpdateFontStyle()
+	A:UpdateFontStyle()
+
+	LeftChatToggleButton.text:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
+	RightChatToggleButton.text:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
+	ElvConfigToggle.text:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
+end
+
 function MEAT:Initialize()
+	E["meat"] = {};
+
 	local DBFholder = CreateFrame("Frame", "DBFAurasHolder", E.UIParent)
 	DBFholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -((E.MinimapSize + 4) + E.RBRWidth + 7), -(4 + E.MinimapHeight))
 	DBFholder:Width(456)
@@ -93,9 +108,12 @@ function MEAT:Initialize()
 	DBFAurasHolder.SetPoint = E.noop
 	DBFAurasHolder.SetAllPoints = E.noop
 
+	--Setup Media
+	self:SetupMedia()
+
+	--Build MEAT EDITION
 	E:GetModule('Blizzard'):HandleBubbles()
 	LO:CreatePanels()
-	AB:UpdateABFont()
 	self:LoadDefaultSetting()
 	AB:AdjustBarPos()
 	AB:MakeShadows()
@@ -103,7 +121,8 @@ function MEAT:Initialize()
 	DT:LoadDataTexts()
 	self:MinimapLocationPanels()
 
-	self:SetupMedia()
+	--Update Media
+	self:UpdateMedia()
 
 	--RegisterEvent
 	self:RegisterEvent('CHAT_MSG_BN_WHISPER', 'WhisperAlarm')

@@ -1,44 +1,5 @@
 local E, L, P, G = unpack(ElvUI); --Import: Engine, Locales, ProfileDB, GlobalDB
-local AB = E:GetModule('ActionBars');
 local LSM = LibStub("LibSharedMedia-3.0")
-
-
--- Action Bar fontset
-function AB:StyleFont(button, noBackdrop)
-	local name = button:GetName();
-	local count = _G[name.."Count"];
-	local hotkey = _G[name.."HotKey"];
-	local macroName = _G[name.."Name"];
-	
-	if count then
-		count:ClearAllPoints();
-		count:SetPoint("BOTTOMRIGHT", 1, 0);
-		count:FontTemplate(LSM:Fetch("font", E.db['general'].font), E.db.actionbar.fontsize, 'OUTLINE');
-	end
-	
-	if self.db.macrotext and macroName then
-		macroName:ClearAllPoints();
-		macroName:SetPoint("BOTTOM", 2, 2);
-		macroName:FontTemplate(LSM:Fetch("font", E.db['general'].font), E.db.actionbar.fontsize, 'OUTLINE');
-	end
-	
-	if self.db.hotkeytext then
-		hotkey:FontTemplate(LSM:Fetch("font", E.db['general'].font), E.db.actionbar.fontsize, 'OUTLINE');
-	end
-end
-
-function AB:UpdateABFont()
-	if E.global.actionbar.enable ~= true then return end
-	for button, _ in pairs(self["handledbuttons"]) do
-		if button then
-			self:StyleFont(button, button.noBackdrop)
-			--self:StyleFlyout(button)
-		else
-			self["handledbuttons"][button] = nil
-		end
-	end
-end
-
 
 -- Blizz fontset
 local function SetFont(obj, font, size, style, r, g, b, sr, sg, sb, sox, soy)

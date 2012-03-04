@@ -2,7 +2,10 @@
   <Include file='install.lua'/>
 	<Include file='defaults.lua'/>
 	<Include file='actionbars\actionbars.lua'/>
+  <Include file='auras\auras.lua'/>
 	<Include file='blizzard\load_blizzard.xml'/>
+  <Include file='chat\chat.lua'/>
+  <Include file='datatexts\datatexts.lua'/>
 	<Include file='tooltips\tooltips.lua'/>
 	<Include file='unitframes\load_unitframes.xml'/>
 	<Include file='microbar.lua'/>
