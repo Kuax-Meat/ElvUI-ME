@@ -94,6 +94,7 @@ function MEAT:UpdateMedia()
 	LeftChatToggleButton.text:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 	RightChatToggleButton.text:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 	ElvConfigToggle.text:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
+	Minimap.location:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 end
 
 function MEAT:Initialize()

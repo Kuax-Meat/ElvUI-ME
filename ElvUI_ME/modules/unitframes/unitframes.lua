@@ -102,6 +102,8 @@ end
 ---------------
 -- Update UF --
 ---------------
+
+-- Focus Frame
 function UF:Update_FocusFrame(frame, db)
 	frame.db = db
 	local BORDER = E:Scale(2)
@@ -412,6 +414,8 @@ function UF:Update_FocusFrame(frame, db)
 	frame:UpdateAllElements()
 end
 
+
+-- Player Frame
 local CAN_HAVE_CLASSBAR = (E.myclass == "PALADIN" or E.myclass == "SHAMAN" or E.myclass == "DRUID" or E.myclass == "DEATHKNIGHT" or E.myclass == "WARLOCK")
 
 function UF:Construct_PlayerFrame(frame)
@@ -555,6 +559,20 @@ function UF:Update_PlayerFrame(frame, db)
 		end				
 	end
 	]]--
+
+	--Rest Icon
+	do
+		local rIcon = frame.Resting
+		if db.restIcon then
+			if not frame:IsElementEnabled('Resting') then
+				frame:EnableElement('Resting')
+			end				
+		elseif frame:IsElementEnabled('Resting') then
+			frame:DisableElement('Resting')
+			rIcon:Hide()
+		end
+	end
+
 	--Health
 	do
 		local health = frame.Health
@@ -1196,7 +1214,7 @@ function UF:Update_PlayerFrame(frame, db)
 	frame:UpdateAllElements()
 end
 
-
+-- Target Frame
 function UF:Update_TargetFrame(frame, db)
 	frame.db = db
 	local BORDER = E:Scale(2)
@@ -1653,7 +1671,7 @@ function UF:Update_TargetFrame(frame, db)
 	frame:UpdateAllElements()
 end
 
-
+-- TargetTarget Frame
 function UF:Update_TargetTargetFrame(frame, db)
 	frame.db = db
 	local BORDER = E:Scale(2)
@@ -1900,6 +1918,7 @@ function UF:Update_TargetTargetFrame(frame, db)
 	frame:UpdateAllElements()
 end
 
+-- Druid Portrait Setting
 function UF:DruidResourceBarVisibilityUpdate(unit)
 	local db = E.db['unitframe']['units'].player
 	local health = self:GetParent().Health
@@ -2005,6 +2024,11 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 		end		
 	end
 end
+
+
+------------------------
+-- Re-Build Info Text --
+------------------------
 
 local function GetInfoText(frame, unit, r, g, b, min, max, reverse, type)
 	local value

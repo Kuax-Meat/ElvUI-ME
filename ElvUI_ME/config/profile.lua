@@ -14,7 +14,7 @@ P["meat"] = {
 	["whispersound"] = "ElvUI Whisper",
 	["fontsize"] = 12,
 	["font"] = "ElvUI Font",
-	["fontflag"] = "NONE",
+	["fontflag"] = "OUTLINE",
 	["autogreed"] = true,
 	["autorelease"] = true,
 }

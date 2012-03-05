@@ -76,7 +76,6 @@ function MEAT:LoadDefaultSetting()
 			['hyperlinkHover'] = true,
 			['throttleInterval'] = 0,
 			['scrollDownInterval'] = 15,
-			['minWhisperLevel'] = 4,
 			['font'] = 'ElvUI Font',
 			['fontoutline'] = 'NONE',
 		}
