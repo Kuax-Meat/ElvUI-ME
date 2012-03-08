@@ -1,16 +1,16 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
-  <Include file='install.lua'/>
+	<Include file='install.lua'/>
 	<Include file='defaults.lua'/>
 	<Include file='actionbars\actionbars.lua'/>
-  <Include file='auras\auras.lua'/>
+	<Include file='auras\auras.lua'/>
 	<Include file='blizzard\load_blizzard.xml'/>
-  <Include file='chat\chat.lua'/>
-  <Include file='datatexts\datatexts.lua'/>
-	<Include file='tooltips\tooltips.lua'/>
+	<Include file='chat\chat.lua'/>
+	<Include file='datatexts\datatexts.lua'/>
+	<Include file='tooltips\load_tooltips.xml'/>
 	<Include file='unitframes\load_unitframes.xml'/>
 	<Include file='microbar.lua'/>
 	<Include file='reminder\load_reminder.xml'/>
 	<Include file='auras.lua'/>
-  <Include file='embedright.lua'/>
-  <Include file='autorelease.lua'/>
+	<Include file='embedright.lua'/>
+	<Include file='autorelease.lua'/>
 </Ui>

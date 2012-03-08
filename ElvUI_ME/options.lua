@@ -121,10 +121,17 @@ E.Options.args.meat = {
 					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
 				}, ]]--
 				autorelease = {
-					order = 6,
+					order = 5,
 					type = "toggle",
 					name = L["ME autorelease"],
 					desc = L["ME autorelease DESC"],
+					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
+				},
+				ttilvl = {
+					order = 6,
+					type = "toggle",
+					name = L["ME ilvl"],
+					desc = L["ME ilvl DESC"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
 				},
 			},

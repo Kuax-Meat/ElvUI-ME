@@ -17,6 +17,7 @@ P["meat"] = {
 	["fontflag"] = "OUTLINE",
 	["autogreed"] = true,
 	["autorelease"] = true,
+	["ttilvl"] = true,
 }
 
 P['datatexts'] = {

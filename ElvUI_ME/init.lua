@@ -64,11 +64,13 @@ function MEAT:MinimapLocToggle()
 		ElvuiLoc.zone:Show()
 		ElvuiLocX.coord:Show()
 		ElvuiLocY.coord:Show()
+		WorldStateAlwaysUpFrame:SetPoint("TOP", E.UIParent, "TOP", -5, -40)
 	else
 		Minimap.location:Show()
 		ElvuiLoc.zone:Hide()
 		ElvuiLocX.coord:Hide()
 		ElvuiLocY.coord:Hide()
+		WorldStateAlwaysUpFrame:SetPoint("TOP", E.UIParent, "TOP", -5, -15)
 	end
 end
 

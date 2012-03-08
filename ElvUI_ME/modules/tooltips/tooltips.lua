@@ -1,4 +1,4 @@
-local E, L, P, G = unpack(ElvUI); --Inport: Engine, Locales, ProfileDB, GlobalDB
+local E, L, P, G = unpack(ElvUI); --Import: Engine, Locales, ProfileDB, GlobalDB
 local TT = E:GetModule('Tooltip')
 
 if E.global["tooltip"].enable ~= true then return end

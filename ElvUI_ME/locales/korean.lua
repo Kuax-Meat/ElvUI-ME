@@ -7,7 +7,7 @@ L["Meat Edition DESC"] = "|cffff139bMeat Edition|r의 모든 코드는 |cff599ff
 L["ME Reinstall"] = "|cffff0000재설치|r"
 L["ME Reinstall DESC"] = "Meat Edition을 재설치합니다."
 L["ME Changelog"] = "기능 및 변경사항"
-L["ME Changelog DESC"] = "|cff599fff2012/3/05|r\n  |cffff139b* 버그 수정 내역|r\n   1. 행동 단축바 사용 안함시 발생하는 LUA 오류 해결\n   2. 전투문자 글꼴이 바뀌지 않던 점 수정\n   3. 코드 안정화\n   4. 유닛프레임 버그 픽스\n   5. 상단 패널에 현재 좌표와 위치를 표시하는 기능 추가\n   6. LUA 오류 해결\n   7. Omen/Recount 끼워넣기 옵션 추가 (왼쪽 스킨탭에서 설정가능)\n   |cffff00008. 자동 차비/마출 기능 추가 (삭제)|r\n   9. 귓속말 도착시 알림 소리 설정 기능 추가\n   10. 전장 자동부활 옵션 추가\n   11. 미트에디션 설치가 정상적으로 되지 않는 문제 해결\n   12. 글꼴 설정 옵션 추가"
+L["ME Changelog DESC"] = "|cff599fff2012/3/08|r\n  |cffff139b* 변경 내역|r\n   1. 상단 패널에 현재 좌표와 위치를 표시하는 기능 추가\n   2. LUA 오류 해결\n   3. Omen/Recount 끼워넣기 옵션 추가 (왼쪽 스킨탭에서 설정가능)\n   |cffff00004. 자동 차비/마출 기능 추가 (삭제)|r\n   5. 귓속말 도착시 알림 소리 설정 기능 추가\n   6. 전장 자동부활 옵션 추가\n   7. 미트에디션 설치가 정상적으로 되지 않는 문제 해결\n   8. 글꼴 설정 옵션 추가\n   9. 툴팁 아이템 레벨 표시 옵션 추가"
 L["ME UPPANEL"] = "상단 패널"
 L["ME BOTPANEL"] = "하단 패널"
 L["ME AB FIX"] = "액션바 고정"
@@ -29,6 +29,8 @@ L["ME autorelease DESC"] = "전장에서 사망했을 시 자동으로 부활합
 L["ME Font Size DESC"] = "오라, 채팅창 탭, 정보문자, 행동 단축바의 글꼴 크기를 조절합니다."
 L["ME Default Font DESC"] = "오라, 채팅창 탭, 정보문자, 행동 단축바의 글꼴 종류를 선택합니다."
 L["ME Fontflags"] = "글꼴 형태"
+L["ME ilvl"] = "평균 아이템 레벨"
+L["ME ilvl DESC"] = "툴팁에 평균 아이템 레벨을 표시합니다."
 
 -- fix Mistranslation
 L["copperabbrev"] = "|cffeda55f●|r"
