@@ -131,7 +131,9 @@ function AB:CreateMicroBar()
 	x:SetPoint("BOTTOMRIGHT", HelpMicroButton.frame, "BOTTOMRIGHT")
 	x:EnableMouse(true)
 	x.mouseover = false
-	x:CreateShadow("Default")
+	if E.db.meat.shadows == true then
+		x:CreateShadow("Default")
+	end
 	x:SetScript("OnEnter", function(self) self.mouseover = true end)
 	x:SetScript("OnLeave", function(self) self.mouseover = false end)
 	

@@ -107,8 +107,15 @@ E.Options.args.meat = {
 					desc = L["ME AB FIX DESC"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; E:GetModule('ActionBars'):AdjustBarPos(); StaticPopup_Show("CONFIG_RL"); end
 				},
-				showtalent = {
+				shadows = {
 					order = 4,
+					type = "toggle",
+					name = L["ME shadows"],
+					desc = L["ME shadows DESC"],
+					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
+				},
+				showtalent = {
+					order = 5,
 					type = "toggle",
 					name = L["ME Showtalent"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
@@ -121,18 +128,28 @@ E.Options.args.meat = {
 					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
 				}, ]]--
 				autorelease = {
-					order = 5,
+					order = 6,
 					type = "toggle",
 					name = L["ME autorelease"],
 					desc = L["ME autorelease DESC"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
 				},
 				ttilvl = {
-					order = 6,
+					order = 7,
 					type = "toggle",
 					name = L["ME ilvl"],
 					desc = L["ME ilvl DESC"],
 					set = function(info, value) E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end
+				},
+				uflayout = {
+					order = 8,
+					name = L['ME UF layout'],
+					type = 'select',
+					values = {
+						['Zeph'] = "Zeph",
+						['Duffed'] = "Duffed",
+					},
+					set = function(info, value) E:GetModule('UnitFrames'):Build_Layout(value); E.db.meat[ info[#info] ] = value; StaticPopup_Show("CONFIG_RL"); end,
 				},
 			},
 		},

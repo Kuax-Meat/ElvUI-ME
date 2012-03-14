@@ -18,6 +18,10 @@ P["meat"] = {
 	["autogreed"] = true,
 	["autorelease"] = true,
 	["ttilvl"] = true,
+	["shadows"] = true,
+	["uflayout"] = "Zeph",
+	["zephlayout"] = true,
+	["duffedlayout"] = false,
 }
 
 P['datatexts'] = {

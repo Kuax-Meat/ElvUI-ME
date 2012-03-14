@@ -14,10 +14,13 @@ local A = E:GetModule('Auras')
 local aurahook = CreateFrame("frame")
 
 local function StyleBuffs_Mods(buttonName, index)	
-local db = E.db.skins.phenox
-	
 	local duration = _G[buttonName..index.."Duration"]
 	local count = _G[buttonName..index.."Count"]
+	local buff = _G[buttonName..index]
+
+	if E.db.meat.shadows == true and not buff.backdrop.shadow then
+		buff.backdrop:CreateShadow('Default')
+	end
 	
 	duration:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 	count:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
@@ -44,8 +47,6 @@ local function UpdateDebuffs_Mods()
 end
 
 function A:UpdateFontStyle()
-local db = E.db.skins.phenox
-
 	for i = 1, 3 do
 		_G["TempEnchant"..i.."Duration"]:FontTemplate(E["meat"].font, E.db.meat.fontsize, E.db.meat.fontflag)
 	end

@@ -2,48 +2,6 @@ local E, L, P, G = unpack(ElvUI); --Inport: Engine, Locales, ProfileDB, GlobalDB
 local UF = E:GetModule('UnitFrames');
 local LSM = LibStub("LibSharedMedia-3.0");
 
-function UF:Build_Layout(value)
-	if value == "Zeph" then
-		if E.db.meat.zephlayout ~= true then
-			E.db.meat.zephlayout = true
-			E.db.meat.duffedlayout = false
-			E.db.unitframe.units.player.power.width = "spaced"
-			E.db.unitframe.units.player.power.height = 9
-			E.db.unitframe.units.player.height = 43
-			E.db.unitframe.units.player.classbar.fill = "spaced"
-			E.db.unitframe.units.target.power.width = "spaced"
-			E.db.unitframe.units.target.power.height = 9
-			E.db.unitframe.units.target.height = 43
-			E.db.unitframe.units.target.combobar.fill = "spaced"
-			E.db.unitframe.units.targettarget.power.width = "spaced"
-			E.db.unitframe.units.targettarget.power.height = 7
-			E.db.unitframe.units.targettarget.power.offset = 5
-			E.db.unitframe.units.focus.power.width = "spaced"
-			E.db.unitframe.units.focus.power.height = 7
-			E.db.unitframe.units.focus.power.offset = 5
-		end
-	elseif value == "Duffed" then
-		if E.db.meat.duffedlayout ~= true then
-			E.db.meat.zephlayout = false
-			E.db.meat.duffedlayout = true
-			E.db.unitframe.units.player.power.width = "fill"
-			E.db.unitframe.units.player.power.height = 6
-			E.db.unitframe.units.player.height = 48
-			E.db.unitframe.units.player.classbar.fill = "fill"
-			E.db.unitframe.units.target.power.width = "fill"
-			E.db.unitframe.units.target.power.height = 6
-			E.db.unitframe.units.target.height = 48
-			E.db.unitframe.units.target.combobar.fill = "fill"
-			E.db.unitframe.units.targettarget.power.width = "fill"
-			E.db.unitframe.units.targettarget.power.height = 6
-			E.db.unitframe.units.targettarget.power.offset = 0
-			E.db.unitframe.units.focus.power.width = "fill"
-			E.db.unitframe.units.focus.power.height = 6
-			E.db.unitframe.units.focus.power.offset = 0
-		end
-	end
-end
-
 -----------------
 -- Cons Shadow --
 -----------------
@@ -217,28 +175,15 @@ function UF:Update_FocusFrame(frame, db)
 		end	
 		
 		--Position
-		if E.db.meat.uflayout == "Zeph" then
-			health:ClearAllPoints()
-			health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -BORDER)
-			if USE_POWERBAR_OFFSET then			
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), -BORDER)
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER+POWERBAR_OFFSET, BORDER+POWERBAR_OFFSET)
-			elseif USE_MINI_POWERBAR then
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
-			else
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
-			end
-		elseif E.db.meat.uflayout == "Duffed" then
-			health:ClearAllPoints()
-			health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -BORDER)
-			if USE_POWERBAR_OFFSET then			
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), -BORDER)
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER+POWERBAR_OFFSET, BORDER+POWERBAR_OFFSET)
-			elseif USE_MINI_POWERBAR then
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
-			else
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
-			end
+		health:ClearAllPoints()
+		health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -BORDER)
+		if USE_POWERBAR_OFFSET then			
+			health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), -BORDER)
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER+POWERBAR_OFFSET, BORDER+POWERBAR_OFFSET)
+		elseif USE_MINI_POWERBAR then
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
+		else
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
 		end
 	end
 	
@@ -668,86 +613,43 @@ function UF:Update_PlayerFrame(frame, db)
 		end	
 		
 		--Position
-		if E.db.meat.uflayout == "Zeph" then
-			health:ClearAllPoints()
-			health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -BORDER)
-			if USE_POWERBAR_OFFSET then
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), -BORDER)
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER+POWERBAR_OFFSET)
-			elseif USE_MINI_POWERBAR then
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
-			else
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
-			end
-		
-			health.bg:ClearAllPoints()
-			if not USE_PORTRAIT_OVERLAY then
-				health:Point("TOPLEFT", PORTRAIT_WIDTH+BORDER, -BORDER)		
-				health.bg:SetParent(health)
-				health.bg:SetAllPoints()
-			else
-				health.bg:Point('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT')
-				health.bg:Point('TOPRIGHT', health)		
-				health.bg:SetParent(frame.Portrait.overlay)			
-			end
-		elseif E.db.meat.uflayout == "Duffed" then
-			health:ClearAllPoints()
-			health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -18)
-			if USE_POWERBAR_OFFSET then
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), -BORDER)
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER+POWERBAR_OFFSET)
-			elseif USE_MINI_POWERBAR then
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
-			else
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
-			end
-		
-			health.bg:ClearAllPoints()
-			if not USE_PORTRAIT_OVERLAY then
-				health:Point("TOPLEFT", PORTRAIT_WIDTH+BORDER, -18)		
-				health.bg:SetParent(health)
-				health.bg:SetAllPoints()
-			else
-				health.bg:Point('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT')
-				health.bg:Point('TOPRIGHT', health)		
-				health.bg:SetParent(frame.Portrait.overlay)			
-			end
+		health:ClearAllPoints()
+		health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -BORDER)
+		if USE_POWERBAR_OFFSET then
+			health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), -BORDER)
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER+POWERBAR_OFFSET)
+		elseif USE_MINI_POWERBAR then
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
+		else
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
 		end
-
-		if E.db.meat.uflayout == "Zeph" then
-			if USE_CLASSBAR then
-				local DEPTH
-				if USE_MINI_CLASSBAR then
-					DEPTH = -(BORDER+(CLASSBAR_HEIGHT/2))
-				else
-					DEPTH = -(BORDER+CLASSBAR_HEIGHT+SPACING)
-				end
-			
-				if USE_POWERBAR_OFFSET then
-					health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), DEPTH)
-				else
-					health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, DEPTH)
-				end
-			
-				health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH+BORDER, DEPTH)
+		
+		health.bg:ClearAllPoints()
+		if not USE_PORTRAIT_OVERLAY then
+			health:Point("TOPLEFT", PORTRAIT_WIDTH+BORDER, -BORDER)		
+			health.bg:SetParent(health)
+			health.bg:SetAllPoints()
+		else
+			health.bg:Point('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT')
+			health.bg:Point('TOPRIGHT', health)		
+			health.bg:SetParent(frame.Portrait.overlay)			
+		end
+		
+		if USE_CLASSBAR then
+			local DEPTH
+			if USE_MINI_CLASSBAR then
+				DEPTH = -(BORDER+(CLASSBAR_HEIGHT/2))
+			else
+				DEPTH = -(BORDER+CLASSBAR_HEIGHT+SPACING)
 			end
-		elseif E.db.meat.uflayout == "Duffed" then
-			if USE_CLASSBAR then
-				local DEPTH
-				if USE_MINI_CLASSBAR then
-					DEPTH = -(BORDER+(CLASSBAR_HEIGHT/2))
-				else
-					DEPTH = -(BORDER+CLASSBAR_HEIGHT+SPACING)
-				end
 			
-				if USE_POWERBAR_OFFSET then
-					health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), DEPTH)
-				else
-					health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -18)
-				end
-			
-				health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH+BORDER, -18)
+			if USE_POWERBAR_OFFSET then
+				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(BORDER+POWERBAR_OFFSET), DEPTH)
+			else
+				health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, DEPTH)
 			end
+			
+			health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH+BORDER, DEPTH)
 		end
 	end
 	
@@ -1009,11 +911,7 @@ function UF:Update_PlayerFrame(frame, db)
 				bars:Point("CENTER", frame.Health.backdrop, "TOP", -(BORDER*3 + 6), -SPACING)
 				bars:SetFrameStrata("MEDIUM")
 			else
-				if E.db.meat.uflayout == "Zeph" then
-					bars:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
-				elseif E.db.meat.uflayout == "Duffed" then
-					bars:Point("TOPLEFT", frame.Power.backdrop, "BOTTOMLEFT", BORDER, -(BORDER+SPACING))
-				end
+				bars:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
 				bars:SetFrameStrata("LOW")
 			end
 			bars:Width(CLASSBAR_WIDTH)
@@ -1062,11 +960,7 @@ function UF:Update_PlayerFrame(frame, db)
 				bars:Point("CENTER", frame.Health.backdrop, "TOP", -(BORDER*3 + 6), -SPACING)
 				bars:SetFrameStrata("MEDIUM")
 			else
-				if E.db.meat.uflayout == "Zeph" then
-					bars:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
-				elseif E.db.meat.uflayout == "Duffed" then
-					bars:Point("TOPLEFT", frame.Power.backdrop, "BOTTOMLEFT", BORDER, -(BORDER+SPACING))
-				end
+				bars:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
 				bars:SetFrameStrata("LOW")
 			end
 			bars:Width(CLASSBAR_WIDTH)
@@ -1115,11 +1009,7 @@ function UF:Update_PlayerFrame(frame, db)
 				runes:Point("CENTER", frame.Health.backdrop, "TOP", -(BORDER*3 + 8), -SPACING)
 				runes:SetFrameStrata("MEDIUM")
 			else
-				if E.db.meat.uflayout == "Zeph" then
-					runes:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
-				elseif E.db.meat.uflayout == "Duffed" then
-					runes:Point("TOPLEFT", frame.Power.backdrop, "BOTTOMLEFT", BORDER, -(BORDER+SPACING))
-				end
+				runes:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
 				runes:SetFrameStrata("LOW")
 			end
 			runes:Width(CLASSBAR_WIDTH)
@@ -1172,11 +1062,7 @@ function UF:Update_PlayerFrame(frame, db)
 			
 			totems:ClearAllPoints()
 			if not USE_MINI_CLASSBAR then
-				if E.db.meat.uflayout == "Zeph" then
-					totems:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
-				elseif E.db.meat.uflayout == "Duffed" then
-					totems:Point("TOPLEFT", frame.Power.backdrop, "BOTTOMLEFT", BORDER, -(BORDER+SPACING))
-				end
+				totems:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
 				totems:SetFrameStrata("LOW")
 			else
 				CLASSBAR_WIDTH = CLASSBAR_WIDTH * 3/2 --Multiply by reciprocal to reset previous setting
@@ -1234,11 +1120,7 @@ function UF:Update_PlayerFrame(frame, db)
 
 			eclipseBar:ClearAllPoints()
 			if not USE_MINI_CLASSBAR then
-				if E.db.meat.uflayout == "Zeph" then
-					eclipseBar:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
-				elseif E.db.meat.uflayout == "Duffed" then
-					eclipseBar:Point("TOPLEFT", frame.Power.backdrop, "BOTTOMLEFT", BORDER, -(BORDER+SPACING))
-				end
+				eclipseBar:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
 				eclipseBar:SetFrameStrata("LOW")
 			else		
 				CLASSBAR_WIDTH = CLASSBAR_WIDTH * 3/2 --Multiply by reciprocal to reset previous setting
@@ -1431,48 +1313,25 @@ function UF:Update_TargetFrame(frame, db)
 		end	
 		
 		--Position
-		if E.db.meat.uflayout == "Zeph" then
-			health:ClearAllPoints()
-			health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -BORDER)
-			if USE_POWERBAR_OFFSET then			
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER+POWERBAR_OFFSET, BORDER+POWERBAR_OFFSET)
-			elseif USE_MINI_POWERBAR then
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
-			else
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
-			end
+		health:ClearAllPoints()
+		health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -BORDER)
+		if USE_POWERBAR_OFFSET then			
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER+POWERBAR_OFFSET, BORDER+POWERBAR_OFFSET)
+		elseif USE_MINI_POWERBAR then
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
+		else
+			health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
+		end
 		
-			health.bg:ClearAllPoints()
-			if not USE_PORTRAIT_OVERLAY then
-				health:Point("TOPRIGHT", -(PORTRAIT_WIDTH+BORDER), -BORDER)
-				health.bg:SetParent(health)
-				health.bg:SetAllPoints()
-			else
-				health.bg:Point('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT')
-				health.bg:Point('TOPRIGHT', health)		
-				health.bg:SetParent(frame.Portrait.overlay)			
-			end
-		elseif E.db.meat.uflayout == "Duffed" then
-			health:ClearAllPoints()
-			health:Point("TOPRIGHT", frame, "TOPRIGHT", -BORDER, -18)
-			if USE_POWERBAR_OFFSET then			
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER+POWERBAR_OFFSET, BORDER+POWERBAR_OFFSET)
-			elseif USE_MINI_POWERBAR then
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + (POWERBAR_HEIGHT/2))
-			else
-				health:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", BORDER, BORDER + POWERBAR_HEIGHT)
-			end
-		
-			health.bg:ClearAllPoints()
-			if not USE_PORTRAIT_OVERLAY then
-				health:Point("TOPRIGHT", -(PORTRAIT_WIDTH+BORDER), -18)
-				health.bg:SetParent(health)
-				health.bg:SetAllPoints()
-			else
-				health.bg:Point('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT')
-				health.bg:Point('TOPRIGHT', health)		
-				health.bg:SetParent(frame.Portrait.overlay)			
-			end
+		health.bg:ClearAllPoints()
+		if not USE_PORTRAIT_OVERLAY then
+			health:Point("TOPRIGHT", -(PORTRAIT_WIDTH+BORDER), -BORDER)
+			health.bg:SetParent(health)
+			health.bg:SetAllPoints()
+		else
+			health.bg:Point('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT')
+			health.bg:Point('TOPRIGHT', health)		
+			health.bg:SetParent(frame.Portrait.overlay)			
 		end
 	end
 	
@@ -1722,11 +1581,7 @@ function UF:Update_TargetFrame(frame, db)
 			CPoints:Point("CENTER", frame.Health.backdrop, "TOP", -(BORDER*3 + 6), -SPACING)
 			CPoints:SetFrameStrata("MEDIUM")
 		else
-			if E.db.meat.uflayout == "Zeph" then
-				CPoints:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
-			elseif E.db.meat.uflayout == "Duffed" then
-				CPoints:Point("TOPLEFT", frame, "BOTTOMLEFT", BORDER, -(BORDER+SPACING))
-			end
+			CPoints:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", BORDER, BORDER+SPACING)
 			CPoints:SetFrameStrata("LOW")
 		end
 
@@ -2103,241 +1958,80 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 	if USE_MINI_CLASSBAR then
 		CLASSBAR_HEIGHT = CLASSBAR_HEIGHT / 2
 	end
-	if E.db.meat.uflayout == "Zeph" then
-		if eclipseBar:IsShown() or druidAltMana:IsShown() then
-			if db.power.offset ~= 0 then
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(2+db.power.offset), -(2 + CLASSBAR_HEIGHT + 1))
-			else
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -(2 + CLASSBAR_HEIGHT + 1))
-			end
-			health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -(2 + CLASSBAR_HEIGHT + 1))	
-		
-		
-			local mini_classbarY = 0
-			if USE_MINI_CLASSBAR then
-				mini_classbarY = -(SPACING+(CLASSBAR_HEIGHT))
-			end		
-			--[[
-			threat:Point("TOPLEFT", -4, 4+mini_classbarY)
-			threat:Point("TOPRIGHT", 4, 4+mini_classbarY)
-
-			if USE_MINI_POWERBAR then
-				threat:Point("BOTTOMLEFT", -4, -4 + (POWERBAR_HEIGHT/2))
-				threat:Point("BOTTOMRIGHT", 4, -4 + (POWERBAR_HEIGHT/2))		
-			else
-				threat:Point("BOTTOMLEFT", -4, -4)
-				threat:Point("BOTTOMRIGHT", 4, -4)
-			end		
-
-			if USE_POWERBAR_OFFSET then
-				threat:Point("TOPRIGHT", 4-POWERBAR_OFFSET, 4+mini_classbarY)
-				threat:Point("BOTTOMRIGHT", 4-POWERBAR_OFFSET, -4)	
-			end
-			]]--
-			if db.portrait.enable and not db.portrait.overlay then
-				local portrait = self:GetParent().Portrait
-				portrait.backdrop:ClearAllPoints()
-				if USE_MINI_CLASSBAR and USE_CLASSBAR then
-					portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT", 0, -(CLASSBAR_HEIGHT + 1))
-				else
-					portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
-				end		
-			
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
-				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
-				else
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
-
-				end					
-			end
+	
+	if eclipseBar:IsShown() or druidAltMana:IsShown() then
+		if db.power.offset ~= 0 then
+			health:Point("TOPRIGHT", frame, "TOPRIGHT", -(2+db.power.offset), -(2 + CLASSBAR_HEIGHT + 1))
 		else
-			if db.power.offset ~= 0 then
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(2 + db.power.offset), -2)
-			else
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -2)
-			end
-			health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -2)	
-
-			if db.portrait.enable and not db.portrait.overlay then
-				local portrait = self:GetParent().Portrait
-				portrait.backdrop:ClearAllPoints()
-				portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT")
-			
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
-				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
-				else
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
-
-				end			
-			end		
+			health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -(2 + CLASSBAR_HEIGHT + 1))
 		end
-	elseif E.db.meat.uflayout == "Duffed" then
-		if eclipseBar:IsShown() or druidAltMana:IsShown() then
-			if db.power.offset ~= 0 then
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(2+db.power.offset), -(2 + CLASSBAR_HEIGHT + 1))
-			else
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -18)
-			end
-			health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -18)	
+		health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -(2 + CLASSBAR_HEIGHT + 1))	
 		
-		
-			local mini_classbarY = 0
-			if USE_MINI_CLASSBAR then
-				mini_classbarY = -(SPACING+(CLASSBAR_HEIGHT))
-			end		
-			--[[
-			threat:Point("TOPLEFT", -4, 4+mini_classbarY)
-			threat:Point("TOPRIGHT", 4, 4+mini_classbarY)
+		--[[
+		local mini_classbarY = 0
+		if USE_MINI_CLASSBAR then
+			mini_classbarY = -(SPACING+(CLASSBAR_HEIGHT))
+		end		
 
-			if USE_MINI_POWERBAR then
-				threat:Point("BOTTOMLEFT", -4, -4 + (POWERBAR_HEIGHT/2))
-				threat:Point("BOTTOMRIGHT", 4, -4 + (POWERBAR_HEIGHT/2))		
-			else
-				threat:Point("BOTTOMLEFT", -4, -4)
-				threat:Point("BOTTOMRIGHT", 4, -4)
-			end		
+		threat:Point("TOPLEFT", -4, 4+mini_classbarY)
+		threat:Point("TOPRIGHT", 4, 4+mini_classbarY)
 
-			if USE_POWERBAR_OFFSET then
-				threat:Point("TOPRIGHT", 4-POWERBAR_OFFSET, 4+mini_classbarY)
-				threat:Point("BOTTOMRIGHT", 4-POWERBAR_OFFSET, -4)	
-			end
-			]]--
-			if db.portrait.enable and not db.portrait.overlay then
-				local portrait = self:GetParent().Portrait
-				portrait.backdrop:ClearAllPoints()
-				if USE_MINI_CLASSBAR and USE_CLASSBAR then
-					portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT", 0, -(CLASSBAR_HEIGHT + 1))
-				else
-					portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
-				end		
-			
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
-				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
-				else
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
-
-				end					
-			end
+		if USE_MINI_POWERBAR then
+			threat:Point("BOTTOMLEFT", -4, -4 + (POWERBAR_HEIGHT/2))
+			threat:Point("BOTTOMRIGHT", 4, -4 + (POWERBAR_HEIGHT/2))		
 		else
-			if db.power.offset ~= 0 then
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -(2 + db.power.offset), -2)
-			else
-				health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -18)
-			end
-			health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -18)	
+			threat:Point("BOTTOMLEFT", -4, -4)
+			threat:Point("BOTTOMRIGHT", 4, -4)
+		end		
 
-			if db.portrait.enable and not db.portrait.overlay then
-				local portrait = self:GetParent().Portrait
-				portrait.backdrop:ClearAllPoints()
-				portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT")
-			
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
-				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
-				else
-					portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
-
-				end			
-			end		
+		if USE_POWERBAR_OFFSET then
+			threat:Point("TOPRIGHT", 4-POWERBAR_OFFSET, 4+mini_classbarY)
+			threat:Point("BOTTOMRIGHT", 4-POWERBAR_OFFSET, -4)	
 		end
-	end
-end
+		]]--
+		if db.portrait.enable and not db.portrait.overlay then
+			local portrait = self:GetParent().Portrait
+			portrait.backdrop:ClearAllPoints()
+			if USE_MINI_CLASSBAR and USE_CLASSBAR then
+				portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT", 0, -(CLASSBAR_HEIGHT + 1))
+			else
+				portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
+			end		
+			
+			if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
+			elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
+			else
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 
--- Adjust Combobar (Target Frame)
-function UF:UpdateComboDisplay(event, unit)
-	if(unit == 'pet') then return end
-	local db = UF.player.db
-	local cpoints = self.CPoints
-	local cp
-	if (UnitHasVehicleUI("player") or UnitHasVehicleUI("vehicle")) then
-		cp = GetComboPoints('vehicle', 'target')
+			end					
+		end
 	else
-		cp = GetComboPoints('player', 'target')
-	end
+		if db.power.offset ~= 0 then
+			health:Point("TOPRIGHT", frame, "TOPRIGHT", -(2 + db.power.offset), -2)
+		else
+			health:Point("TOPRIGHT", frame, "TOPRIGHT", -2, -2)
+		end
+		health:Point("TOPLEFT", frame, "TOPLEFT", PORTRAIT_WIDTH + 2, -2)	
 
-
-	for i=1, MAX_COMBO_POINTS do
-		if(i <= cp) then
-			cpoints[i]:SetAlpha(1)
+		if db.portrait.enable and not db.portrait.overlay then
+			local portrait = self:GetParent().Portrait
+			portrait.backdrop:ClearAllPoints()
+			portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT")
 			
-			if i == MAX_COMBO_POINTS and db.classbar.fill == 'spaced' then
-				for c = 1, MAX_COMBO_POINTS do
-					cpoints[c].backdrop.shadow:Show()
-					cpoints[c]:SetScript('OnUpdate', function(self)
-						E:Flash(self.backdrop.shadow, 0.6)
-					end)
-				end
+			if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
+			elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
 			else
-				for c = 1, MAX_COMBO_POINTS do
-					cpoints[c].backdrop.shadow:Hide()
-					cpoints[c]:SetScript('OnUpdate', nil)
-				end
-			end
-		else
-			cpoints[i]:SetAlpha(.15)
-			for c = 1, MAX_COMBO_POINTS do
-				cpoints[c].backdrop.shadow:Hide()
-				cpoints[c]:SetScript('OnUpdate', nil)
-			end		
-		end	
-	end
-	
-	local BORDER = E:Scale(2)
-	local SPACING = E:Scale(1)
-	local db = E.db['unitframe']['units'].target
-	local USE_COMBOBAR = db.combobar.enable
-	local USE_MINI_COMBOBAR = db.combobar.fill == "spaced" and USE_COMBOBAR
-	local COMBOBAR_HEIGHT = db.combobar.height
-	local USE_PORTRAIT = db.portrait.enable
-	local USE_PORTRAIT_OVERLAY = db.portrait.overlay and USE_PORTRAIT	
-	local PORTRAIT_WIDTH = db.portrait.width
-	
+				portrait.backdrop:Point("BOTTOMRIGHT", frame.Power.backdrop, "BOTTOMLEFT", -SPACING - 4, 0)
 
-	if USE_PORTRAIT_OVERLAY or not USE_PORTRAIT then
-		PORTRAIT_WIDTH = 0
-	end
-
-	if E.db.meat.uflayout == "Zeph" then
-		if cpoints[1]:GetAlpha() == 1 then
-			cpoints:Show()
-			if USE_MINI_COMBOBAR then
-				self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, -((COMBOBAR_HEIGHT/2) + SPACING - BORDER))
-				self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -(SPACING + (COMBOBAR_HEIGHT/2)))
-			else
-				self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT")
-				self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -(BORDER + SPACING + COMBOBAR_HEIGHT))
-			end		
-
-		else
-			cpoints:Hide()
-			self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT")
-			self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -BORDER)
-		end
-	elseif E.db.meat.uflayout == "Duffed" then
-		if cpoints[1]:GetAlpha() == 1 then
-			cpoints:Show()
-			if USE_MINI_COMBOBAR then
-				self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, -((COMBOBAR_HEIGHT/2) + SPACING - BORDER))
-				self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -18)
-			else
-				self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT")
-				self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -18)
-			end		
-
-		else
-			cpoints:Hide()
-			self.Portrait.backdrop:SetPoint("TOPRIGHT", self, "TOPRIGHT")
-			self.Health:Point("TOPRIGHT", self, "TOPRIGHT", -(BORDER+PORTRAIT_WIDTH), -18)
-		end
+			end			
+		end		
 	end
 end
+
 
 ------------------------
 -- Re-Build Info Text --
@@ -2611,43 +2305,6 @@ end
 ----------------
 -- Name Align --
 ----------------
-
-function UF:PostNamePosition(frame, unit)
-	if E.db.meat.uflayout == "Zeph" then
-		if frame.Power.value:GetText() and UnitIsPlayer(unit) and frame.Power.value:IsShown() then
-			local db = frame.db
-		
-			local position = db.name.position
-			local x, y = self:GetPositionOffset(position)
-			frame.Power.value:SetAlpha(1)
-		
-			frame.Name:ClearAllPoints()
-			frame.Name:Point(position, frame.Health, position, x, y)	
-		elseif frame.Power.value:IsShown() then
-			frame.Power.value:SetAlpha(0)
-		
-			frame.Name:ClearAllPoints()
-			frame.Name:SetPoint(frame.Power.value:GetPoint())
-		end
-	elseif E.db.meat.uflayout == "Duffed" then
-		local db = frame.db
-		
-		local position = db.name.position
-		local x, y = self:GetPositionOffset(position)
-
-		if frame.Power.value:GetText() and UnitIsPlayer(unit) and frame.Power.value:IsShown() then
-			frame.Power.value:SetAlpha(1)
-		
-			frame.Name:ClearAllPoints()
-			frame.Name:Point('BOTTOMLEFT', frame.Health, 'TOPLEFT', x, 5)	
-		elseif frame.Power.value:IsShown() then
-			frame.Power.value:SetAlpha(1)
-		
-			frame.Name:ClearAllPoints()
-			frame.Name:SetPoint('BOTTOMLEFT', frame.Health, 'TOPLEFT', x, 5)
-		end
-	end
-end
 
 function UF:Construct_NameText(frame)
 	local name = frame:CreateFontString(nil, 'OVERLAY')

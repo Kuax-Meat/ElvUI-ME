@@ -115,14 +115,15 @@ function MEAT:Initialize()
 	self:SetupMedia()
 
 	--Build MEAT EDITION
-	E:GetModule('Blizzard'):HandleBubbles()
+	E:GetModule('Blizzard'):HandleBubbles()		-- make chat bubble skin
 	LO:CreatePanels()
 	self:LoadDefaultSetting()
 	AB:AdjustBarPos()
-	AB:MakeShadows()
+	--AB:MakeShadows()
 	DT:PanelLayoutOptions2()
 	DT:LoadDataTexts()
 	self:MinimapLocationPanels()
+	self:ConsShadow()							-- make shadows without UF
 
 	--Update Media
 	self:UpdateMedia()
