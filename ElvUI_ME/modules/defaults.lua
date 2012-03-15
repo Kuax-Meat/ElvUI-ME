@@ -35,7 +35,7 @@ function MEAT:LoadDefaultSetting()
 			['expRepPos'] = 'MINIMAP_BOTTOM',
 			
 			--misc
-			['mapTransparency'] = 1,
+			['mapTransparency'] = 0,
 			['minimapSize'] = 175,
 			['raidReminder'] = true,
 		};

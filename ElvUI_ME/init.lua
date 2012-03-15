@@ -4,7 +4,7 @@ local LO = E:GetModule('Layout');
 local AB = E:GetModule('ActionBars');
 local DT = E:GetModule('DataTexts')
 local A = E:GetModule('Auras');
-local M = E:GetModule('Maps');
+local M = E:GetModule('Minimap');
 local CH = E:GetModule('Chat')
 
 local LSM = LibStub("LibSharedMedia-3.0")
@@ -115,7 +115,7 @@ function MEAT:Initialize()
 	self:SetupMedia()
 
 	--Build MEAT EDITION
-	E:GetModule('Blizzard'):HandleBubbles()		-- make chat bubble skin
+	--E:GetModule('Blizzard'):HandleBubbles()		-- make chat bubble skin
 	LO:CreatePanels()
 	self:LoadDefaultSetting()
 	AB:AdjustBarPos()
