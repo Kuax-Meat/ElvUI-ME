@@ -5,7 +5,6 @@ function S:SetEmbedRight(addon)
 	self:RemovePrevious(addon)
 	if addon == 'OmenRecount' then
 	elseif not IsAddOnLoaded(addon) then return; end
-
 	if self.lastAddon == nil then self.lastAddon = addon; end
 
 	if addon == 'Recount' then
@@ -177,12 +176,18 @@ function S:SetEmbedRight(addon)
 		end	
 	end
 end
+
 -- building Omen Recount Option
 E.Options.args.skins = {
 	type = "group",
 	name = L["Skins"],
 	childGroups = "select",
 	args = {
+		intro = {
+			order = 1,
+			type = "description",
+			name = L["SKINS_DESC"],
+		},	
 		embedRight = {
 			order = 2,
 			type = 'select',
@@ -195,8 +200,8 @@ E.Options.args.skins = {
 				['Skada'] = "Skada",
 				['OmenRecount'] = "OmenRecount"
 			},
-			get = function(info) return E.global.skins[ info[#info] ] end,
-			set = function(info, value) E.global.skins[ info[#info] ] = value; S:SetEmbedRight(value) end,
+			get = function(info) return E.db.skins[ info[#info] ] end,
+			set = function(info, value) E.db.skins[ info[#info] ] = value; S:SetEmbedRight(value) end,
 		},
 		bigwigs = {
 			order = 3,
@@ -274,7 +279,15 @@ E.Options.args.skins = {
 					name = L['Enable'],
 					type = 'toggle',
 					order = 1,				
-				},			
+				},	
+				barHeight = {
+					name = L['Embedded Bar Height'],
+					desc = L['The height of the bars while skada is embedded.'],
+					order = 2,
+					type = 'range',
+					min = 10, max = 30, step = 1,
+					set = function(info, value) E.global.skins.skada.barHeight = value; S:SetEmbedRight(E.db.skins.embedRight) end,
+				},
 			},
 		},	
 		dxe = {
@@ -559,6 +572,16 @@ E.Options.args.skins = {
 				bags = {
 					type = "toggle",
 					name = L["Bags"],
+					desc = L["TOGGLESKIN_DESC"],									
+				},
+				stable = {
+					type = "toggle",
+					name = L["Stable"],
+					desc = L["TOGGLESKIN_DESC"],									
+				},
+				bgmap = {
+					type = "toggle",
+					name = L["BG Map"],
 					desc = L["TOGGLESKIN_DESC"],									
 				},				
 			},
