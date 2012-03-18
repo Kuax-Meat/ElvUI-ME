@@ -6,6 +6,7 @@ local DT = E:GetModule('DataTexts')
 local A = E:GetModule('Auras');
 local M = E:GetModule('Minimap');
 local CH = E:GetModule('Chat')
+local TT = E:GetModule('Tooltip')
 
 local LSM = LibStub("LibSharedMedia-3.0")
 
@@ -60,13 +61,13 @@ end
 
 function MEAT:MinimapLocToggle()
 	if E.db.meat.upperpanels == true then
-		Minimap.location:Hide()
+		--Minimap.location:Hide()
 		ElvuiLoc.zone:Show()
 		ElvuiLocX.coord:Show()
 		ElvuiLocY.coord:Show()
 		WorldStateAlwaysUpFrame:SetPoint("TOP", E.UIParent, "TOP", -5, -40)
 	else
-		Minimap.location:Show()
+		--Minimap.location:Show()
 		ElvuiLoc.zone:Hide()
 		ElvuiLocX.coord:Hide()
 		ElvuiLocY.coord:Hide()
@@ -124,6 +125,7 @@ function MEAT:Initialize()
 	DT:LoadDataTexts()
 	self:MinimapLocationPanels()
 	self:ConsShadow()							-- make shadows without UF
+	TT:EquippedItemLevel()
 
 	--Update Media
 	self:UpdateMedia()
