@@ -36,15 +36,15 @@ function MEAT:LoadDefaultSetting()
 			
 			--misc
 			['mapTransparency'] = 1,
-			['minimapSize'] = 175,
+			['minimapSize'] = 176,
 			['raidReminder'] = true,
 		};
 
 		--NamePlate
 		E.db["nameplate"] = {
 			["markBGHealers"] = true,
-			["width"] = 113,
-			["height"] = 15,
+			["width"] = 114,
+			["height"] = 14,
 			["cbheight"] = 5,
 			["showlevel"] = true,
 			["enhancethreat"] = true,
@@ -154,7 +154,7 @@ function MEAT:LoadDefaultSetting()
 				['player'] = {
 					['enable'] = true,
 					['width'] = 280,
-					['height'] = 43,
+					['height'] = 42,
 					['lowmana'] = 30,
 					['combatfade'] = false,
 					['healPrediction'] = true,
@@ -168,7 +168,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current-percent',	
 						['width'] = 'spaced',
-						['height'] = 9,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = false,
@@ -219,9 +219,10 @@ function MEAT:LoadDefaultSetting()
 					['castbar'] = {
 						['enable'] = true,
 						['width'] = 280,
-						['height'] = 21,
+						['height'] = 22,
 						['icon'] = true,
 						['latency'] = true,
+						['displayTarget'] = false,
 						['color'] = P.general.bordercolor,
 						['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
 						['xOffset'] = 0,
@@ -233,13 +234,13 @@ function MEAT:LoadDefaultSetting()
 					['classbar'] = {
 						['enable'] = true,
 						['fill'] = 'spaced',
-						['height'] = 9,
+						['height'] = 10,
 					},
 				},	
 				['target'] = {
 					['enable'] = true,
 					['width'] = 280,
-					['height'] = 43,
+					['height'] = 42,
 					['healPrediction'] = true,
 					['health'] = {
 						['text'] = true,
@@ -251,7 +252,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current-percent',	
 						['width'] = 'spaced',
-						['height'] = 9,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = true,					
@@ -297,7 +298,7 @@ function MEAT:LoadDefaultSetting()
 					['castbar'] = {
 						['enable'] = true,
 						['width'] = 280,
-						['height'] = 21,
+						['height'] = 22,
 						['icon'] = true,
 						['color'] = P.general.bordercolor,
 						['interruptcolor'] = { r = 0.78, g = 0.25, b = 0.25 },
@@ -315,7 +316,7 @@ function MEAT:LoadDefaultSetting()
 				['targettarget'] = {
 					['enable'] = true,
 					['width'] = 130,
-					['height'] = 35,
+					['height'] = 34,
 					['health'] = {
 						['text'] = true,
 						['text_format'] = 'percent',
@@ -326,8 +327,8 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
-						['offset'] = 5,
+						['height'] = 8,
+						['offset'] = 6,
 						['position'] = 'LEFT',
 						['hideonnpc'] = true,					
 					},
@@ -367,7 +368,7 @@ function MEAT:LoadDefaultSetting()
 				['focus'] = {
 					['enable'] = true,
 					['width'] = 130,
-					['height'] = 35,
+					['height'] = 34,
 					['healPrediction'] = true,
 					['health'] = {
 						['text'] = true,
@@ -379,8 +380,8 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
-						['offset'] = 5,
+						['height'] = 8,
+						['offset'] = 6,
 						['position'] = 'LEFT',
 						['hideonnpc'] = true,					
 					},
@@ -432,7 +433,7 @@ function MEAT:LoadDefaultSetting()
 				['focustarget'] = {
 					['enable'] = true,
 					['width'] = 130,
-					['height'] = 25,
+					['height'] = 24,
 					['health'] = {
 						['text'] = false,
 						['text_format'] = 'current-percent',
@@ -443,7 +444,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = true,					
@@ -484,7 +485,7 @@ function MEAT:LoadDefaultSetting()
 				['pet'] = {
 					['enable'] = true,
 					['width'] = 130,
-					['height'] = 35,
+					['height'] = 34,
 					['healPrediction'] = true,
 					['health'] = {
 						['text'] = false,
@@ -496,8 +497,8 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
-						['offset'] = 5,
+						['height'] = 8,
+						['offset'] = 6,
 						['position'] = 'LEFT',
 						['hideonnpc'] = true,					
 					},
@@ -537,7 +538,7 @@ function MEAT:LoadDefaultSetting()
 				['pettarget'] = {
 					['enable'] = false,
 					['width'] = 130,
-					['height'] = 25,
+					['height'] = 24,
 					['health'] = {
 						['text'] = false,
 						['text_format'] = 'current-percent',
@@ -548,7 +549,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = true,					
@@ -589,8 +590,8 @@ function MEAT:LoadDefaultSetting()
 				['boss'] = {
 					['enable'] = true,
 					['growthDirection'] = 'UP',
-					['width'] = 215,
-					['height'] = 43,
+					['width'] = 216,
+					['height'] = 42,
 					['health'] = {
 						['text'] = true,
 						['text_format'] = 'current-percent',
@@ -601,7 +602,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current',	
 						['width'] = 'spaced',
-						['height'] = 7,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = false,					
@@ -660,7 +661,7 @@ function MEAT:LoadDefaultSetting()
 					['growthDirection'] = 'UP',
 					['pvpTrinket'] = true,
 					['width'] = 240,
-					['height'] = 43,
+					['height'] = 42,
 					['health'] = {
 						['text'] = true,
 						['text_format'] = 'current-percent',
@@ -671,7 +672,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current',	
 						['width'] = 'spaced',
-						['height'] = 7,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = false,					
@@ -736,7 +737,7 @@ function MEAT:LoadDefaultSetting()
 					['healPrediction'] = false,
 					['columnAnchorPoint'] = "TOP",
 					['width'] = 180,
-					['height'] = 43,
+					['height'] = 42,
 					['health'] = {
 						['text'] = true,
 						['text_format'] = 'current-percent',
@@ -749,7 +750,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'BOTTOMRIGHT',
 						['hideonnpc'] = false,					
@@ -831,7 +832,7 @@ function MEAT:LoadDefaultSetting()
 					["showPlayer"] = true,
 					['healPrediction'] = false,
 					['columnAnchorPoint'] = "TOP",
-					['width'] = 75,
+					['width'] = 74,
 					['height'] = 44,
 					['health'] = {
 						['text'] = true,
@@ -845,7 +846,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'BOTTOMRIGHT',
 						['hideonnpc'] = false,					
@@ -914,7 +915,7 @@ function MEAT:LoadDefaultSetting()
 					["showPlayer"] = true,
 					['healPrediction'] = false,
 					['columnAnchorPoint'] = "TOP",
-					['width'] = 75,
+					['width'] = 74,
 					['height'] = 36,
 					['health'] = {
 						['text'] = true,
@@ -928,7 +929,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = false,
 						['text_format'] = 'current',	
 						['width'] = 'fill',
-						['height'] = 7,
+						['height'] = 8,
 						['offset'] = 0,
 						['position'] = 'BOTTOMRIGHT',
 						['hideonnpc'] = false,					

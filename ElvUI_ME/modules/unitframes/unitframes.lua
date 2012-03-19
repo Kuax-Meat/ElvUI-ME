@@ -8,19 +8,19 @@ function UF:Build_Layout(value)
 			E.db.meat.zephlayout = true
 			E.db.meat.duffedlayout = false
 			E.db.unitframe.units.player.power.width = "spaced"
-			E.db.unitframe.units.player.power.height = 9
-			E.db.unitframe.units.player.height = 43
+			E.db.unitframe.units.player.power.height = 8
+			E.db.unitframe.units.player.height = 42
 			E.db.unitframe.units.player.classbar.fill = "spaced"
 			E.db.unitframe.units.target.power.width = "spaced"
-			E.db.unitframe.units.target.power.height = 9
-			E.db.unitframe.units.target.height = 43
+			E.db.unitframe.units.target.power.height = 8
+			E.db.unitframe.units.target.height = 42
 			E.db.unitframe.units.target.combobar.fill = "spaced"
 			E.db.unitframe.units.targettarget.power.width = "spaced"
-			E.db.unitframe.units.targettarget.power.height = 7
-			E.db.unitframe.units.targettarget.power.offset = 5
+			E.db.unitframe.units.targettarget.power.height = 8
+			E.db.unitframe.units.targettarget.power.offset = 6
 			E.db.unitframe.units.focus.power.width = "spaced"
-			E.db.unitframe.units.focus.power.height = 7
-			E.db.unitframe.units.focus.power.offset = 5
+			E.db.unitframe.units.focus.power.height = 8
+			E.db.unitframe.units.focus.power.offset = 6
 		end
 	elseif value == "Duffed" then
 		if E.db.meat.duffedlayout ~= true then
@@ -851,7 +851,7 @@ function UF:Update_PlayerFrame(frame, db)
 					portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
 				end		
 				
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				if (USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET) or not USE_POWERBAR then --or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
 				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
@@ -1573,7 +1573,7 @@ function UF:Update_TargetFrame(frame, db)
 				portrait.backdrop:ClearAllPoints()
 				portrait.backdrop:SetPoint("TOPRIGHT", frame, "TOPRIGHT")
 						
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				if (USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET) or not USE_POWERBAR then--or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMLEFT", frame.Health.backdrop, "BOTTOMRIGHT", SPACING + 4, -((POWERBAR_HEIGHT/2) - BORDER))
 				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMLEFT", frame.Health.backdrop, "BOTTOMRIGHT", SPACING + 4, -POWERBAR_OFFSET)
@@ -2143,7 +2143,7 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 					portrait.backdrop:SetPoint("TOPLEFT", frame, "TOPLEFT")
 				end		
 			
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				if (USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET) or not USE_POWERBAR then --or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
 				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
@@ -2165,7 +2165,7 @@ function UF:DruidResourceBarVisibilityUpdate(unit)
 				portrait.backdrop:ClearAllPoints()
 				portrait.backdrop:Point("TOPLEFT", frame, "TOPLEFT")
 			
-				if USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET then--or USE_POWERBAR_OFFSET then
+				if (USE_MINI_POWERBAR and not USE_POWERBAR_OFFSET) or not USE_POWERBAR then --or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -((POWERBAR_HEIGHT/2) - BORDER))
 				elseif (USE_POWERBAR_OFFSET and USE_MINI_POWERBAR) or USE_POWERBAR_OFFSET then
 					portrait.backdrop:Point("BOTTOMRIGHT", frame.Health.backdrop, "BOTTOMLEFT", -SPACING - 4, -POWERBAR_OFFSET)
