@@ -40,11 +40,29 @@ function MEAT:LoadDefaultSetting()
 			['raidReminder'] = true,
 		};
 
+		--Bags
+		E.db['bags'] = {
+			['bagCols'] = 0,
+			['bankCols'] = 0,
+			['sortOrientation'] = 'BOTTOM-TOP',
+			['xOffset'] = 0,
+			['yOffset'] = 0,
+
+			['bagBar'] = {
+				['growthDirection'] = 'VERTICAL',
+				['sortDirection'] = 'ASCENDING',
+				['size'] = 30,
+				['spacing'] = 4,
+				['showBackdrop'] = false,
+				['mouseover'] = false,
+			},
+		};
+
 		--NamePlate
 		E.db["nameplate"] = {
 			["markBGHealers"] = true,
 			["width"] = 114,
-			["height"] = 14,
+			["height"] = 15,
 			["cbheight"] = 5,
 			["showlevel"] = true,
 			["enhancethreat"] = true,
@@ -78,6 +96,7 @@ function MEAT:LoadDefaultSetting()
 			['scrollDownInterval'] = 15,
 			['font'] = 'ElvUI Font',
 			['fontoutline'] = 'NONE',
+			['sticky'] = true,
 		}
 
 		--ClassTimers
@@ -168,7 +187,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current-percent',	
 						['width'] = 'spaced',
-						['height'] = 8,
+						['height'] = 9,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = false,
@@ -252,7 +271,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current-percent',	
 						['width'] = 'spaced',
-						['height'] = 8,
+						['height'] = 9,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = true,					
@@ -602,7 +621,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current',	
 						['width'] = 'spaced',
-						['height'] = 8,
+						['height'] = 9,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = false,					
@@ -672,7 +691,7 @@ function MEAT:LoadDefaultSetting()
 						['text'] = true,
 						['text_format'] = 'current',	
 						['width'] = 'spaced',
-						['height'] = 8,
+						['height'] = 9,
 						['offset'] = 0,
 						['position'] = 'LEFT',
 						['hideonnpc'] = false,					

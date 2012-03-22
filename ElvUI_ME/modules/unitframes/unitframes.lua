@@ -8,11 +8,11 @@ function UF:Build_Layout(value)
 			E.db.meat.zephlayout = true
 			E.db.meat.duffedlayout = false
 			E.db.unitframe.units.player.power.width = "spaced"
-			E.db.unitframe.units.player.power.height = 8
+			E.db.unitframe.units.player.power.height = 9
 			E.db.unitframe.units.player.height = 42
 			E.db.unitframe.units.player.classbar.fill = "spaced"
 			E.db.unitframe.units.target.power.width = "spaced"
-			E.db.unitframe.units.target.power.height = 8
+			E.db.unitframe.units.target.power.height = 9
 			E.db.unitframe.units.target.height = 42
 			E.db.unitframe.units.target.combobar.fill = "spaced"
 			E.db.unitframe.units.targettarget.power.width = "spaced"
